@@ -1,0 +1,10 @@
+.navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > h4 {
+	margin: 0px !important;
+}
+.navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > p {
+	margin: 0px !important;
+}
+
+.white {
+	color: #fff !important;
+}
