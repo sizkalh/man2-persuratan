@@ -23,23 +23,30 @@
                         <tr>
                             <th width="20" class="text-center">~</th>
                             <th width="30" class="text-center">No</th>
+                            <th>No. Surat</th>
                             <th>Kepada</th>
                             <th>Perihal</th>
-                            <th class="text-center">Tgl</th>
+                            <th class="text-center">Tanggal Pembuatan</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            $no = 1;
+                            $data = mysqli_query($koneksi,"select * from tbl_surat");
+                            while($myData = mysqli_fetch_array($data)){
+                        ?>
                         <tr>
                             <td class="text-center">
                                 <i class="fa fa-refresh"></i>
                             </td>
-                            <td class="text-center">1</td>
-                            <td>Drs. Lorem ipsum</td>
-                            <td>Undangan rapat dinas</td>
-                            <td class="text-center">12 Desember 2022</td>
+                            <td class="text-center"><?= $no++; ?></td>
+                            <td><?= $myData['no_surat'] ?></td>
+                            <td><?= $myData['kepada'] ?></td>
+                            <td><?= $myData['perihal'] ?></td>
+                            <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pembuatan'])) ?></td>
                             <td class="text-center">
-                                <a href="#" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
+                                <a href="preview_nota_dinas.php?id=<?= $myData['id']; ?>" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
                                 <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-default">
                                     <i class="fa fa-file-text-o"></i>
                                 </button>
@@ -47,7 +54,10 @@
                                 <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
-                        <tr>
+                        <?php 
+                            }
+                        ?>
+                        <!-- <tr>
                             <td class="text-center">
                                 <i class="fa fa-warning text-warning"></i>
                             </td>
@@ -80,7 +90,7 @@
                                 <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
