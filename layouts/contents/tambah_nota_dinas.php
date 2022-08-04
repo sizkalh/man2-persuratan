@@ -15,7 +15,7 @@
     <!-- Default box -->
     <div class="box box-success">
       <div class="box-body">
-        <form action="../../proses/nota_dinas/tambah.php" method="post">
+        <form action="../../proses/nota_dinas/tambah.php" enctype="multipart/form-data" method="post" id="form_nota_dinas">
           <div class="form-group">
             <div class="mb-3 row">
               <label class="col-sm-2 col-form-label">Kepada</label>
@@ -111,7 +111,7 @@
               <div class="col-sm-10">
                 <a href="nota_dinas.php" class="btn btn-default"><i class="fa fa-times"></i> Batal</a>
                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-eye"></i> Preview</button>
+                <button type="button" id="preview" class="btn btn-primary"><i class="fa fa-eye"></i> Preview</button>
               </div>
             </div>
           </div>
@@ -121,4 +121,22 @@
 
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
+
+<script>
+  $(document).ready(function(){
+
+    $("#preview").click(function(){
+      var base_url = window.location.origin;
+      var data = $("#form_nota_dinas").serialize();
+
+      window.open(
+        base_url+'/layouts/contents/preview_nota_dinas.php?'+data,
+        '_blank' // <- This is what makes it open in a new window.
+      );
+      
+      // console.log(base_url);
+    });
+
+  });
+</script>
 <?php include_once("../page/footer.php") ?>
