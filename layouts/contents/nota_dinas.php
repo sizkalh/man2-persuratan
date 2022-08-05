@@ -16,17 +16,12 @@
         <?php
             if (isset($_GET['pesan'])) {
                 if ($_GET['pesan'] == "gagal") {
-<<<<<<< HEAD
-                    echo "Data gagal disimpan";
-                } else if ($_GET['pesan'] == "berhasil") {
-                    echo "Data berhasil disimpan";
-=======
-                echo '
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <i class="icon fa fa-ban"></i> Data gagal disimpan !
-                    </div>
-                ';
+                    echo '
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="icon fa fa-ban"></i> Data gagal disimpan !
+                        </div>
+                    ';
                 } else if ($_GET['pesan'] == "berhasil") {
                     echo '
                         <div class="alert alert-success alert-dismissible">
@@ -34,7 +29,6 @@
                             <i class="icon fa fa-check"></i> Data berhasil disimpan
                         </div>
                     ';
->>>>>>> ec654397012f78b45f0aced376d353812683d980
                 }
             }
         ?>

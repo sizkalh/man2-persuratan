@@ -71,7 +71,7 @@
     if($insert_lampiran!=0){
         header("location:../../layouts/contents/nota_dinas.php?pesan=berhasil");
     }else{
-        header("location:../../layouts/contents/tambah_nota_dinas.php?pesan=gagal");
+        header("location:../../layouts/contents/nota_dinas.php?pesan=gagal");
     }
 
 ?>
