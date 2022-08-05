@@ -15,10 +15,13 @@
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
+    <br />
 
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
+      <li class="header text-center">MENU</li>
+      <li><a href="beranda.php"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-edit"></i> <span>Persuratan</span>
@@ -54,8 +57,6 @@
           <li><a href="surat_undangan.php"><i class="fa fa-circle-o"></i>Surat Undangan</a></li>
         </ul>
       </li>
-    </ul>
-    <ul class="sidebar-menu" data-widget="tree">
       <li class="treeview">
         <a href="#">
           <i class="fa fa-files-o"></i> <span>Proposal</span>

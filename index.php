@@ -36,15 +36,30 @@
     </div>
 
     <?php
-    if (isset($_GET['pesan'])) {
-      if ($_GET['pesan'] == "gagal") {
-        echo "Login gagal! username dan password salah!";
-      } else if ($_GET['pesan'] == "logout") {
-        echo "Anda telah berhasil logout";
-      } else if ($_GET['pesan'] == "belum_login") {
-        echo "Anda harus login untuk mengakses halaman admin";
+      if (isset($_GET['pesan'])) {
+        if ($_GET['pesan'] == "gagal") {
+          echo '
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <i class="icon fa fa-ban"></i> Login gagal ! Username dan Password salah !
+            </div>
+          ';
+        } else if ($_GET['pesan'] == "logout") {
+          echo '
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <i class="icon fa fa-check"></i> Anda telah berhasil logout
+            </div>
+          ';
+        } else if ($_GET['pesan'] == "belum_login") {
+          echo '
+            <div class="alert alert-warning alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <i class="icon fa fa-warning"></i> Anda harus login terlebih dahulu untuk mengakses halaman admin
+            </div>
+          ';
+        }
       }
-    }
     ?>
 
     <!-- /.login-logo -->
@@ -80,7 +95,7 @@
           <!-- /.col -->
           <div class="col-xs-12">
             <button type="submit" class="btn btn-success btn-block btn-flat"><i class="fa fa-check-square-o"></i> Sign In</button>
-            <a href="#" class="btn btn-primary btn-block btn-flat"><i class="fa fa-pencil-square-o"></i> Register</a>
+            <!-- <a href="#" class="btn btn-primary btn-block btn-flat"><i class="fa fa-pencil-square-o"></i> Register</a> -->
           </div>
           <!-- /.col -->
         </div>
