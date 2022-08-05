@@ -13,6 +13,25 @@
     <!-- Main content -->
     <section class="content">
         <!-- Default box -->
+        <?php
+            if (isset($_GET['pesan'])) {
+                if ($_GET['pesan'] == "gagal") {
+                echo '
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="icon fa fa-ban"></i> Data gagal disimpan !
+                    </div>
+                ';
+                } else if ($_GET['pesan'] == "berhasil") {
+                    echo '
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="icon fa fa-check"></i> Data berhasil disimpan
+                        </div>
+                    ';
+                }
+            }
+        ?>
         <div class="box box-success">
             <div class="box-header">
                 <a href="tambah_nota_dinas.php" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Nota Dinas</a>
