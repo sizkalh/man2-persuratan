@@ -68,7 +68,7 @@
         $insert_lampiran = mysqli_query($koneksi, 'insert into tbl_lampiran set id_surat = "'.$id_surat.'", lampiran = "'.$lampiran.'", file = "'.$xx.'"');
     }
     
-    if($insert_lampiran!=0){
+    if($query!=0){
         header("location:../../layouts/contents/nota_dinas.php?pesan=berhasil");
     }else{
         header("location:../../layouts/contents/nota_dinas.php?pesan=gagal");
