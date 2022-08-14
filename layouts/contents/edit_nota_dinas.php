@@ -95,7 +95,7 @@
                 ?>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                  <input type="text" class="form-control" name="tanggal_pelaksanaan" value="<?= $new_tanggal_pelaksanaan ?>" id="datepicker" placeholder="Masukkan Tanggal Pelaksanaan" />
+                  <input type="text" class="form-control datepicker" name="tanggal_pelaksanaan" value="<?= $new_tanggal_pelaksanaan ?>" placeholder="Masukkan Tanggal Pelaksanaan" />
                 </div>
               </div>
             </div>

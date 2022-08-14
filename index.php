@@ -41,7 +41,7 @@
           echo '
             <div class="alert alert-danger alert-dismissible">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <i class="icon fa fa-ban"></i> Login gagal ! Username dan Password salah !
+              <i class="icon fa fa-ban"></i> Login gagal ! Username atau Password salah !
             </div>
           ';
         } else if ($_GET['pesan'] == "logout") {

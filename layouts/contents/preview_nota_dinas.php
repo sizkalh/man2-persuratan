@@ -80,18 +80,15 @@ function tgl_indo_garing($tanggal){
       </tr>
       <tr>
         <td>Dari</td>
-        <td colspan="2">: Kepala Madrasah
-        <td>
+        <td colspan="2">: Kepala Madrasah</td>
       </tr>
       <tr>
         <td>Hal</td>
-        <td colspan="2">: <?= $_GET['perihal'] ?>
-        <td>
+        <td colspan="2">: <?= $_GET['perihal'] ?></td>
       </tr>
       <tr>
         <td>Tanggal</td>
-        <td colspan="2">: <?= tgl_indo_garing($_GET['tanggal_pembuatan']) ?>
-        <td>
+        <td colspan="2">: <?= tgl_indo_garing($_GET['tanggal_pembuatan']) ?></td>
       </tr>
       <tr>
         <td>Lampiran</td>
@@ -133,9 +130,9 @@ function tgl_indo_garing($tanggal){
         <td style="width: 60%;"></td>
         <td style="text-align: center;">
           Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
-          <br>
+          <br />
           Kepala Madrasah,
-          <br><br><br><br><br><br>
+          <br /><br /><br /><br /><br /><br />
           Mohamad Dopir
         </td>
       </tr>

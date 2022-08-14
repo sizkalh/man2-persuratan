@@ -25,6 +25,8 @@
 <script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Timepicker -->
+<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- Slimscroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -41,6 +43,12 @@
         $('#nota_dinas').DataTable();
         $('#datepicker').datepicker({
             format: 'dd/mm/yyyy'
+        });
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy'
+        });
+        $('.timepicker').timepicker({
+          showInputs: false
         });
     } );
 </script>
