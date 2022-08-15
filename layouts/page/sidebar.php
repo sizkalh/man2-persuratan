@@ -33,16 +33,16 @@
           <li><a href="berita_acara.php"><i class="fa fa-circle-o"></i>Berita Acara</a></li>
           <li><a href="nota_dinas.php"><i class="fa fa-circle-o"></i>Nota Dinas</a></li>
           <li><a href="cuti_tahunan.php"><i class="fa fa-circle-o"></i>Cuti Tahunan</a></li>
-          <li><a href="study_kampus.php"><i class="fa fa-circle-o"></i>Permohonan Study Kampus</a></li>
-          <li><a href="sspd.php"><i class="fa fa-circle-o"></i>SPPD</a></li>
+          <li><a href="permohonan_studi_kampus.php"><i class="fa fa-circle-o"></i>Permohonan Studi Kampus</a></li>
+          <li><a href="sppd.php"><i class="fa fa-circle-o"></i>SPPD</a></li>
           <li><a href="surat_dispen.php"><i class="fa fa-circle-o"></i>Surat Dispen</a></li>
           <li><a href="surat_kuasa.php"><i class="fa fa-circle-o"></i>Surat Kuasa</a></li>
           <li><a href="surat_skkb.php"><i class="fa fa-circle-o"></i>Surat SKKB</a></li>
           <li><a href="surat_tugas.php"><i class="fa fa-circle-o"></i>Surat Tugas</a></li>
           <li><a href="surat_balasan.php"><i class="fa fa-circle-o"></i>Surat Balasan</a></li>
-          <li><a href="izin_kegiatan.php"><i class="fa fa-circle-o"></i>Surat Izin Kegiatan</a></li>
-          <li><a href="surat_penelitian.php"><i class="fa fa-circle-o"></i>Surat Izin Penelitian</a></li>
-          <li><a href="sk_pengganti_ijazah.php"><i class="fa fa-circle-o"></i>Surat Ket. Pengganti Ijazah</a></li>
+          <li><a href="surat_izin_kegiatan.php"><i class="fa fa-circle-o"></i>Surat Izin Kegiatan</a></li>
+          <li><a href="surat_izin_penelitian.php"><i class="fa fa-circle-o"></i>Surat Izin Penelitian</a></li>
+          <li><a href="surat_ket_pengganti_ijazah.php"><i class="fa fa-circle-o"></i>Surat Ket. Pengganti Ijazah</a></li>
           <li><a href="sk_siswa.php"><i class="fa fa-circle-o"></i>Surat Keterangan Siswa</a></li>
           <li><a href="mutsi_siswa_keluar.php"><i class="fa fa-circle-o"></i>Surat Mutasi Siswa Keluar</a></li>
           <li><a href="mutsi_siswa_masuk"><i class="fa fa-circle-o"></i>Surat Mutasi Siswa Masuk</a></li>
