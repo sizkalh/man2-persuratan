@@ -1,6 +1,6 @@
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-<!--    
+    <!--    
     <div class="pull-right hidden-xs">
         <b>Version</b> 2.4.18
     </div>
@@ -11,7 +11,7 @@
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -29,6 +29,8 @@
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+
+<script src="../../plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -37,12 +39,13 @@
 <script src="../../dist/js/demo.js"></script>
 
 <script>
-    $(document).ready( function () {
+    $(document).ready(function() {
         $('#nota_dinas').DataTable();
         $('#datepicker').datepicker({
             format: 'dd/mm/yyyy'
         });
-    } );
+    });
 </script>
 </body>
+
 </html>

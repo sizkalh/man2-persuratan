@@ -72,14 +72,9 @@ CREATE TABLE `tbl_lampiran` (
   `lampiran` varchar(100) DEFAULT NULL,
   `file` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_lampiran` */
-
-insert  into `tbl_lampiran`(`id`,`id_surat`,`lampiran`,`file`) values 
-(1,14,'1 lampiran',''),
-(2,15,'lampiran 1 halaman',''),
-(3,16,'1 lampiran','');
 
 /*Table structure for table `tbl_siswa` */
 
@@ -126,20 +121,12 @@ CREATE TABLE `tbl_surat` (
   `tgl_pembuatan` date DEFAULT NULL,
   `id_pemohon` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_surat` */
 
 insert  into `tbl_surat`(`id`,`jenis`,`no_surat`,`hari`,`tgl_pelaksanaan`,`waktu`,`tempat`,`kepada`,`perihal`,`ttd_kamad`,`keterangan`,`tgl_pembuatan`,`id_pemohon`) values 
-(1,'','','seninnnnn','2022-08-08','08:00 WIB','aulaaaaaaa','Pak Dopirrrrrrrr','Motorannnnnnn','','Balap motorrrrrrrrrr','2022-08-04',1),
-(2,'','','seninnnnn','2022-08-08','08:00 WIB','aulaaaaaaa','Pak Dopirrrrrrrr','Motorannnnnnn','','Balap motorrrrrrrrrr','2022-08-04',1),
-(3,'','','Selasa','2022-08-09','08:00 WIB','Aula Man','Bu Lina','Izin','','Meminjam Printer','2022-08-04',1),
-(4,'','','Rabu','2022-08-10','08:00 WIB','Lapangan','Pak Dahlan','Izin keluar','','Peringatan','2022-08-04',1),
-(5,'','','Selasa','2022-08-10','08:00 WIB','Aula','Bu Kalimah','Izin','','Izinnnnn','2022-08-04',1),
-(6,'','','senin','2022-08-03','08:00 WIB','toko','Pak Mifta','Mobil','','Beli mobil','2022-08-04',1),
-(14,'','','Rabu','2022-07-26','08:00 WIB','aula','Pak Ali','Izin','','Keluar','2022-08-04',1),
-(15,'','','senin','2022-08-09','08:00 WIB','aula','Pak Dopir','Motoran','','Balap motor','2022-08-04',1),
-(16,'','','Selasa','2022-08-08','08:00 WIB','MAN 2','Pak Finggar','Izin','','Izin','2022-08-04',1);
+(1,'nota_dinas','','senin','2022-08-01','08:00 - Selesai','Lapangan sekolah','Bapak Kepala Madrasah','lomba','','lomab 17','2022-08-15',5);
 
 /*Table structure for table `tbl_tanda_tangan` */
 
@@ -149,28 +136,20 @@ CREATE TABLE `tbl_tanda_tangan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_surat` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `status` enum('diterima','ditolak') DEFAULT NULL,
+  `status` enum('diterima','ditolak','belum','cek') DEFAULT NULL,
   `catatan` text,
+  `tgl_proses` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_tanda_tangan` */
 
-insert  into `tbl_tanda_tangan`(`id`,`id_surat`,`id_user`,`status`,`catatan`) values 
-(1,14,1,NULL,NULL),
-(2,14,2,NULL,NULL),
-(3,14,4,NULL,NULL),
-(4,14,3,NULL,NULL),
-(5,15,1,NULL,NULL),
-(6,15,4,NULL,NULL),
-(7,15,3,NULL,NULL),
-(8,15,2,NULL,NULL),
-(9,15,0,NULL,NULL),
-(10,16,1,NULL,NULL),
-(11,16,4,NULL,NULL),
-(12,16,3,NULL,NULL),
-(13,16,2,NULL,NULL),
-(14,16,5,NULL,NULL);
+insert  into `tbl_tanda_tangan`(`id`,`id_surat`,`id_user`,`status`,`catatan`,`tgl_proses`) values 
+(1,1,1,'cek',NULL,NULL),
+(2,1,4,'diterima','betul','2022-08-15 19:34:48'),
+(3,1,3,'diterima','gagal','2022-08-15 19:31:09'),
+(4,1,2,'diterima','benarr','2022-08-15 19:30:06'),
+(5,1,5,'diterima',NULL,'2022-08-15 18:30:04');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
