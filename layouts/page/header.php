@@ -59,4 +59,20 @@ if ($_SESSION['status'] != "login") {
   <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="../../bower_components/jquery-ui/jquery-ui.min.js"></script>
+
+  <style>
+    tr.strikeout td:before {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      border-bottom: 1px solid #111;
+      width: 100%;
+    }
+
+    tr.strikeout td:after {
+      content: "\00B7";
+      font-size: 1px;
+    }
+  </style>
 </head>

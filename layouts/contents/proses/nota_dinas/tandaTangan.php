@@ -6,10 +6,12 @@
     $id_surat = $_POST['id_surat'];
     $pangkat = $_POST['pangkat'];
     $catatan = $_POST['catatan'];
+    $no_surat = $_POST['no_surat'];
 
     $id_user = $_SESSION['id_user'];
     $tgl_proses = date('Y-m-d H:i:s');
 
+    $query_no = mysqli_query($koneksi, 'UPDATE tbl_surat SET no_surat="'.$no_surat.'" WHERE id="' . $id_surat . '"');	
     $query_ttd = mysqli_query($koneksi, 'UPDATE tbl_tanda_tangan SET STATUS="diterima", catatan="' . $catatan . '", tgl_proses = "' . $tgl_proses . '" WHERE id_surat="' . $id_surat . '" AND id_user ="' . $id_user . '"');	
     
     if($pangkat == "guru"){

@@ -33,9 +33,13 @@
         }
         ?>
         <div class="box box-success">
-            <div class="box-header">
-                <a href="tambah_nota_dinas.php" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Nota Dinas</a>
-            </div>
+            <?php
+            if ($_SESSION['pangkat_user'] == 'guru') {
+            ?>
+                <div class="box-header">
+                    <a href="tambah_nota_dinas.php" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Nota Dinas</a>
+                </div>
+            <?php } ?>
             <div class="box-body">
                 <table class="table table-condensed table-hover" id="nota_dinas">
                     <thead>
@@ -47,6 +51,7 @@
                             <th class="text-center" width="110">Tgl. Pelaksanaan</th>
                             <th>Kepada</th>
                             <th>Perihal</th>
+                            <!-- <th>~</th> -->
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -65,16 +70,19 @@
 
                         while ($myData = mysqli_fetch_array($data)) {
                         ?>
-                            <tr>
-                                <td class="text-center">
-                                    <?php 
-                                        $data_ttd = mysqli_query($koneksi, "SELECT * FROM tbl_tanda_tangan WHERE id_surat = ". $myData['id']);
-                                        if (mysqli_num_rows($data_ttd) > 0){
+                            <?php
+                            if ($myData['hapus'] == 'n') {
+                            ?>
+                                <tr>
+                                    <td class="text-center">
+                                        <?php
+                                        $data_ttd = mysqli_query($koneksi, "SELECT * FROM tbl_tanda_tangan WHERE id_surat = " . $myData['id']);
+                                        if (mysqli_num_rows($data_ttd) > 0) {
                                             $cek_ttd_kamad = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.* FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.id_surat = ' . $myData["id"] . ' AND tbl_tanda_tangan.status = "diterima"');
-                                            if (mysqli_num_rows($cek_ttd_kamad) > 0){
+                                            if (mysqli_num_rows($cek_ttd_kamad) > 0) {
                                                 echo '<i class="fa fa-check text-success"></i>';
                                             } else {
-                                                if ($_SESSION['pangkat_user'] == "guru"){
+                                                if ($_SESSION['pangkat_user'] == "guru") {
                                                     $cek_ttd_operator = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.* FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_guru.pangkat = "operator" AND tbl_tanda_tangan.id_surat = ' . $myData["id"] . ' AND tbl_tanda_tangan.status = "ditolak"');
                                                     if (mysqli_num_rows($cek_ttd_operator) > 0) {
                                                         echo '<i class="fa fa-warning text-warning"></i>';
@@ -105,69 +113,51 @@
                                                 }
                                             }
                                         }
-                                    ?>
-                                    
-                                </td>
-                                <td class="text-center"><?= $no++; ?></td>
-                                <td><?= $myData['no_surat'] ?></td>
-                                <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pembuatan'])) ?></td>
-                                <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pelaksanaan'])) ?></td>
-                                <td><?= $myData['kepada'] ?></td>
-                                <td><?= $myData['perihal'] ?></td>
-                                <td class="text-center">
-                                    <?php
-                                    $cek_lampiran = mysqli_query($koneksi, 'select * from tbl_lampiran where id_surat = "' . $myData['id'] . '"');
-                                    if (mysqli_num_rows($cek_lampiran) > 0) {
-                                        while ($data_lampiran = mysqli_fetch_array($cek_lampiran)) { ?>
+                                        ?>
 
-                                            <a href="../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
-                                    <?php }
-                                    } ?>
+                                    </td>
+                                    <td class="text-center"><?= $no++; ?></td>
+                                    <td><?= $myData['no_surat'] ?></td>
+                                    <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pembuatan'])) ?></td>
+                                    <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pelaksanaan'])) ?></td>
+                                    <td><?= $myData['kepada'] ?></td>
+                                    <td><?= $myData['perihal'] ?></td>
+                                    <!-- <td>
+                                        <i class="fa fa-check"></i>
+                                    </td> -->
+                                    <td class="text-center">
+                                        <?php
+                                        $cek_lampiran = mysqli_query($koneksi, 'select * from tbl_lampiran where id_surat = "' . $myData['id'] . '"');
+                                        if (mysqli_num_rows($cek_lampiran) > 0) {
+                                            while ($data_lampiran = mysqli_fetch_array($cek_lampiran)) { ?>
 
-                                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" id="modal-otor" data-id="<?= $myData['id']; ?>" data-target="#modal-default">
-                                        <i class="fa fa-file-text-o"></i>
-                                    </button>
-                                    <a href="edit_nota_dinas.php?id=<?= $myData['id']; ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-                                    <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                </td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                        <!-- <tr>
-                            <td class="text-center">
-                                <i class="fa fa-warning text-warning"></i>
-                            </td>
-                            <td class="text-center">2</td>
-                            <td>Drs. Lorem ipsum</td>
-                            <td>Undangan rapat dinas</td>
-                            <td class="text-center">12 Desember 2022</td>
-                            <td class="text-center">
-                                <a href="#" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-default">
-                                    <i class="fa fa-file-text-o"></i>
-                                </button>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <i class="fa fa-check text-success"></i>
-                            </td>
-                            <td class="text-center">3</td>
-                            <td>Drs. Lorem ipsum</td>
-                            <td>Undangan rapat dinas</td>
-                            <td class="text-center">12 Desember 2022</td>
-                            <td class="text-center">
-                                <a href="#" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-default">
-                                    <i class="fa fa-file-text-o"></i>
-                                </button>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr> -->
+                                                <a href="../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
+                                        <?php }
+                                        } ?>
+
+                                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" id="modal-otor" data-id="<?= $myData['id']; ?>" data-target="#modal-default">
+                                            <i class="fa fa-file-text-o"></i>
+                                        </button>
+                                        <?php
+                                        if ($_SESSION['pangkat_user'] == 'guru') {
+                                            $cek_edit = mysqli_query($koneksi, 'SELECT * FROM tbl_tanda_tangan WHERE id_surat = "' . $myData['id'] . '" AND id_user = "' . $_SESSION['id_user'] . '" AND status = "diterima"');
+                                            if (mysqli_num_rows($cek_edit) > 0) {
+                                        ?>
+                                                <a href="#" id="edit_surat" class="btn btn-primary btn-sm" disabled><i class="fa fa-pencil"></i></a>
+                                            <?php } else { ?>
+                                                <a href="edit_nota_dinas.php?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                        <?php }
+                                        } ?>
+                                        <?php
+                                        if ($_SESSION['pangkat_user'] == 'operator') {
+                                        ?>
+                                            <a href="../../proses/nota_dinas/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                        <?php } ?>
+                                        <!-- <a href="#" id="print_surat" class="btn btn-primary"><i class="fa fa-print"></i></a> -->
+                                    </td>
+                                </tr>
+                        <?php }
+                        } ?>
                     </tbody>
                 </table>
             </div>
@@ -275,7 +265,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Cetak Surat</button>
                     </div>
                 </div>
             </div>
@@ -297,14 +286,22 @@
         $(document).on('click', '#otorisasi', function() {
             var id_surat = $(this).attr("data-id");
             var pangkat = $(this).attr("pangkat");
+            var no_surat = $("#no_surat").val();
+
             if (pangkat == "guru") {
                 var komentar = null
             } else {
                 var komentar = $("#komentar" + pangkat).val()
             }
 
+            if (no_surat == '' || no_surat == null) {
+                no_surat = null;
+            } else {
+                no_surat = $("#no_surat").val();
+            }
+
             // Swal.fire(id_surat + ' ' + id_user);
-            tandaTangan(id_surat, pangkat, komentar);
+            tandaTangan(id_surat, pangkat, komentar, no_surat);
         })
 
         $(document).on('click', '#back', function() {
@@ -328,8 +325,9 @@
                     if (data.no_surat != "") {
                         $('#no_surat').val(data.no_surat);
                     } else {
-                        $('#no_surat').val("Belum Memiliki No. Surat");
+                        $('#no_surat').attr("placeholder", "Belum Memiliki No. Surat");
                     }
+
                     $('#kepada').val(data.kepada);
                     $('#perihal').val(data.perihal);
                     $('#tgl_pembuatan').val(data.tgl_pembuatan);
@@ -364,6 +362,17 @@
                                     var catatan = data[i].catatan
                                 } else {
                                     var catatan = ''
+                                }
+
+                                if ("<?= $_SESSION['pangkat_user'] ?>" != "operator") {
+                                    $('#no_surat').prop("disabled", true);
+                                } else {
+                                    // if (data[i].status == "cek") {
+                                    //     $('#no_surat').prop("disabled", false);
+                                    // } else {
+                                    //     $('#no_surat').prop("disabled", true);
+                                    // }
+                                    $('#no_surat').prop("disabled", false);
                                 }
 
                                 if (pangkat != "guru") {
@@ -412,6 +421,7 @@
                                             content += '<td><button class="btn btn-sm btn-default" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                         } else {
                                             content += '<td><button class="btn btn-sm btn-success" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
+                                            $('#edit_surat').attr("disabled");
                                         }
                                     } else {
                                         content += '<td><button class="btn btn-sm btn-success" id="otorisasi" data-id="' + id_surat + '" pangkat="' + pangkat + '" ><i class="fa fa-check"></i></button></td>';
@@ -432,7 +442,7 @@
             });
         }
 
-        function tandaTangan(id_surat, pangkat, komentar) {
+        function tandaTangan(id_surat, pangkat, komentar, no_surat) {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success',
@@ -457,7 +467,8 @@
                         data: {
                             id_surat: id_surat,
                             pangkat: pangkat,
-                            catatan: komentar
+                            catatan: komentar,
+                            no_surat: no_surat
                         },
                         dataType: "json",
                         success: function(data) {
