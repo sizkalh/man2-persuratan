@@ -51,7 +51,6 @@
                             <th class="text-center" width="110">Tgl. Pelaksanaan</th>
                             <th>Kepada</th>
                             <th>Perihal</th>
-                            <th>~</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -122,9 +121,6 @@
                                     <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pelaksanaan'])) ?></td>
                                     <td><?= $myData['kepada'] ?></td>
                                     <td><?= $myData['perihal'] ?></td>
-                                    <td>
-                                        <i class="fa fa-check"></i>
-                                    </td>
                                     <td class="text-center">
                                         <?php
                                         $cek_lampiran = mysqli_query($koneksi, 'select * from tbl_lampiran where id_surat = "' . $myData['id'] . '"');
@@ -155,14 +151,16 @@
                                         <?php } ?>
 
                                         <?php
-                                        $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
-                                        if (mysqli_num_rows($cek_ttd) > 0) {
-                                            while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
-                                                <a href="print_nota_dinas.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
-                                            <?php }
-                                        } else { ?>
-                                            <a href="#" target="_blank" class="btn btn-primary btn-sm" disabled><i class="fa fa-print"></i></a>
-                                        <?php } ?>
+                                        if ($_SESSION['pangkat_user'] == "guru"){
+                                            $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
+                                            if (mysqli_num_rows($cek_ttd) > 0) {
+                                                while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
+                                                    <a href="print_nota_dinas.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
+                                                <?php }
+                                            } else { ?>
+                                                <a href="#" target="_blank" class="btn btn-primary btn-sm" disabled><i class="fa fa-print"></i></a>
+                                        <?php } 
+                                        } ?>
                                     </td>
                                 </tr>
                         <?php }

@@ -153,7 +153,9 @@ while ($data = mysqli_fetch_array($query_surat)) {
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
-            <br /><br /><br /><br /><br /><br />
+            <br />
+            <img src="../../dist/img/ttd/contohttd.png" style="max-width: 200px;">
+            <br />
             Mohamad Dopir
           </td>
         </tr>
@@ -161,7 +163,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
     </div>
 
     <script>
-      window.print();
+      // window.print();
     </script>
   </body>
 
