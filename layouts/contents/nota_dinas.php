@@ -151,7 +151,7 @@
                                         <?php } ?>
 
                                         <?php
-                                        if ($_SESSION['pangkat_user'] == "guru"){
+                                        if ($_SESSION['pangkat_user'] == "guru" || $_SESSION['pangkat_user'] == "operator"){
                                             $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
                                             if (mysqli_num_rows($cek_ttd) > 0) {
                                                 while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
