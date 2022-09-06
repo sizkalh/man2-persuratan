@@ -30,6 +30,12 @@ if ($pangkat == "operator") {
         $id_user_p = $data_pangkat['id_user'];
         $query_ttd = mysqli_query($koneksi, 'UPDATE tbl_tanda_tangan SET STATUS="cek" WHERE id_surat="' . $id_surat . '" AND id_user ="' . $id_user_p . '"');
     }
+} else if ($pangkat == "superuser") {
+    $cek_pangkat = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.* FROM tbl_guru INNER JOIN tbl_tanda_tangan ON tbl_tanda_tangan.id_user=tbl_guru.id WHERE tbl_guru.pangkat = "kamad"');
+    while ($data_pangkat = mysqli_fetch_array($cek_pangkat)) {
+        $id_user_p = $data_pangkat['id_user'];
+        $query_ttd = mysqli_query($koneksi, 'UPDATE tbl_tanda_tangan SET STATUS="cek" WHERE id_surat="' . $id_surat . '" AND id_user ="' . $id_user_p . '"');
+    }
 }
 
 if ($query_ttd > 0) {

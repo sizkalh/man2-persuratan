@@ -81,7 +81,7 @@
               <div class="col-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                  <input type="text" class="form-control datepicker" name="tanggal_pelaksanaan" placeholder="Masukkan Tanggal Pelaksanaan" />
+                  <input type="text" class="form-control" id="datepicker" name="tanggal_pelaksanaan" placeholder="Masukkan Tanggal Pelaksanaan" />
                 </div>
               </div>
             </div>

@@ -22,6 +22,8 @@
             <li class="dropdown messages-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-bell"></i> Notifikasi
+
+                <!-- script untuk angka kecil dinotifikasi -->
                 <span class="label label-info">
                   <?php
                   $query_count = mysqli_query($koneksi, 'SELECT COUNT(*) AS notif FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user INNER JOIN tbl_surat ON tbl_surat.id=tbl_tanda_tangan.id_surat WHERE tbl_guru.pangkat = "' .  $_SESSION['pangkat_user'] . '" AND tbl_tanda_tangan.status = "cek"');
@@ -30,6 +32,7 @@
                   }
                   ?>
                 </span>
+
               </a>
               <ul class="dropdown-menu">
                 <!--<li class="header">You have 4 messages</li>-->
@@ -41,7 +44,23 @@
                       while($data = mysqli_fetch_array($query_notif)){
                     ?>
                     <li>
-                      <a href="#">
+
+                      <!-- menu href yang harus diganti di menu notif -->
+
+                      <?php 
+                        if ($data['jenis'] == 'berita_acara'){
+                          echo '<a href="berita_acara.php">';
+                        } else if ($data['jenis'] == 'cuti_tahunan') {
+                          echo '<a href="berita_acara.php">';
+                        } else if ($data['jenis'] == 'nota_dinas') {
+                          echo '<a href="nota_dinas.php">';
+                        } else if ($data['jenis'] == 'permohonan_study') {
+                          echo '<a href="berita_acara.php">';
+                        }
+                      ?>
+
+
+                      <!-- NOTIFIKASI TRACKING -->
                         <h4>
                           <?php
                             $query_pemohon = mysqli_query($koneksi, 'SELECT tbl_guru.nama FROM tbl_guru INNER JOIN tbl_surat ON tbl_surat.id_pemohon = tbl_guru.id WHERE tbl_surat.id = "' . $data['id_surat'] . '"');
@@ -56,14 +75,15 @@
                               $query_tgl_notif = mysqli_query($koneksi, 'SELECT tgl_proses FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $data['id_surat'] . '" AND tbl_guru.pangkat = "operator"');
                             } else if ($_SESSION['pangkat_user'] == 'kamad') {
                               $query_tgl_notif = mysqli_query($koneksi, 'SELECT tgl_proses FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $data['id_surat'] . '" AND tbl_guru.pangkat = "katu"');
-                            } else if ($_SESSION['pangkat_user'] == 'guru') {
+                            } else if ($_SESSION['pangkat_user'] == 'guru' || $_SESSION['pangkat_user'] == 'superuser') {
                               $query_tgl_notif = mysqli_query($koneksi, 'SELECT tgl_proses FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $data['id_surat'] . '" AND tbl_guru.pangkat = "kamad"');
-                            }
+                            } 
                             while($tgl = mysqli_fetch_array($query_tgl_notif)){
                           ?>
                           <small><i class="fa fa-clock-o"></i> <?= $tgl['tgl_proses'] ?></small>
                           <?php } ?>
                         </h4>
+                        <!-- MENAMBAHKAN JENIS SURAT -->
                         <p>
                           <?php 
                             if ($data['jenis'] == 'berita_acara'){

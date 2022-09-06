@@ -55,18 +55,21 @@
                         </tr>
                     </thead>
                     <tbody>
+
+
+                    <!-- Mengeluarkan Data dari database -->
                         <?php
                         $no = 1;
                         $id_user = mysqli_query($koneksi, "select * from tbl_guru where id = '" . $_SESSION['id_user'] . "'");
                         while ($cek_jabatan = mysqli_fetch_array($id_user)) {
                             if ($cek_jabatan['pangkat'] == 'guru') {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='nota_dinas' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
                             } else {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='nota_dinas' ORDER BY id DESC");
                             }
                         }
 
-
+                        // icon ditolak, diterima dan menunggu
                         while ($myData = mysqli_fetch_array($data)) {
                         ?>
                             <?php
@@ -121,6 +124,9 @@
                                     <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pelaksanaan'])) ?></td>
                                     <td><?= $myData['kepada'] ?></td>
                                     <td><?= $myData['perihal'] ?></td>
+
+                                        <!-- Button aksi -->
+
                                     <td class="text-center">
                                         <?php
                                         $cek_lampiran = mysqli_query($koneksi, 'select * from tbl_lampiran where id_surat = "' . $myData['id'] . '"');
@@ -169,6 +175,8 @@
                 </table>
             </div>
         </div><!-- /.box -->
+
+        <!-- pop up -->
 
         <div class="modal fade" id="modal-default">
             <div class="modal-dialog modal-lg">
