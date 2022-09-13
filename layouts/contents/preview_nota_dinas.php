@@ -76,6 +76,7 @@ function tgl_indo_garing($tanggal){
       </tr>
       <tr>
         <td>Yth</td>
+        <!-- semua GET dari inputan form -->
         <td colspan="2">: <?= $_GET['kepada'] ?></td>
       </tr>
       <tr>

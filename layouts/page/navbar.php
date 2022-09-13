@@ -56,6 +56,8 @@
                           echo '<a href="nota_dinas.php">';
                         } else if ($data['jenis'] == 'permohonan_study') {
                           echo '<a href="berita_acara.php">';
+                        } else if ($data['jenis'] == 'surat_kuasa') {
+                          echo '<a href="surat_kuasa.php">';
                         }
                       ?>
 
@@ -94,6 +96,8 @@
                               echo 'Nota Dinas';
                             } else if ($data['jenis'] == 'permohonan_study') {
                               echo 'Permohonan Study';
+                            } else if ($data['jenis'] == 'surat_kuasa') {
+                              echo 'Surat Kuasa';
                             }
                           ?>
                         </p>

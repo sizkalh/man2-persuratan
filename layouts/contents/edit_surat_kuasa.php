@@ -17,20 +17,19 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Yang Memberi Kuasa</h3>
             </div>
-            <form action="../../proses/surat_kuasa/tambah.php" enctype="multipart/form-data" method="post" id="form_surat_kuasa">
+            <?php 
+                $id = $_GET['id'];
+                $query_mysql = mysqli_query($koneksi, "SELECT * FROM tbl_surat JOIN tbl_surat_kuasa ON tbl_surat_kuasa.id_surat = tbl_surat.id WHERE tbl_surat.id='".$id."'");
+                while($data = mysqli_fetch_array($query_mysql)){
+            ?>
+            <form action="../../proses/surat_kuasa/update.php" enctype="multipart/form-data" method="post" id="form_surat_kuasa">
                 <div class="box-body">
-                    <?php
-                        $id_user = $_SESSION['id_user'];
-                        $query = mysqli_query($koneksi, "SELECT * FROM tbl_guru WHERE id='".$id_user."'");
-                        while($data = mysqli_fetch_array($query)){
-                    ?>
                     <div class="form-group">
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">                                
-                                <input type="hidden" name="id_guru" value="<?= $id_user ?>">
-                                <input type="text" class="form-control" name="pemberi_kuasa" value="<?= $data['nama'] ?>" placeholder="Masukkan Nama" readonly />
-                                <input type="hidden" class="form-control" name="tgl_pembuatan" value="<?= date('d/m/Y') ?>" />
+                                <input type="hidden" name="id" value="<?= $data['id'] ?>">
+                                <input type="text" class="form-control" name="pemberi_kuasa" value="<?= $data['pemberi_kuasa'] ?>" placeholder="Masukkan Nama" readonly />
                             </div>
                         </div>
                     </div>
@@ -46,7 +45,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Pangkat / Gol.Ruang</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="pangkat" value="<?= $data['golongan'] ?>" placeholder="Masukkan Pangkat / Gol.Ruang" readonly />
+                                <input type="text" class="form-control" name="pangkat" value="<?= $data['pangkat'] ?>" placeholder="Masukkan Pangkat / Gol.Ruang" readonly />
                             </div>
                         </div>
                     </div>
@@ -54,7 +53,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Jabatan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="jabatan_pemberi_kuasa" value="<?= $data['jabatan'] ?>" placeholder="Masukkan Jabatan" readonly />
+                                <input type="text" class="form-control" name="jabatan_pemberi_kuasa" value="<?= $data['jabatan_pemberi_kuasa'] ?>" placeholder="Masukkan Jabatan" readonly />
                             </div>
                         </div>
                     </div>
@@ -66,7 +65,6 @@
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
                 </div>
                 <div class="box-header with-border">
                     <h3 class="box-title">Yang Diberi Kuasa</h3>
@@ -76,7 +74,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="penerima_kuasa" placeholder="Masukkan Nama" />
+                                <input type="text" class="form-control" name="penerima_kuasa" value="<?= $data['penerima_kuasa'] ?>" placeholder="Masukkan Nama" />
                             </div>
                         </div>
                     </div>
@@ -84,12 +82,16 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Tempat, Tanggal Lahir</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" name="tempat_lahir" placeholder="Masukkan Tempat" />
+                                <input type="text" class="form-control" name="tempat_lahir" value="<?= $data['tempat_lahir'] ?>" placeholder="Masukkan Tempat" />
                             </div>
                             <div class="col-sm-5">
+                            <?php
+                                $tanggal_lahir = str_replace('-', '/', $data['tanggal_lahir'] );
+                                $new_tanggal_lahir = date('d/m/Y', strtotime($tanggal_lahir));
+                            ?>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="text" class="form-control datepicker" name="tanggal_lahir" placeholder="Masukkan Tanggal Lahir" />
+                                    <input type="text" class="form-control datepicker" name="tanggal_lahir" value="<?= $new_tanggal_lahir ?>" placeholder="Masukkan Tanggal Lahir" />
                                 </div>
                             </div>
                         </div>
@@ -98,7 +100,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Jabatan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="jabatan_penerima_kuasa" placeholder="Masukkan Jabatan" />
+                                <input type="text" class="form-control" name="jabatan_penerima_kuasa" value="<?= $data['jabatan_penerima_kuasa'] ?>" placeholder="Masukkan Jabatan" />
                             </div>
                         </div>
                     </div>
@@ -106,7 +108,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Tanggung Jawab Yang Diberikan</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="3" name="ket" placeholder="Masukkan Tanggung Jawab Yang Diberikan"></textarea>
+                                <textarea class="form-control" rows="3" name="ket" placeholder="Masukkan Tanggung Jawab Yang Diberikan"><?= $data['ket'] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -122,6 +124,7 @@
                     </div>
                 </div><!-- /.box-body -->
             </form>
+            <?php } ?>
         </div><!-- /.box -->
 
     </section><!-- /.content -->

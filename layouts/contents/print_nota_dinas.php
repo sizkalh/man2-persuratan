@@ -53,6 +53,7 @@ function tgl_indo_garing($tanggal)
 
 include_once("../../config/database.php");
 $id = $_GET['id'];
+// query disesuaikan dengan data yang akan ditampilkan
 $query_surat = mysqli_query($koneksi, 'SELECT * FROM tbl_surat WHERE tbl_surat.id = "' . $id . '"');
 while ($data = mysqli_fetch_array($query_surat)) {
 ?>

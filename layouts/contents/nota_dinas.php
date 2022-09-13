@@ -34,7 +34,7 @@
         ?>
         <div class="box box-success">
             <?php
-            if ($_SESSION['pangkat_user'] == 'guru') {
+            if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
             ?>
                 <div class="box-header">
                     <a href="tambah_nota_dinas.php" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Nota Dinas</a>
@@ -128,6 +128,7 @@
                                         <!-- Button aksi -->
 
                                     <td class="text-center">
+                                        <!-- Button Lampiran -->
                                         <?php
                                         $cek_lampiran = mysqli_query($koneksi, 'select * from tbl_lampiran where id_surat = "' . $myData['id'] . '"');
                                         if (mysqli_num_rows($cek_lampiran) > 0) {
@@ -137,9 +138,12 @@
                                         <?php }
                                         } ?>
 
+                                        <!-- Button Pop Up -->
                                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" id="modal-otor" data-id="<?= $myData['id']; ?>" data-target="#modal-default">
                                             <i class="fa fa-file-text-o"></i>
                                         </button>
+
+                                        <!-- Button Edit -->
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'guru') {
                                             $cek_edit = mysqli_query($koneksi, 'SELECT * FROM tbl_tanda_tangan WHERE id_surat = "' . $myData['id'] . '" AND id_user = "' . $_SESSION['id_user'] . '" AND status = "diterima"');
@@ -150,12 +154,15 @@
                                                 <a href="edit_nota_dinas.php?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                         <?php }
                                         } ?>
+
+                                        <!-- Button Hapus -->
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'operator') {
                                         ?>
                                             <a href="../../proses/nota_dinas/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         <?php } ?>
 
+                                        <!-- Button Print -->
                                         <?php
                                         if ($_SESSION['pangkat_user'] == "guru" || $_SESSION['pangkat_user'] == "operator"){
                                             $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
@@ -343,6 +350,7 @@
                         $('#no_surat').attr("placeholder", "Belum Memiliki No. Surat");
                     }
 
+                    // Yang perlu disesuaikan menurut inputan
                     $('#kepada').val(data.kepada);
                     $('#perihal').val(data.perihal);
                     $('#tgl_pembuatan').val(data.tgl_pembuatan);
@@ -357,6 +365,7 @@
                     $('#tgl_pelaksanaan').val(data.tgl_pelaksanaan);
                     $('#waktu').val(data.waktu);
                     $('#tempat').val(data.tempat);
+                    // sampai sini
 
                     $.ajax({
                         method: "POST",

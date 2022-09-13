@@ -21,7 +21,7 @@
             </div>
             <div class="box-body">
                 <?php 
-                   echo($_SESSION['username']);
+                    echo($_SESSION['username']);
                     echo($_SESSION['role']);
                     echo($_SESSION['id_user']);
                 ?>

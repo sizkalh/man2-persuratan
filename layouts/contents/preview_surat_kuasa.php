@@ -1,4 +1,55 @@
-<!-- http://localhost/man2-persuratan/layouts/contents/preview_surat_kuasa.php -->
+<?php
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	
+	// variabel pecahkan 0 = tanggal
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tahun
+ 
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+}
+
+function tgl_indo_garing($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('/', $tanggal);
+	
+	// variabel pecahkan 0 = tanggal
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tahun
+ 
+	return  $pecahkan[0]. ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2];
+}
+ 
+// echo tgl_indo_garing("01/08/2022");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,23 +81,23 @@
       </tr>
       <tr>
         <td style="width: 30%;">Nama</td>
-        <td colspan="2">: Finggar</td>
+        <td colspan="2">: <?= $_GET['pemberi_kuasa'] ?></td>
       </tr>
       <tr>
         <td>NIP</td>
-        <td colspan="2">: 1001200</td>
+        <td colspan="2">: <?= $_GET['nip'] ?></td>
       </tr>
       <tr>
         <td>Pangkat / Gol.Ruang</td>
-        <td colspan="2">: Guru</td>
+        <td colspan="2">: <?= $_GET['pangkat'] ?></td>
       </tr>
       <tr>
         <td>Jabatan</td>
-        <td colspan="2">: Guru</td>
+        <td colspan="2">: <?= $_GET['jabatan_pemberi_kuasa'] ?></td>
       </tr>
       <tr>
         <td>Instansi</td>
-        <td colspan="2">: MAN 2 Tulungagung</td>
+        <td colspan="2">: <?= $_GET['instansi'] ?></td>
       </tr>
       <tr>
         <td colspan="3"><br /></td>
@@ -58,23 +109,19 @@
       </tr>
       <tr>
         <td>Nama</td>
-        <td colspan="2">: Edo</td>
+        <td colspan="2">: <?= $_GET['penerima_kuasa'] ?></td>
       </tr>
       <tr>
         <td>Tempat, Tanggal Lahir</td>
-        <td colspan="2">: Tulungagung, 17 Mei 1998</td>
+        <td colspan="2">: <?= $_GET['tempat_lahir'] ?>, <?= tgl_indo_garing($_GET['tanggal_lahir']) ?></td>
       </tr>
       <tr>
         <td>Jabatan</td>
-        <td colspan="2">: Guru</td>
+        <td colspan="2">: <?= $_GET['jabatan_penerima_kuasa'] ?></td>
       </tr>
       <tr>
-        <td colspan="3"><br /></td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          Sebagai tanggung jawab untuk : Lorem ipsum
-        </td>
+        <td>Sebagai tanggung jawab untuk</td>
+        <td colspan="2">: <?= $_GET['ket'] ?></td>
       </tr>
       <tr>
         <td colspan="3" style="padding-top: 20px; padding-bottom: 40px;">
@@ -85,7 +132,7 @@
         <td></td>
         <td style="width: 35%;"></td>
         <td style="text-align: center;">
-          Tulungagung, 12 Agustus 2020
+          Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
           <br />
           Kepala Madrasah,
           <br /><br /><br /><br /><br /><br />

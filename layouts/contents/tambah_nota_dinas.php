@@ -111,6 +111,7 @@
               <div class="col-sm-10">
                 <a href="nota_dinas.php" class="btn btn-default"><i class="fa fa-times"></i> Batal</a>
                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                <!-- Button preview surat -->
                 <button type="button" id="preview" class="btn btn-primary"><i class="fa fa-eye"></i> Preview</button>
               </div>
             </div>
