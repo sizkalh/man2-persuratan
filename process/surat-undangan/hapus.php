@@ -17,4 +17,3 @@
     } else {
         header("location:" . base_url() . "surat-undangan/index?pesan=gagal");
     }
-?>

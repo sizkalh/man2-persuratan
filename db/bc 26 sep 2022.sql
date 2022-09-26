@@ -251,6 +251,7 @@ CREATE TABLE `tbl_surat` (
   `waktu` varchar(30) DEFAULT NULL,
   `tempat` text DEFAULT NULL,
   `kepada` varchar(100) DEFAULT NULL,
+  `alamat` text DEFAULT NULL,
   `perihal` text DEFAULT NULL,
   `ttd_kamad` text DEFAULT NULL,
   `keterangan` text DEFAULT NULL,
@@ -259,26 +260,51 @@ CREATE TABLE `tbl_surat` (
   `id_pemohon` int(11) DEFAULT NULL,
   `hapus` enum('y','n') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_surat` */
 
-insert  into `tbl_surat`(`id`,`jenis`,`no_surat`,`hari`,`tgl_pelaksanaan`,`tgl_pelaksanaan2`,`waktu`,`tempat`,`kepada`,`perihal`,`ttd_kamad`,`keterangan`,`catatan`,`tgl_pembuatan`,`id_pemohon`,`hapus`) values 
-(1,'nota_dinas','0188/00G10','senin','2022-09-05',NULL,'08:00 WIB','Aula','guru','upacara dinas','','upacara',NULL,'2022-09-06',5,'n'),
-(2,'surat_kuasa','','',NULL,NULL,'','',NULL,'','','',NULL,NULL,5,'n'),
-(3,'surat_kuasa','','',NULL,NULL,'','',NULL,'','','',NULL,'2022-09-07',5,'n'),
-(4,'surat_kuasa','','',NULL,NULL,'','',NULL,'','','',NULL,'2022-09-07',5,'n'),
-(5,'surat_kuasa','','',NULL,NULL,'','',NULL,'','','',NULL,'2022-09-07',5,'y'),
-(6,'surat_kuasa','','',NULL,NULL,'','',NULL,'','','',NULL,'2022-09-07',5,'y'),
-(7,'surat_kuasa','','',NULL,NULL,'','',NULL,'','','',NULL,'2022-09-09',1,'y'),
-(8,'surat_kuasa','','',NULL,NULL,'','',NULL,'','','',NULL,'2022-09-09',5,'y'),
-(9,'surat_kuasa','0199/00G30','',NULL,NULL,'','',NULL,'','','',NULL,'2022-09-09',5,'n'),
-(10,'nota_dinas','','Senin','2022-09-21',NULL,'07:00 WIB','Lapangans','Malikss','Upacara','','Upacara bendera',NULL,'2022-09-09',5,'n'),
-(11,'surat_kuasa','','',NULL,NULL,'','',NULL,'','','',NULL,'2022-09-09',5,'n'),
-(14,'nota_dinas',NULL,'senin','2022-09-11',NULL,'08.00','Lapangan','Sef','-',NULL,'-',NULL,'2022-09-25',5,'n'),
-(20,'berita_acara','d0112','rabu','2022-09-12',NULL,NULL,NULL,NULL,'<ol>\r\n	<li>masuk</li>\r\n	<li>masak</li>\r\n</ol>\r\n',NULL,NULL,NULL,'2022-09-25',5,'n'),
-(21,'surat_kuasa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-26',5,'n'),
-(22,'surat_kuasa','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-26',5,'n');
+insert  into `tbl_surat`(`id`,`jenis`,`no_surat`,`hari`,`tgl_pelaksanaan`,`tgl_pelaksanaan2`,`waktu`,`tempat`,`kepada`,`alamat`,`perihal`,`ttd_kamad`,`keterangan`,`catatan`,`tgl_pembuatan`,`id_pemohon`,`hapus`) values 
+(1,'nota_dinas','0188/00G10','senin','2022-09-05',NULL,'08:00 WIB','Aula','guru',NULL,'upacara dinas','','upacara',NULL,'2022-09-06',5,'n'),
+(2,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,NULL,5,'n'),
+(3,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-07',5,'n'),
+(4,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-07',5,'n'),
+(5,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-07',5,'y'),
+(6,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-07',5,'y'),
+(7,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-09',1,'y'),
+(8,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-09',5,'y'),
+(9,'surat_kuasa','0199/00G30','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-09',5,'n'),
+(10,'nota_dinas','','Senin','2022-09-21',NULL,'07:00 WIB','Lapangans','Malikss',NULL,'Upacara','','Upacara bendera',NULL,'2022-09-09',5,'n'),
+(11,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-09',5,'n'),
+(14,'nota_dinas',NULL,'senin','2022-09-11',NULL,'08.00','Lapangan','Sef',NULL,'-',NULL,'-',NULL,'2022-09-25',5,'n'),
+(20,'berita_acara','d0112','rabu','2022-09-12',NULL,NULL,NULL,NULL,NULL,'<ol>\r\n	<li>masuk</li>\r\n	<li>masak</li>\r\n</ol>\r\n',NULL,NULL,NULL,'2022-09-25',5,'n'),
+(21,'surat_kuasa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-26',5,'n'),
+(22,'surat_kuasa','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-26',5,'n'),
+(23,'nota_dinas',NULL,'senin','2022-09-02',NULL,'08.00','Lapangan','Sef',NULL,'surat undangan',NULL,'tes',NULL,'2022-09-26',5,'n'),
+(24,'surat_undangan','','Selasa','1970-01-01',NULL,'08.00','Lapangan depan','sef','Jl. Ki Mangunsarkoro, Beji, Boyolangu, Tulungagung 99','undangan',NULL,'tes',NULL,'2022-09-26',5,'n'),
+(25,'surat_balasan','',NULL,NULL,NULL,NULL,NULL,'',NULL,'tugas mengampu kelas',NULL,NULL,NULL,'2022-09-26',5,'n');
+
+/*Table structure for table `tbl_surat_balasan` */
+
+DROP TABLE IF EXISTS `tbl_surat_balasan`;
+
+CREATE TABLE `tbl_surat_balasan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_surat` int(11) DEFAULT NULL,
+  `nama` varchar(100) DEFAULT NULL,
+  `nip` varchar(100) DEFAULT NULL,
+  `jabatan` varchar(100) DEFAULT NULL,
+  `tugas_diterima` text DEFAULT NULL,
+  `keterangan` text DEFAULT NULL,
+  `bulan_awal` varchar(100) DEFAULT NULL,
+  `bulan_akhir` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `tbl_surat_balasan` */
+
+insert  into `tbl_surat_balasan`(`id`,`id_surat`,`nama`,`nip`,`jabatan`,`tugas_diterima`,`keterangan`,`bulan_awal`,`bulan_akhir`) values 
+(1,25,'seftian','123','guru tik','tugas mengampu kelas','mengampu kelas','Januari 2022','Desember 2022');
 
 /*Table structure for table `tbl_surat_dispen` */
 
@@ -421,7 +447,7 @@ CREATE TABLE `tbl_tanda_tangan` (
   `catatan` text DEFAULT NULL,
   `tgl_proses` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_tanda_tangan` */
 
@@ -540,7 +566,37 @@ insert  into `tbl_tanda_tangan`(`id`,`id_surat`,`id_user`,`status`,`catatan`,`tg
 (127,22,4,'belum',NULL,NULL),
 (128,22,3,'belum',NULL,NULL),
 (129,22,2,'cek',NULL,NULL),
-(130,22,5,'diterima','','2022-09-26 02:54:13');
+(130,22,5,'diterima','','2022-09-26 02:54:13'),
+(131,23,1,'belum',NULL,NULL),
+(132,23,4,'belum',NULL,NULL),
+(133,23,3,'belum',NULL,NULL),
+(134,23,2,'belum',NULL,NULL),
+(135,23,5,'cek',NULL,NULL),
+(136,23,1,'belum',NULL,NULL),
+(137,23,4,'belum',NULL,NULL),
+(138,23,3,'belum',NULL,NULL),
+(139,23,2,'belum',NULL,NULL),
+(140,23,5,'cek',NULL,NULL),
+(141,23,1,'belum',NULL,NULL),
+(142,23,4,'belum',NULL,NULL),
+(143,23,3,'belum',NULL,NULL),
+(144,23,2,'belum',NULL,NULL),
+(145,23,5,'cek',NULL,NULL),
+(146,23,1,'belum',NULL,NULL),
+(147,23,4,'belum',NULL,NULL),
+(148,23,3,'belum',NULL,NULL),
+(149,23,2,'belum',NULL,NULL),
+(150,23,5,'cek',NULL,NULL),
+(151,24,1,'belum',NULL,NULL),
+(152,24,4,'belum',NULL,NULL),
+(153,24,3,'belum',NULL,NULL),
+(154,24,2,'ditolak','salah','2022-09-26 12:54:08'),
+(155,24,5,'cek','','2022-09-26 12:53:36'),
+(156,25,1,'belum',NULL,NULL),
+(157,25,4,'belum',NULL,NULL),
+(158,25,3,'cek',NULL,NULL),
+(159,25,2,'diterima','betul','2022-09-26 14:56:00'),
+(160,25,5,'diterima','','2022-09-26 14:55:39');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
