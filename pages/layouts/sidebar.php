@@ -78,6 +78,21 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Nota Dinas
             </a>
           </li>
+          <li <?= $uri2[0] == "surat-kuasa" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-kuasa/index">
+              <i class="fa fa-circle-o"></i>Surat Kuasa
+            </a>
+          </li>
+          <li <?= $uri2[0] == "surat-undangan" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-undangan/index">
+              <i class="fa fa-circle-o"></i>Surat Undangan
+            </a>
+          </li>
+          <li <?= $uri2[0] == "surat-balasan" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-balasan/index">
+              <i class="fa fa-circle-o"></i>Surat Balasan
+            </a>
+          </li>
           <li <?= $uri2[0] == "cuti-tahunan" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>cuti-tahunan/index">
               <i class="fa fa-circle-o"></i>Cuti Tahunan
@@ -98,11 +113,6 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Surat Dispen
             </a>
           </li>
-          <li <?= $uri2[0] == "surat-kuasa" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-kuasa/index">
-              <i class="fa fa-circle-o"></i>Surat Kuasa
-            </a>
-          </li>
           <li <?= $uri2[0] == "surat-skkb" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-skkb/index">
               <i class="fa fa-circle-o"></i>Surat SKKB
@@ -111,11 +121,6 @@ $uri2 = explode('/', trim($uri[0], '/'));
           <li <?= $uri2[0] == "surat-tugas" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-tugas/index">
               <i class="fa fa-circle-o"></i>Surat Tugas
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-balasan" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-balasan/index">
-              <i class="fa fa-circle-o"></i>Surat Balasan
             </a>
           </li>
           <li <?= $uri2[0] == "surat-izin-kegiatan" ? "class = 'active'" : "" ?>>
@@ -186,11 +191,6 @@ $uri2 = explode('/', trim($uri[0], '/'));
           <li <?= $uri2[0] == "surat-rekom-siswa" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-rekom-siswa/index">
               <i class="fa fa-circle-o"></i>Surat Rekomendasi Siswa
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-undangan" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-undangan/index">
-              <i class="fa fa-circle-o"></i>Surat Undangan
             </a>
           </li>
         </ul>

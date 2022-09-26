@@ -13,8 +13,8 @@
     // echo 'UPDATE tbl_surat SET delete="y" WHERE id="' . $id . '"';
 
     if ($query != 0) {
-        header("location:" . base_url() . "surat-undangan/index?pesan=berhasil");
+        header("location:" . base_url() . "surat-balasan/index?pesan=berhasil");
     } else {
-        header("location:" . base_url() . "surat-undangan/index?pesan=gagal");
+        header("location:" . base_url() . "surat-balasan/index?pesan=gagal");
     }
 ?>

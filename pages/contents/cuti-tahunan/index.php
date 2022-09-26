@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Cuti Tahunan
+            Cuti Permohonan Tahunan
         </h1>
     </section>
 
@@ -33,7 +33,7 @@
             if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
             ?>
                 <div class="box-header">
-                    <a href="<?= base_url() ?>cuti-tahunan/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Cuti Tahunan</a>
+                    <a href="<?= base_url() ?>cuti-tahunan/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Permohonan Cuti Tahunan</a>
                 </div>
             <?php } ?>
             <div class="box-body">
@@ -54,40 +54,6 @@
                                 <i class="fa fa-refresh"></i>
                             </td>
                             <td class="text-center">1</td>
-                            <td>Drs. Lorem ipsum</td>
-                            <td>151555666777</td>
-                            <td class="text-center">Waka Kurikulum</td>
-                            <td class="text-center">
-                                <a href="#" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-default">
-                                    <i class="fa fa-file-text-o"></i>
-                                </button>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <i class="fa fa-warning text-warning"></i>
-                            </td>
-                            <td class="text-center">2</td>
-                            <td>Drs. Lorem ipsum</td>
-                            <td>151555666777</td>
-                            <td class="text-center">Waka Kurikulum</td>
-                            <td class="text-center">
-                                <a href="#" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-default">
-                                    <i class="fa fa-file-text-o"></i>
-                                </button>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <i class="fa fa-check text-success"></i>
-                            </td>
-                            <td class="text-center">3</td>
                             <td>Drs. Lorem ipsum</td>
                             <td>151555666777</td>
                             <td class="text-center">Waka Kurikulum</td>
