@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Surat Izin Penelitian
+            Surat Pemberitahuan
         </h1>
     </section>
 
@@ -33,7 +33,7 @@
             if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
             ?>
                 <div class="box-header">
-                    <a href="<?= base_url() ?>surat-izin-penelitian/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Izin Penelitian</a>
+                    <a href="<?= base_url() ?>surat-pemberitahuan/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Permberitahuan</a>
                 </div>
             <?php } ?>
             <div class="box-body">
@@ -44,9 +44,9 @@
                             <th width="30" class="text-center">No</th>
                             <th>No. Surat</th>
                             <th class="text-center" width="110">Tgl. Pembuatan</th>
-                            <th>Guru</th>
-                            <th>Mahasiswa</th>
-                            <th>Kampus / Jurusan</th>
+                            <th class="text-center" width="110">Tgl. Pelaksanaan</th>
+                            <th>Kepada</th>
+                            <th>Perihal</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -59,19 +59,14 @@
                         $id_user = mysqli_query($koneksi, "select * from tbl_guru where id = '" . $_SESSION['id_user'] . "'");
                         while ($cek_jabatan = mysqli_fetch_array($id_user)) {
                             if ($cek_jabatan['pangkat'] == 'guru') {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_izin_penelitian' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_pemberitahuan' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
                             } else {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_izin_penelitian' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_pemberitahuan' ORDER BY id DESC");
                             }
                         }
 
                         // icon ditolak, diterima dan menunggu
                         while ($myData = mysqli_fetch_array($data)) {
-                            $query_guru = mysqli_query($koneksi, 'SELECT * FROM tbl_guru WHERE id = ' . $myData['kepada']);
-                            $data_guru = mysqli_fetch_array($query_guru);
-
-                            $query_mhs = mysqli_query($koneksi, 'SELECT * FROM tbl_surat_izin_penelitian WHERE id_surat = ' . $myData['id']);
-                            $data_mhs = mysqli_fetch_array($query_mhs);
                         ?>
                             <?php
                             if ($myData['hapus'] == 'n') {
@@ -122,9 +117,9 @@
                                     <td class="text-center"><?= $no++; ?></td>
                                     <td><?= $myData['no_surat'] ?></td>
                                     <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pembuatan'])) ?></td>
-                                    <td><?= $data_guru['nama'] ?></td>
-                                    <td><?= $data_mhs['nama_mhs'] ?></td>
-                                    <td><?= $data_mhs['kampus'] ?> (<?= $data_mhs['jurusan'] ?>)</td>
+                                    <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pelaksanaan'])) ?></td>
+                                    <td><?= $myData['kepada'] ?></td>
+                                    <td><?= $myData['keterangan'] ?></td>
 
                                     <!-- Button aksi -->
 
@@ -152,7 +147,7 @@
                                         ?>
                                                 <a href="#" id="edit_surat" class="btn btn-primary btn-sm" disabled><i class="fa fa-pencil"></i></a>
                                             <?php } else { ?>
-                                                <a href="<?= base_url() ?>surat-izin-penelitian/edit?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <a href="<?= base_url() ?>surat-pemberitahuan/edit?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                         <?php }
                                         } ?>
 
@@ -160,7 +155,7 @@
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'operator') {
                                         ?>
-                                            <a href="../../../process/surat-izin-penelitian/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="../../../process/surat-pemberitahuan/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         <?php } ?>
 
                                         <!-- Button Print -->
@@ -169,7 +164,7 @@
                                             $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
                                             if (mysqli_num_rows($cek_ttd) > 0) {
                                                 while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
-                                                    <a href="<?= base_url() ?>process/surat-izin-penelitian/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
+                                                    <a href="<?= base_url() ?>process/surat-pemberitahuan/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
                                                 <?php }
                                             } else { ?>
                                                 <a href="#" target="_blank" class="btn btn-primary btn-sm" disabled><i class="fa fa-print"></i></a>
@@ -192,7 +187,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Berkas Pengajuan Surat izin-penelitian</h4>
+                        <h4 class="modal-title">Berkas Pengajuan Surat Permohnan Narasumber</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -205,103 +200,81 @@
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Nama</label>
+                                <label class="col-sm-2 col-form-label">Kepada</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama" readonly />
+                                    <input type="text" id="kepada" class="form-control" disabled />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">NIP</label>
+                                <label class="col-sm-2 col-form-label">Alamat Tujuan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP" readonly />
+                                    <input type="text" id="alamat" class="form-control" disabled />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Pangkat / Gol.Ruang</label>
+                                <label class="col-sm-2 col-form-label">Perihal</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="golongan" id="golongan" class="form-control" placeholder="Masukkan Pangkat / Gol.Ruang" readonly />
+                                    <textarea class="form-control" id="perihal" rows="3" disabled></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Jabatan</label>
+                                <label class="col-sm-2 col-form-label">Tanggal Pembuatan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Masukkan Jabatan" readonly />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 2em;">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Unit Kerja</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="unit_kerja" id="unit_kerja" class="form-control" placeholder="Masukkan Unit Kerja" readonly />
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="box-title">Yang Diberi Izin Penelitian</h4>
-                        <div class="form-group" style="margin-top: 2em;">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Nama</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="nama_mhs" id="nama_mhs" class="form-control" placeholder="Masukkan Nama" readonly />
+                                    <input type="text" id="tgl_pembuatan" class="form-control" disabled />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">NIM</label>
+                                <label class="col-sm-2 col-form-label">Lampiran</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nim" id="nim" class="form-control" placeholder="Masukkan NIM" readonly />
+                                    <input type="text" id="lampiran" class="form-control" disabled />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Fakultas / Jurusan</label>
+                                <label class="col-sm-2 col-form-label">Dalam Rangka</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="jurusan" id="jurusan" class="form-control" placeholder="Masukkan Fakultas / Jurusan" readonly />
+                                    <textarea id="keterangan" class="form-control" rows="3" disabled></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Semester</label>
+                                <label class="col-sm-2 col-form-label">Hari</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="semester" id="semester" class="form-control" placeholder="Masukkan Semester" readonly />
+                                    <input type="text" id="hari" class="form-control" disabled />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Perguruan Tinggi</label>
+                                <label class="col-sm-2 col-form-label">Tanggal Pelaksanaan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="kampus" id="kampus" class="form-control" placeholder="Masukkan Perguruan Tinggi" readonly />
+                                    <input type="text" class="form-control" id="tgl_pelaksanaan" disabled />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Judul Penelitian</label>
+                                <label class="col-sm-2 col-form-label">Waktu</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" rows="3" name="judul" id="judul" placeholder="Masukkan Judul Penelitian" readonly></textarea>
+                                    <input type="text" id="waktu" class="form-control" disabled />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Tanggal Penelitian</label>
+                                <label class="col-sm-2 col-form-label">Tempat</label>
                                 <div class="col-sm-10">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input type="text" class="form-control datepicker" name="tanggal_mulai" id="tanggal_mulai" placeholder="Masukkan Tanggal Awal Penelitian" readonly />
-                                        <span class="input-group-addon">s.d.</span>
-                                        <input type="text" class="form-control datepicker" name="tanggal_selesai" id="tanggal_selesai" placeholder="Masukkan Tanggal Akhir Penelitian" readonly />
-                                    </div>
+                                    <input type="text" id="tempat" class="form-control" disabled />
                                 </div>
                             </div>
                         </div>
@@ -369,7 +342,7 @@
         function getDataSurat(id_surat) {
             $.ajax({
                 method: "POST",
-                url: base_url + "/process/surat-izin-penelitian/getDataSurat.php",
+                url: base_url + "/process/nota-dinas/getDataSurat.php",
                 data: {
                     id_surat: id_surat
                 },
@@ -382,20 +355,21 @@
                     }
 
                     // Yang perlu disesuaikan menurut inputan
-                    $('#nama').val(data.nama);
-                    $('#nip').val(data.nip);
-                    $('#golongan').val(data.golongan);
-                    $('#jabatan').val(data.jabatan);
-                    $('#unit_kerja').val(data.instansi);
+                    $('#kepada').val(data.kepada);
+                    $('#alamat').val(data.alamat);
+                    $('#perihal').val(data.perihal);
+                    $('#tgl_pembuatan').val(data.tgl_pembuatan);
+                    if (data.lampiran != null) {
+                        $('#lampiran').val(data.lampiran);
+                    } else {
+                        $('#lampiran').val("-");
+                    }
 
-                    $('#nama_mhs').val(data.nama_mhs);
-                    $('#nim').val(data.nim);
-                    $('#jurusan').val(data.jurusan);
-                    $('#semester').val(data.semester);
-                    $('#kampus').val(data.kampus);
-                    $('#judul').val(data.judul);
-                    $('#tanggal_mulai').val(data.tanggal_mulai);
-                    $('#tanggal_selesai').val(data.tanggal_selesai);
+                    $('#keterangan').val(data.keterangan);
+                    $('#hari').val(data.hari);
+                    $('#tgl_pelaksanaan').val(data.tgl_pelaksanaan);
+                    $('#waktu').val(data.waktu);
+                    $('#tempat').val(data.tempat);
                     // sampai sini
 
                     $.ajax({
@@ -535,7 +509,7 @@
                                     timer: 1500
                                 })
                                 setInterval(function() {
-                                    window.location.href = base_url + "/surat-izin-penelitian/index";
+                                    window.location.href = base_url + "/surat-pemberitahuan/index";
                                 }, 1700);
                             } else {
                                 swalWithBootstrapButtons.fire(
@@ -596,7 +570,7 @@
                                     timer: 1500
                                 })
                                 setInterval(function() {
-                                    window.location.href = base_url + "/surat-izin-penelitian/index";
+                                    window.location.href = base_url + "/surat-pemberitahuan/index";
                                 }, 1700);
                             } else {
                                 swalWithBootstrapButtons.fire(

@@ -102,41 +102,42 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr>
           <td colspan="3">
-            Disampaikan dengan hormat bahwa, berkenaan dengan <?= $data['keterangan'] ?>, maka kami mengharap kehadiran Bapak/Ibu/Sdr Wali Murid, pada :
+            Sehubungan akan diselenggarakan kegiatan <?= $data['keterangan'] ?> sebagai narasumber dalam kegiatan tersebut yang akan dilaksanakan pada :
           </td>
         </tr>
         <tr>
           <td colspan="3">
             <table>
               <tr>
-                <td style="width: 100px;">Hari</td>
-                <td>: <?= $data['hari'] ?></td>
-              </tr>
-              <tr>
-                <td>Tanggal</td>
-                <td>: <?php if ($data['tgl_pelaksanaan'] <> '') {
-                        echo tgl_indo_garing($data['tgl_pelaksanaan']);
-                      } ?></td>
-              </tr>
-              <tr>
-                <td>Tempat</td>
-                <td>: <?= $data['tempat'] ?></td>
+                <td rowspan="4" style="vertical-align: text-top;">1.</td>
+                <td style="width: 100px;">Hari, Tanggal</td>
+                <td>: <?= $data['hari'] ?>, <?php if ($data['tgl_pelaksanaan'] <> '') {
+                                              echo tgl_indo($data['tgl_pelaksanaan']);
+                                            } ?></td>
               </tr>
               <tr>
                 <td>Waktu</td>
                 <td>: <?= $data['waktu'] ?></td>
+              </tr>
+              <tr>
+                <td>Materi</td>
+                <td>: <?= $data['catatan'] ?></td>
+              </tr>
+              <tr>
+                <td>Tempat</td>
+                <td>: <?= $data['tempat'] ?></td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
           <td colspan="3" style="padding-top: 20px; padding-bottom: 40px;">
-            Demikian atas kesediaan dan kehadirannya disampaikan terima kasih
+            Demikian surat permohonan ini kami sampaikan. Atas kesediaan dan kerjasamanya, disampaikan terima kasih.
           </td>
         </tr>
         <tr>
           <td></td>
-          <td style="width: 50%;"></td>
+          <td style="width: 25%;"></td>
           <td style="text-align: center;">
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
@@ -154,6 +155,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
       window.print();
     </script>
   </body>
+
+  </html>
 
   </html>
 

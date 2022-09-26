@@ -93,6 +93,31 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Surat Balasan
             </a>
           </li>
+          <li <?= $uri2[0] == "surat-skkb" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-skkb/index">
+              <i class="fa fa-circle-o"></i>Surat SKKB
+            </a>
+          </li>
+          <li <?= $uri2[0] == "surat-izin-penelitian" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-izin-penelitian/index">
+              <i class="fa fa-circle-o"></i>Surat Izin Penelitian
+            </a>
+          </li>
+          <li <?= $uri2[0] == "surat-permohonan-narasumber" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-permohonan-narasumber/index">
+              <i class="fa fa-circle-o"></i>Surat Permohonan Narasumber
+            </a>
+          </li>
+          <li <?= $uri2[0] == "surat-pemberitahuan" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-pemberitahuan/index">
+              <i class="fa fa-circle-o"></i>Surat Pemberitahuan
+            </a>
+          </li>
+          <li <?= $uri2[0] == "surat-mutasi-siswa-keluar" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-mutasi-siswa-keluar/index">
+              <i class="fa fa-circle-o"></i>Surat Mutasi Siswa Keluar
+            </a>
+          </li>
           <li <?= $uri2[0] == "cuti-tahunan" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>cuti-tahunan/index">
               <i class="fa fa-circle-o"></i>Cuti Tahunan
@@ -113,11 +138,6 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Surat Dispen
             </a>
           </li>
-          <li <?= $uri2[0] == "surat-skkb" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-skkb/index">
-              <i class="fa fa-circle-o"></i>Surat SKKB
-            </a>
-          </li>
           <li <?= $uri2[0] == "surat-tugas" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-tugas/index">
               <i class="fa fa-circle-o"></i>Surat Tugas
@@ -126,11 +146,6 @@ $uri2 = explode('/', trim($uri[0], '/'));
           <li <?= $uri2[0] == "surat-izin-kegiatan" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-izin-kegiatan/index">
               <i class="fa fa-circle-o"></i>Surat Izin Kegiatan
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-izin-penelitian" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-izin-penelitian/index">
-              <i class="fa fa-circle-o"></i>Surat Izin Penelitian
             </a>
           </li>
           <li <?= $uri2[0] == "suket-pengganti-ijazah" ? "class = 'active'" : "" ?>>
@@ -143,11 +158,6 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Surat Keterangan Siswa
             </a>
           </li>
-          <li <?= $uri2[0] == "surat-mutasi-siswa-keluar" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-mutasi-siswa-keluar/index">
-              <i class="fa fa-circle-o"></i>Surat Mutasi Siswa Keluar
-            </a>
-          </li>
           <li <?= $uri2[0] == "surat-mutasi-siswa-masuk" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-mutasi-siswa-masuk/index">
               <i class="fa fa-circle-o"></i>Surat Mutasi Siswa Masuk
@@ -158,19 +168,9 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Surat Panggilan
             </a>
           </li>
-          <li <?= $uri2[0] == "surat-pemberitahuan" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-pemberitahuan/index">
-              <i class="fa fa-circle-o"></i>Surat Pemberitahuan
-            </a>
-          </li>
           <li <?= $uri2[0] == "surat-pengantar" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-pengantar/index">
               <i class="fa fa-circle-o"></i>Surat Pengantar
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-permohonan-narasumber" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-permohonan-narasumber/index">
-              <i class="fa fa-circle-o"></i>Surat Permohonan Narasumber
             </a>
           </li>
           <li <?= $uri2[0] == "surat-pernyataan" ? "class = 'active'" : "" ?>>

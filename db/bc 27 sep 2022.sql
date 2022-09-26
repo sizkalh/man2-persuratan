@@ -153,7 +153,7 @@ CREATE TABLE `tbl_kelas` (
 /*Data for the table `tbl_kelas` */
 
 insert  into `tbl_kelas`(`id_kelas`,`nama`,`nama_kelas`) values 
-(1,'X','spuluh'),
+(1,'X','sepuluh'),
 (2,'XI','sebelas'),
 (3,'XII','dua belas');
 
@@ -217,25 +217,27 @@ DROP TABLE IF EXISTS `tbl_siswa`;
 
 CREATE TABLE `tbl_siswa` (
   `id` varchar(10) NOT NULL,
-  `nisn` varchar(15) NOT NULL,
-  `nama` varchar(65) NOT NULL,
-  `jk` varchar(1) NOT NULL,
-  `tgl_lahir` date NOT NULL,
-  `no_hp` varchar(15) NOT NULL,
-  `alamat` text NOT NULL,
-  `nis` varchar(15) NOT NULL,
-  `nama_wali` varchar(65) NOT NULL,
-  `no_hp_wali` varchar(15) NOT NULL,
-  `pekerjaan_wali` varchar(25) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` text NOT NULL,
+  `nisn` varchar(15) DEFAULT NULL,
+  `nis` varchar(15) DEFAULT NULL,
+  `id_detail_kelas` int(11) DEFAULT NULL,
+  `nama` varchar(65) DEFAULT NULL,
+  `jk` enum('L','P') DEFAULT NULL,
+  `tempat_lahir` varchar(50) DEFAULT NULL,
+  `tgl_lahir` date DEFAULT NULL,
+  `no_hp` varchar(15) DEFAULT NULL,
+  `alamat` text DEFAULT NULL,
+  `nama_wali` varchar(65) DEFAULT NULL,
+  `no_hp_wali` varchar(15) DEFAULT NULL,
+  `pekerjaan_wali` varchar(25) DEFAULT NULL,
+  `username` varchar(20) DEFAULT NULL,
+  `password` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_siswa` */
 
-insert  into `tbl_siswa`(`id`,`nisn`,`nama`,`jk`,`tgl_lahir`,`no_hp`,`alamat`,`nis`,`nama_wali`,`no_hp_wali`,`pekerjaan_wali`,`username`,`password`) values 
-('1','111222','Rika','P','2005-08-19','088999000999','Kampungdalem','123','Saipul','089999000999','Gali lobang','rika','');
+insert  into `tbl_siswa`(`id`,`nisn`,`nis`,`id_detail_kelas`,`nama`,`jk`,`tempat_lahir`,`tgl_lahir`,`no_hp`,`alamat`,`nama_wali`,`no_hp_wali`,`pekerjaan_wali`,`username`,`password`) values 
+('1','111222','123',1,'Rika','P','Tulungagung','2005-08-19','088999000999','Kampungdalem','Saipul','089999000999','Gali lobang','rika','');
 
 /*Table structure for table `tbl_surat` */
 
@@ -260,7 +262,7 @@ CREATE TABLE `tbl_surat` (
   `id_pemohon` int(11) DEFAULT NULL,
   `hapus` enum('y','n') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_surat` */
 
@@ -282,7 +284,12 @@ insert  into `tbl_surat`(`id`,`jenis`,`no_surat`,`hari`,`tgl_pelaksanaan`,`tgl_p
 (22,'surat_kuasa','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-26',5,'n'),
 (23,'nota_dinas',NULL,'senin','2022-09-02',NULL,'08.00','Lapangan','Sef',NULL,'surat undangan',NULL,'tes',NULL,'2022-09-26',5,'n'),
 (24,'surat_undangan','','Selasa','1970-01-01',NULL,'08.00','Lapangan depan','sef','Jl. Ki Mangunsarkoro, Beji, Boyolangu, Tulungagung 99','undangan',NULL,'tes',NULL,'2022-09-26',5,'n'),
-(25,'surat_balasan','',NULL,NULL,NULL,NULL,NULL,'',NULL,'tugas mengampu kelas',NULL,NULL,NULL,'2022-09-26',5,'n');
+(25,'surat_balasan','',NULL,NULL,NULL,NULL,NULL,'',NULL,'tugas mengampu kelas',NULL,NULL,NULL,'2022-09-26',5,'n'),
+(26,'surat_skkb','',NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,'2021/2022',NULL,'2022-09-26',5,'n'),
+(27,'surat_izin_penelitian','',NULL,NULL,NULL,NULL,NULL,'3',NULL,NULL,NULL,NULL,NULL,'2022-09-26',5,'n'),
+(28,'surat_permohonan_narasumber','','senin','2022-09-18',NULL,'08.00','Lapangan','andys','Jl. Ki Mangunsarkoro, Beji, Boyolangu, Tulungagung','tes b',NULL,'pengecekan','memm','2022-09-26',5,'n'),
+(29,'surat_pemberitahuan','','senin','2022-09-21',NULL,'08.00','Lapangan depan','Malikis','Tempat','-',NULL,'surat pemebri',NULL,'2022-09-27',5,'n'),
+(30,'surat_mutasi_siswa_keluar','',NULL,NULL,NULL,NULL,NULL,'1',NULL,'smak',NULL,'k','pp','1970-01-01',5,'n');
 
 /*Table structure for table `tbl_surat_balasan` */
 
@@ -320,6 +327,29 @@ CREATE TABLE `tbl_surat_dispen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_surat_dispen` */
+
+/*Table structure for table `tbl_surat_izin_penelitian` */
+
+DROP TABLE IF EXISTS `tbl_surat_izin_penelitian`;
+
+CREATE TABLE `tbl_surat_izin_penelitian` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_surat` int(11) DEFAULT NULL,
+  `nama_mhs` varchar(100) DEFAULT NULL,
+  `nim` varchar(100) DEFAULT NULL,
+  `jurusan` varchar(100) DEFAULT NULL,
+  `semester` varchar(50) DEFAULT NULL,
+  `kampus` text DEFAULT NULL,
+  `judul` text DEFAULT NULL,
+  `tanggal_mulai` date DEFAULT NULL,
+  `tanggal_selesai` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `tbl_surat_izin_penelitian` */
+
+insert  into `tbl_surat_izin_penelitian`(`id`,`id_surat`,`nama_mhs`,`nim`,`jurusan`,`semester`,`kampus`,`judul`,`tanggal_mulai`,`tanggal_selesai`) values 
+(1,27,'seftianss','0090909','teknik','1','kampusku','mau ya','2022-08-31','2022-09-24');
 
 /*Table structure for table `tbl_surat_kuasa` */
 
@@ -447,7 +477,7 @@ CREATE TABLE `tbl_tanda_tangan` (
   `catatan` text DEFAULT NULL,
   `tgl_proses` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_tanda_tangan` */
 
@@ -596,7 +626,32 @@ insert  into `tbl_tanda_tangan`(`id`,`id_surat`,`id_user`,`status`,`catatan`,`tg
 (157,25,4,'belum',NULL,NULL),
 (158,25,3,'cek',NULL,NULL),
 (159,25,2,'diterima','betul','2022-09-26 14:56:00'),
-(160,25,5,'diterima','','2022-09-26 14:55:39');
+(160,25,5,'diterima','','2022-09-26 14:55:39'),
+(161,26,1,'belum',NULL,NULL),
+(162,26,4,'belum',NULL,NULL),
+(163,26,3,'belum',NULL,NULL),
+(164,26,2,'cek',NULL,NULL),
+(165,26,5,'diterima','','2022-09-26 21:15:29'),
+(166,27,1,'belum',NULL,NULL),
+(167,27,4,'belum',NULL,NULL),
+(168,27,3,'belum',NULL,NULL),
+(169,27,2,'cek',NULL,NULL),
+(170,27,5,'diterima','','2022-09-27 02:55:49'),
+(171,28,1,'belum',NULL,NULL),
+(172,28,4,'belum',NULL,NULL),
+(173,28,3,'belum',NULL,NULL),
+(174,28,2,'cek',NULL,NULL),
+(175,28,5,'diterima','','2022-09-26 23:58:45'),
+(176,29,1,'belum',NULL,NULL),
+(177,29,4,'belum',NULL,NULL),
+(178,29,3,'belum',NULL,NULL),
+(179,29,2,'cek',NULL,NULL),
+(180,29,5,'diterima','','2022-09-27 00:30:50'),
+(181,30,1,'belum',NULL,NULL),
+(182,30,4,'belum',NULL,NULL),
+(183,30,3,'belum',NULL,NULL),
+(184,30,2,'cek',NULL,NULL),
+(185,30,5,'diterima','','2022-09-27 02:29:03');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

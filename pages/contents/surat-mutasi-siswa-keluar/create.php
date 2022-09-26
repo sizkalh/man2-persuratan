@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Surat SKKB
+            Surat Mutasi Siswa Keluar
         </h1>
     </section>
 
@@ -11,7 +11,7 @@
         <!-- Default box -->
         <div class="box box-success">
             <div class="box-body">
-                <form action="<?= base_url() ?>process/surat-skkb/tambah.php" method="post" id="form_surat_skkb">
+                <form action="<?= base_url() ?>process/surat-mutasi-siswa-keluar/tambah.php" method="post" id="form_surat_mutasi_siswa_keluar">
                     <div class="form-group">
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Nama</label>
@@ -45,7 +45,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">NIS</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nis" placeholder="Masukkan NIS" readonly />
+                                <input type="text" class="form-control" name="nis" id="nis" placeholder="Masukkan NIS" readonly />
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">NISN</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nisn" placeholder="Masukkan NISN" readonly />
+                                <input type="text" class="form-control" name="nisn" id="nisn" placeholder="Masukkan NISN" readonly />
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,15 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Kelas</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="kelas" placeholder="Masukkan Kelas" readonly />
+                                <input type="text" class="form-control" name="kelas" id="kelas" placeholder="Masukkan Kelas" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="jk" id="jk" placeholder="Masukkan Kelas" readonly />
                             </div>
                         </div>
                     </div>
@@ -69,29 +77,72 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Tempat, Tanggal Lahir</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="tempat_lahir" placeholder="Masukkan Tempat" readonly />
+                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Masukkan Tempat" readonly />
                             </div>
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="text" class="form-control datepicker" id="tgl_lahir" placeholder="Masukkan Tanggal Lahir" readonly />
+                                    <input type="text" class="form-control datepicker" name="tgl_lahir" id="tgl_lahir" placeholder="Masukkan Tanggal Lahir" readonly />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Alamat</label>
+                            <label class="col-sm-2 col-form-label">Nama Orang Tua / Wali</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="3" id="alamat" placeholder="Masukkan Alamat" readonly></textarea>
+                                <input type="text" class="form-control" name="nama_ortu" id="nama_ortu" placeholder="Masukkan Kelas" readonly />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Tahun Ajaran</label>
+                            <label class="col-sm-2 col-form-label">Pekerjaan Orang Tua / Wali</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tahun_ajaran" name="tahun_ajaran" placeholder="Masukkan Tahun Ajaran" />
+                                <input type="text" class="form-control" name="pekerjaan_ortu" id="pekerjaan_ortu" placeholder="Masukkan Kelas" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Alamat Rumah</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="3" name="alamat" id="alamat" placeholder="Masukkan Alamat" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Pindah Ke</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="pindah_ke" id="pindah_ke" placeholder="Pindah ke" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Diterima di kelas</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="diterima_di" id="diterima_di" placeholder="Diterima di kelas" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Pindah / Keluar Karena</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="alasan_pindah" id="alasan_pindah" placeholder="Pindah / keluar karena" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Catatan</label>
+                            <div class="col-sm-10">
+                                <strong>
+                                    Setelah keluar yang bersangkutan tidak dapat
+                                    diterima kembali di MAN 2 Tulungagung.
+                                </strong>
                             </div>
                         </div>
                     </div>
@@ -117,10 +168,10 @@
 
         $("#preview").click(function() {
             var base_url = window.location.origin;
-            var data = $("#form_surat_skkb").serialize();
+            var data = $("#form_surat_mutasi_siswa_keluar").serialize();
 
             window.open(
-                base_url + '/process/surat-skkb/preview.php?' + data,
+                base_url + '/process/surat-mutasi-siswa-keluar/preview.php?' + data,
                 '_blank' // <- This is what makes it open in a new window.
             );
 
@@ -146,6 +197,17 @@
                     $("#tempat_lahir").val(data.tempat_lahir)
                     $("#tgl_lahir").val(data.tgl_lahir)
                     $("#alamat").val(data.alamat)
+
+                    if (data.jk == "L") {
+                        var kelamin = "Laki - Laki"
+                    } else {
+                        var kelamin = "Perempuan"
+                    }
+
+                    $("#jk").val(kelamin)
+                    $("#nama_ortu").val(data.nama_wali)
+                    $("#pekerjaan_ortu").val(data.pekerjaan_wali)
+
                 }
             });
         }

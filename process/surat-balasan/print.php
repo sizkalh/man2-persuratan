@@ -78,7 +78,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         <tr>
           <td colspan="3" style="text-align: center; padding-bottom: 40px;">
             <b>SURAT KETERANGAN KESEDIAAN</b> <br>
-            NOMOR :
+            NOMOR : <?= $data['no_surat'] ?>
           </td>
         </tr>
         <tr>
@@ -124,6 +124,10 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
       </table>
     </div>
+
+    <script>
+      window.print();
+    </script>
   </body>
 
   </html>

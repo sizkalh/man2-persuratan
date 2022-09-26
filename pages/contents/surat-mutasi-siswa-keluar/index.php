@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Surat Izin Penelitian
+            Surat Mutasi Siswa Keluar
         </h1>
     </section>
 
@@ -33,7 +33,7 @@
             if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
             ?>
                 <div class="box-header">
-                    <a href="<?= base_url() ?>surat-izin-penelitian/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Izin Penelitian</a>
+                    <a href="<?= base_url() ?>surat-mutasi-siswa-keluar/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Mutasi Siswa Keluar</a>
                 </div>
             <?php } ?>
             <div class="box-body">
@@ -44,9 +44,9 @@
                             <th width="30" class="text-center">No</th>
                             <th>No. Surat</th>
                             <th class="text-center" width="110">Tgl. Pembuatan</th>
-                            <th>Guru</th>
-                            <th>Mahasiswa</th>
-                            <th>Kampus / Jurusan</th>
+                            <th class="text-center" width="110">NISN</th>
+                            <th>Nama</th>
+                            <th class="text-center">Kelas</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -59,19 +59,30 @@
                         $id_user = mysqli_query($koneksi, "select * from tbl_guru where id = '" . $_SESSION['id_user'] . "'");
                         while ($cek_jabatan = mysqli_fetch_array($id_user)) {
                             if ($cek_jabatan['pangkat'] == 'guru') {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_izin_penelitian' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_mutasi_siswa_keluar' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
                             } else {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_izin_penelitian' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_mutasi_siswa_keluar' ORDER BY id DESC");
                             }
                         }
 
                         // icon ditolak, diterima dan menunggu
                         while ($myData = mysqli_fetch_array($data)) {
-                            $query_guru = mysqli_query($koneksi, 'SELECT * FROM tbl_guru WHERE id = ' . $myData['kepada']);
-                            $data_guru = mysqli_fetch_array($query_guru);
-
-                            $query_mhs = mysqli_query($koneksi, 'SELECT * FROM tbl_surat_izin_penelitian WHERE id_surat = ' . $myData['id']);
-                            $data_mhs = mysqli_fetch_array($query_mhs);
+                            $query_siswa = mysqli_query($koneksi, 'SELECT
+                                                                        tbl_siswa.*,
+                                                                        tbl_kelas.nama AS nama_kel,
+                                                                        tbl_kelas.nama_kelas,
+                                                                        tbl_jurusan.nama AS nama_jurusan,
+                                                                        tbl_detail_kelas.rombel
+                                                                        FROM
+                                                                        tbl_siswa
+                                                                        LEFT JOIN tbl_detail_kelas
+                                                                            ON tbl_detail_kelas.id_detail_kelas = tbl_siswa.id_detail_kelas
+                                                                        INNER JOIN tbl_kelas
+                                                                            ON tbl_kelas.id_kelas = tbl_detail_kelas.id_kelas
+                                                                        INNER JOIN tbl_jurusan
+                                                                            ON tbl_jurusan.id_jurusan = tbl_detail_kelas.id_jurusan 
+                                                                        WHERE tbl_siswa.id = ' . $myData['kepada']);
+                            $data_siswa = mysqli_fetch_array($query_siswa);
                         ?>
                             <?php
                             if ($myData['hapus'] == 'n') {
@@ -122,9 +133,9 @@
                                     <td class="text-center"><?= $no++; ?></td>
                                     <td><?= $myData['no_surat'] ?></td>
                                     <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pembuatan'])) ?></td>
-                                    <td><?= $data_guru['nama'] ?></td>
-                                    <td><?= $data_mhs['nama_mhs'] ?></td>
-                                    <td><?= $data_mhs['kampus'] ?> (<?= $data_mhs['jurusan'] ?>)</td>
+                                    <td class="text-center"><?= $data_siswa['nisn'] ?></td>
+                                    <td><?= $data_siswa['nama'] ?></td>
+                                    <td class="text-center"><?= $data_siswa['nama_kel'] . ' ' . $data_siswa['nama_jurusan'] . ' ' . $data_siswa['rombel'] ?></td>
 
                                     <!-- Button aksi -->
 
@@ -152,7 +163,7 @@
                                         ?>
                                                 <a href="#" id="edit_surat" class="btn btn-primary btn-sm" disabled><i class="fa fa-pencil"></i></a>
                                             <?php } else { ?>
-                                                <a href="<?= base_url() ?>surat-izin-penelitian/edit?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <a href="<?= base_url() ?>surat-mutasi-siswa-keluar/edit?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                         <?php }
                                         } ?>
 
@@ -160,7 +171,7 @@
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'operator') {
                                         ?>
-                                            <a href="../../../process/surat-izin-penelitian/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="../../../process/surat-mutasi-siswa-keluar/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         <?php } ?>
 
                                         <!-- Button Print -->
@@ -169,7 +180,7 @@
                                             $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
                                             if (mysqli_num_rows($cek_ttd) > 0) {
                                                 while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
-                                                    <a href="<?= base_url() ?>process/surat-izin-penelitian/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
+                                                    <a href="<?= base_url() ?>process/surat-mutasi-siswa-keluar/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
                                                 <?php }
                                             } else { ?>
                                                 <a href="#" target="_blank" class="btn btn-primary btn-sm" disabled><i class="fa fa-print"></i></a>
@@ -192,7 +203,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Berkas Pengajuan Surat izin-penelitian</h4>
+                        <h4 class="modal-title">Berkas Pengajuan Surat Permohnan Narasumber</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -207,101 +218,112 @@
                             <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama" readonly />
+                                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan NIS" readonly />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">NIP</label>
+                                <label class="col-sm-2 col-form-label">NIS</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP" readonly />
+                                    <input type="text" class="form-control" name="nis" id="nis" placeholder="Masukkan NIS" readonly />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Pangkat / Gol.Ruang</label>
+                                <label class="col-sm-2 col-form-label">NISN</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="golongan" id="golongan" class="form-control" placeholder="Masukkan Pangkat / Gol.Ruang" readonly />
+                                    <input type="text" class="form-control" name="nisn" id="nisn" placeholder="Masukkan NISN" readonly />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Jabatan</label>
+                                <label class="col-sm-2 col-form-label">Kelas</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Masukkan Jabatan" readonly />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 2em;">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Unit Kerja</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="unit_kerja" id="unit_kerja" class="form-control" placeholder="Masukkan Unit Kerja" readonly />
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="box-title">Yang Diberi Izin Penelitian</h4>
-                        <div class="form-group" style="margin-top: 2em;">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Nama</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="nama_mhs" id="nama_mhs" class="form-control" placeholder="Masukkan Nama" readonly />
+                                    <input type="text" class="form-control" name="kelas" id="kelas" placeholder="Masukkan Kelas" readonly />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">NIM</label>
+                                <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nim" id="nim" class="form-control" placeholder="Masukkan NIM" readonly />
+                                    <input type="text" class="form-control" name="jk" id="jk" placeholder="Masukkan Kelas" readonly />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Fakultas / Jurusan</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="jurusan" id="jurusan" class="form-control" placeholder="Masukkan Fakultas / Jurusan" readonly />
+                                <label class="col-sm-2 col-form-label">Tempat, Tanggal Lahir</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Masukkan Tempat" readonly />
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Semester</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="semester" id="semester" class="form-control" placeholder="Masukkan Semester" readonly />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Perguruan Tinggi</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="kampus" id="kampus" class="form-control" placeholder="Masukkan Perguruan Tinggi" readonly />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Judul Penelitian</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" rows="3" name="judul" id="judul" placeholder="Masukkan Judul Penelitian" readonly></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Tanggal Penelitian</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-5">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input type="text" class="form-control datepicker" name="tanggal_mulai" id="tanggal_mulai" placeholder="Masukkan Tanggal Awal Penelitian" readonly />
-                                        <span class="input-group-addon">s.d.</span>
-                                        <input type="text" class="form-control datepicker" name="tanggal_selesai" id="tanggal_selesai" placeholder="Masukkan Tanggal Akhir Penelitian" readonly />
+                                        <input type="text" class="form-control datepicker" name="tgl_lahir" id="tgl_lahir" placeholder="Masukkan Tanggal Lahir" readonly />
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Nama Orang Tua / Wali</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="nama_ortu" id="nama_ortu" placeholder="Masukkan Kelas" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Pekerjaan Orang Tua / Wali</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="pekerjaan_ortu" id="pekerjaan_ortu" placeholder="Masukkan Kelas" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Alamat Rumah</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" name="alamat" id="alamat" placeholder="Masukkan Alamat" readonly></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Pindah Ke</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="pindah_ke" id="pindah_ke" placeholder="Pindah ke" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Diterima di kelas</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="diterima_di" id="diterima_di" placeholder="Diterima di kelas" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Pindah / Keluar Karena</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="alasan_pindah" id="alasan_pindah" placeholder="Pindah / keluar karena" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Catatan</label>
+                                <div class="col-sm-10">
+                                    <strong>
+                                        Setelah keluar yang bersangkutan tidak dapat
+                                        diterima kembali di MAN 2 Tulungagung.
+                                    </strong>
                                 </div>
                             </div>
                         </div>
@@ -369,7 +391,7 @@
         function getDataSurat(id_surat) {
             $.ajax({
                 method: "POST",
-                url: base_url + "/process/surat-izin-penelitian/getDataSurat.php",
+                url: base_url + "/process/surat-mutasi-siswa-keluar/getDataSurat.php",
                 data: {
                     id_surat: id_surat
                 },
@@ -383,19 +405,30 @@
 
                     // Yang perlu disesuaikan menurut inputan
                     $('#nama').val(data.nama);
-                    $('#nip').val(data.nip);
-                    $('#golongan').val(data.golongan);
-                    $('#jabatan').val(data.jabatan);
-                    $('#unit_kerja').val(data.instansi);
+                    $('#nis').val(data.nis);
+                    $('#nisn').val(data.nisn);
 
-                    $('#nama_mhs').val(data.nama_mhs);
-                    $('#nim').val(data.nim);
-                    $('#jurusan').val(data.jurusan);
-                    $('#semester').val(data.semester);
-                    $('#kampus').val(data.kampus);
-                    $('#judul').val(data.judul);
-                    $('#tanggal_mulai').val(data.tanggal_mulai);
-                    $('#tanggal_selesai').val(data.tanggal_selesai);
+                    if (data.jk == "L") {
+                        var kelamin = "Laki - Laki"
+                    } else {
+                        var kelamin = "Perempuan"
+                    }
+
+                    var kelas = data.nama_kel + ' ' + data.nama_jurusan + ' ' + data.rombel
+
+                    $('#kelas').val(kelas);
+
+                    $('#jk').val(kelamin);
+
+                    $('#tempat_lahir').val(data.tempat_lahir);
+                    $('#tgl_lahir').val(data.tgl_lahir);
+                    $('#nama_ortu').val(data.nama_wali);
+                    $('#pekerjaan_ortu').val(data.pekerjaan_wali);
+                    $('#alamat').val(data.alamat);
+                    $('#pindah_ke').val(data.perihal);
+
+                    $('#diterima_di').val(data.keterangan);
+                    $('#alasan_pindah').val(data.catatan);
                     // sampai sini
 
                     $.ajax({
@@ -535,7 +568,7 @@
                                     timer: 1500
                                 })
                                 setInterval(function() {
-                                    window.location.href = base_url + "/surat-izin-penelitian/index";
+                                    window.location.href = base_url + "/surat-mutasi-siswa-keluar/index";
                                 }, 1700);
                             } else {
                                 swalWithBootstrapButtons.fire(
@@ -596,7 +629,7 @@
                                     timer: 1500
                                 })
                                 setInterval(function() {
-                                    window.location.href = base_url + "/surat-izin-penelitian/index";
+                                    window.location.href = base_url + "/surat-mutasi-siswa-keluar/index";
                                 }, 1700);
                             } else {
                                 swalWithBootstrapButtons.fire(

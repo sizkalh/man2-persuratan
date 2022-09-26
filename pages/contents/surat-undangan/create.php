@@ -135,7 +135,7 @@
       var data = $("#form_surat_undangan").serialize();
 
       window.open(
-        base_url + '/process/nota-dinas/preview.php?' + data,
+        base_url + '/process/surat-undangan/preview.php?' + data,
         '_blank' // <- This is what makes it open in a new window.
       );
 
