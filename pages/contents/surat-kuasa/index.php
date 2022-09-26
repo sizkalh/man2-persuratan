@@ -37,7 +37,7 @@
                 </div>
             <?php } ?>
             <div class="box-body">
-                <table class="table table-condensed table-hover" id="nota_dinas">
+                <table class="table table-condensed table-hover" id="data-table"">
                     <thead>
                         <tr>
                             <th width="20" class="text-center">~</th>

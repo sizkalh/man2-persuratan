@@ -79,7 +79,7 @@
         <div class="form-group has-feedback">
           <select class="form-control" name="role" required>
             <option value="">-- Pilih Hak Akses --</option>
-            <option value="guru">Guru</option>
+            <option value="guru">Guru / Karyawan</option>
             <option value="siswa">Siswa</option>
           </select>
         </div>

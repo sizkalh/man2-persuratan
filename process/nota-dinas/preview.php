@@ -134,7 +134,8 @@ function tgl_indo_garing($tanggal){
           <br />
           Kepala Madrasah,
           <br /><br /><br /><br /><br /><br />
-          Mohamad Dopir
+          <u>Drs. Muhamad Dopir, M.Pd.I.</u><br>
+          NIP. 196212061990032001
         </td>
       </tr>
     </table>

@@ -156,7 +156,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
             <br />
             <img src="../../dist/img/ttd/contohttd.png" style="max-width: 200px;">
             <br />
-            Mohamad Dopir
+            <u>Drs. Muhamad Dopir, M.Pd.I.</u><br>
+            NIP. 196212061990032001
           </td>
         </tr>
       </table>
