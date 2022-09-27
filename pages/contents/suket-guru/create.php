@@ -13,7 +13,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Kepala Sekolah / Madrasah</h3>
             </div>
-            <form action="<?= base_url() ?>process/suket-siswa/tambah.php" method="post" id="form_suket_siswa">
+            <form action="<?= base_url() ?>process/suket-guru/tambah.php" method="post" id="form_suket_guru">
                 <div class="box-body">
                     <div class="form-group">
                         <div class="mb-3 row">
@@ -58,36 +58,31 @@
                     </div>
                 </div>
                 <div class="box-header with-border">
-                    <h3 class="box-title">Menerangkan Siswa Bersangkutan</h3>
+                    <h3 class="box-title">Menerangkan Guru Bersangkutan</h3>
                 </div>
                 <div class="box-body">
                     <div class="form-group">
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
-                                <input type="hidden" id="nama_siswa" name="nama_siswa">
-                                <select name="id_siswa" id="id_siswa" class="form-control select-nama">
-                                    <option value="">-- Pilih Nama Siswa</option>
+                                <input type="hidden" name="nama_karyawan" id="nama_karyawan">
+                                <select name="id_karyawan" id="id_karyawan" class="form-control select-nama">
+                                    <option value="">-- Pilih Nama</option>
                                     <?php
-                                    $query_siswa = mysqli_query($koneksi, "SELECT
-                                                                                tbl_siswa.*,
-                                                                                tbl_kelas.nama AS nama_kel,
-                                                                                tbl_kelas.nama_kelas,
-                                                                                tbl_jurusan.nama AS nama_jurusan,
-                                                                                tbl_detail_kelas.rombel
-                                                                                FROM
-                                                                                tbl_siswa
-                                                                                LEFT JOIN tbl_detail_kelas
-                                                                                    ON tbl_detail_kelas.id_detail_kelas = tbl_siswa.id_detail_kelas
-                                                                                INNER JOIN tbl_kelas
-                                                                                    ON tbl_kelas.id_kelas = tbl_detail_kelas.id_kelas
-                                                                                INNER JOIN tbl_jurusan
-                                                                                    ON tbl_jurusan.id_jurusan = tbl_detail_kelas.id_jurusan");
-                                    while ($data_siswa = mysqli_fetch_array($query_siswa)) {
+                                    $query_guru = mysqli_query($koneksi, "SELECT * FROM tbl_guru");
+                                    while ($data_guru = mysqli_fetch_array($query_guru)) {
                                     ?>
-                                        <option value="<?= $data_siswa['id'] ?>"><?= $data_siswa['nama'] ?></option>
+                                        <option value="<?= $data_guru['id'] ?>"><?= $data_guru['nama'] ?></option>
                                     <?php } ?>
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">NIP</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nip_karyawan" name="nip_karyawan" placeholder="Masukkan NIP" readonly />
                             </div>
                         </div>
                     </div>
@@ -107,41 +102,9 @@
                     </div>
                     <div class="form-group">
                         <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Kelas</label>
+                            <label class="col-sm-2 col-form-label">Pangkat / Golongan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Masukkan Kelas" readonly />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Satdik</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="satdik" name="satdik" placeholder="Masukkan Satdik" readonly />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Nama Ayah</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama Ayah" readonly />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Nama Ibu</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Masukkan Nama Ibu" readonly />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Jumlah Saudara</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="jml_saudara" name="jml_saudara" placeholder="Masukkan Jumlah Saudara" readonly />
+                                <input type="text" class="form-control" id="golongan_karyawan" name="golongan_karyawan" placeholder="Masukkan Golongan" readonly />
                             </div>
                         </div>
                     </div>
@@ -155,9 +118,17 @@
                     </div>
                     <div class="form-group">
                         <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Tahun Ajaran</label>
+                            <label class="col-sm-2 col-form-label">Jabatan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tahun_ajaran" name="tahun_ajaran" placeholder="Masukkan Tahun Ajaran" />
+                                <input type="text" name="jabatan_karyawan" id="jabatan_karyawan" class="form-control" placeholder="Masukkan Jabatan" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Masa Kerja</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="masa_kerja" name="masa_kerja" placeholder="Masukkan Masa Kerja" />
                             </div>
                         </div>
                     </div>
@@ -183,10 +154,10 @@
 
         $("#preview").click(function() {
             var base_url = window.location.origin;
-            var data = $("#form_suket_siswa").serialize();
+            var data = $("#form_suket_guru").serialize();
 
             window.open(
-                base_url + '/process/suket-siswa/preview.php?' + data,
+                base_url + '/process/suket-guru/preview.php?' + data,
                 '_blank' // <- This is what makes it open in a new window.
             );
 
@@ -195,10 +166,15 @@
 
         $("#id_guru").on("change", function() {
             var id = $(this).val()
+            getDataKepsek(id)
+        });
+
+        $("#id_karyawan").on("change", function() {
+            var id = $(this).val()
             getDataGuru(id)
         });
 
-        function getDataGuru(id) {
+        function getDataKepsek(id) {
             $.ajax({
                 method: "POST",
                 url: base_url + "/process/surat-izin-penelitian/getDataGuru.php",
@@ -215,32 +191,22 @@
             });
         }
 
-        $("#id_siswa").on("change", function() {
-            var id = $(this).val()
-            getDataSiswa(id)
-        });
-
-        function getDataSiswa(id) {
+        function getDataGuru(id) {
             $.ajax({
                 method: "POST",
-                url: base_url + "/process/surat-skkb/getDataSiswa.php",
+                url: base_url + "/process/surat-izin-penelitian/getDataGuru.php",
                 data: {
                     id: id
                 },
                 dataType: "json",
                 success: function(data) {
-                    $("#nama_siswa").val(data.nama)
-
-                    var kelas = data.nama_kel + ' ' + data.nama_jurusan + ' ' + data.rombel
-                    $("#kelas").val(kelas)
-
+                    $("#nama_karyawan").val(data.nama)
+                    $("#nip_karyawan").val(data.nip)
                     $("#tempat_lahir").val(data.tempat_lahir)
                     $("#tgl_lahir").val(data.tgl_lahir)
-                    $("#satdik").val(data.satdik)
-                    $("#nama_ayah").val(data.nama_wali)
-                    $("#nama_ibu").val(data.nama_ibu)
-                    $("#jml_saudara").val(data.jml_saudara)
+                    $("#golongan_karyawan").val(data.golongan)
                     $("#alamat").val(data.alamat)
+                    $("#jabatan_karyawan").val(data.jabatan)
                 }
             });
         }

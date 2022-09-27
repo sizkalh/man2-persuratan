@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Surat Keterangan Siswa
+            Surat Keterangan Guru
         </h1>
     </section>
 
@@ -33,7 +33,7 @@
             if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
             ?>
                 <div class="box-header">
-                    <a href="<?= base_url() ?>suket-siswa/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Keteran Siswa</a>
+                    <a href="<?= base_url() ?>suket-guru/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Keteran Guru</a>
                 </div>
             <?php } ?>
             <div class="box-body">
@@ -44,9 +44,9 @@
                             <th width="30" class="text-center">No</th>
                             <th>No. Surat</th>
                             <th class="text-center" width="110">Tgl. Pembuatan</th>
-                            <th>Nama Siswa</th>
-                            <th class="text-center">Kelas</th>
-                            <th class="text-center">Tahun Ajaran</th>
+                            <th>Nama Guru</th>
+                            <th class="text-center">Jabatan</th>
+                            <th class="text-center">Masa Kerja</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -59,30 +59,16 @@
                         $id_user = mysqli_query($koneksi, "select * from tbl_guru where id = '" . $_SESSION['id_user'] . "'");
                         while ($cek_jabatan = mysqli_fetch_array($id_user)) {
                             if ($cek_jabatan['pangkat'] == 'guru') {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='suket_siswa' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='suket_guru' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
                             } else {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='suket_siswa' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='suket_guru' ORDER BY id DESC");
                             }
                         }
 
                         // icon ditolak, diterima dan menunggu
                         while ($myData = mysqli_fetch_array($data)) {
-                            $query_siswa = mysqli_query($koneksi, 'SELECT
-                                                                        tbl_siswa.*,
-                                                                        tbl_kelas.nama AS nama_kel,
-                                                                        tbl_kelas.nama_kelas,
-                                                                        tbl_jurusan.nama AS nama_jurusan,
-                                                                        tbl_detail_kelas.rombel
-                                                                        FROM
-                                                                        tbl_siswa
-                                                                        LEFT JOIN tbl_detail_kelas
-                                                                            ON tbl_detail_kelas.id_detail_kelas = tbl_siswa.id_detail_kelas
-                                                                        INNER JOIN tbl_kelas
-                                                                            ON tbl_kelas.id_kelas = tbl_detail_kelas.id_kelas
-                                                                        INNER JOIN tbl_jurusan
-                                                                            ON tbl_jurusan.id_jurusan = tbl_detail_kelas.id_jurusan 
-                                                                        WHERE tbl_siswa.id = ' . $myData['kepada']);
-                            $data_siswa = mysqli_fetch_array($query_siswa);
+                            $query_guru = mysqli_query($koneksi, 'SELECT * FROM tbl_guru WHERE id = ' . $myData['keterangan']);
+                            $data_guru = mysqli_fetch_array($query_guru);
                         ?>
                             <?php
                             if ($myData['hapus'] == 'n') {
@@ -133,8 +119,8 @@
                                     <td class="text-center"><?= $no++; ?></td>
                                     <td><?= $myData['no_surat'] ?></td>
                                     <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pembuatan'])) ?></td>
-                                    <td><?= $data_siswa['nama'] ?></td>
-                                    <td class="text-center"><?= $data_siswa['nama_kel'] . ' ' . $data_siswa['nama_jurusan'] . ' ' . $data_siswa['rombel'] ?></td>
+                                    <td><?= $data_guru['nama'] ?></td>
+                                    <td class="text-center"><?= $data_guru['jabatan'] ?></td>
                                     <td class="text-center"><?= $myData['catatan'] ?></td>
 
                                     <!-- Button aksi -->
@@ -163,7 +149,7 @@
                                         ?>
                                                 <a href="#" id="edit_surat" class="btn btn-primary btn-sm" disabled><i class="fa fa-pencil"></i></a>
                                             <?php } else { ?>
-                                                <a href="<?= base_url() ?>suket-siswa/edit?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <a href="<?= base_url() ?>suket-guru/edit?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                         <?php }
                                         } ?>
 
@@ -171,7 +157,7 @@
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'operator') {
                                         ?>
-                                            <a href="../../../process/suket-siswa/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="../../../process/suket-guru/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         <?php } ?>
 
                                         <!-- Button Print -->
@@ -180,7 +166,7 @@
                                             $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
                                             if (mysqli_num_rows($cek_ttd) > 0) {
                                                 while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
-                                                    <a href="<?= base_url() ?>process/suket-siswa/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
+                                                    <a href="<?= base_url() ?>process/suket-guru/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
                                                 <?php }
                                             } else { ?>
                                                 <a href="#" target="_blank" class="btn btn-primary btn-sm" disabled><i class="fa fa-print"></i></a>
@@ -209,7 +195,7 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">Kepala Sekolah / Madrasah</h3>
                         </div>
-                        <form action="<?= base_url() ?>process/suket-siswa/tambah.php" method="post" id="form_suket_siswa">
+                        <form action="<?= base_url() ?>process/suket-guru/tambah.php" method="post" id="form_suket_guru">
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="mb-3 row">
@@ -392,7 +378,7 @@
         function getDataSurat(id_surat) {
             $.ajax({
                 method: "POST",
-                url: base_url + "/process/suket-siswa/getDataSurat.php",
+                url: base_url + "/process/suket-guru/getDataSurat.php",
                 data: {
                     id_surat: id_surat
                 },
@@ -562,7 +548,7 @@
                                     timer: 1500
                                 })
                                 setInterval(function() {
-                                    window.location.href = base_url + "/suket-siswa/index";
+                                    window.location.href = base_url + "/suket-guru/index";
                                 }, 1700);
                             } else {
                                 swalWithBootstrapButtons.fire(
@@ -623,7 +609,7 @@
                                     timer: 1500
                                 })
                                 setInterval(function() {
-                                    window.location.href = base_url + "/suket-siswa/index";
+                                    window.location.href = base_url + "/suket-guru/index";
                                 }, 1700);
                             } else {
                                 swalWithBootstrapButtons.fire(

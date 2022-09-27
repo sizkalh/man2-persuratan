@@ -13,7 +13,7 @@
     // echo 'UPDATE tbl_surat SET delete="y" WHERE id="' . $id . '"';
 
     if ($query != 0) {
-        header("location:" . base_url() . "surat-mutasi-siswa-keluar/index?pesan=berhasil");
+        header("location:" . base_url() . "suket=siswa/index?pesan=berhasil");
     } else {
-        header("location:" . base_url() . "surat-mutasi-siswa-keluar/index?pesan=gagal");
+        header("location:" . base_url() . "suket=siswa/index?pesan=gagal");
     }

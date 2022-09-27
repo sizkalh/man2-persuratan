@@ -6,6 +6,8 @@
         redirect('auth');
     }
 
+    $id = $_POST['id'];
+
     $query_siswa = mysqli_query($koneksi, "SELECT
                                             tbl_siswa.*,
                                             tbl_kelas.nama AS nama_kel,
@@ -19,6 +21,6 @@
                                             INNER JOIN tbl_kelas
                                                 ON tbl_kelas.id_kelas = tbl_detail_kelas.id_kelas
                                             INNER JOIN tbl_jurusan
-                                                ON tbl_jurusan.id_jurusan = tbl_detail_kelas.id_jurusan");
+                                                ON tbl_jurusan.id_jurusan = tbl_detail_kelas.id_jurusan WHERE tbl_siswa.id = ". $id);
     $data_siswa = mysqli_fetch_array($query_siswa);
     echo json_encode($data_siswa);
