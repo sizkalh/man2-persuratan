@@ -107,7 +107,7 @@ function tgl_indo_garing($tanggal)
             <tr>
               <td>Asal Instansi</td>
               <td>:</td>
-              <td><?= $_GET['unit_kerja'] ?></td>
+              <td><?= $_GET['instansi'] ?></td>
             </tr>
           </table>
         </td>
