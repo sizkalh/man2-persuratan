@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Surat Keterangan Guru
+            Surat Rekomendasi Guru
         </h1>
     </section>
 
@@ -33,7 +33,7 @@
             if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
             ?>
                 <div class="box-header">
-                    <a href="<?= base_url() ?>suket-guru/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Keteran Guru</a>
+                    <a href="<?= base_url() ?>surat-rekom-guru/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Rekomendasi Guru</a>
                 </div>
             <?php } ?>
             <div class="box-body">
@@ -46,7 +46,7 @@
                             <th class="text-center" width="110">Tgl. Pembuatan</th>
                             <th>Nama Guru</th>
                             <th class="text-center">Jabatan</th>
-                            <th class="text-center">Masa Kerja</th>
+                            <th class="text-center">Perihal</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -59,9 +59,9 @@
                         $id_user = mysqli_query($koneksi, "select * from tbl_guru where id = '" . $_SESSION['id_user'] . "'");
                         while ($cek_jabatan = mysqli_fetch_array($id_user)) {
                             if ($cek_jabatan['pangkat'] == 'guru') {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='suket_guru' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_rekom_guru' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
                             } else {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='suket_guru' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_rekom_guru' ORDER BY id DESC");
                             }
                         }
 
@@ -149,7 +149,7 @@
                                         ?>
                                                 <a href="#" id="edit_surat" class="btn btn-primary btn-sm" disabled><i class="fa fa-pencil"></i></a>
                                             <?php } else { ?>
-                                                <a href="<?= base_url() ?>suket-guru/edit?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <a href="<?= base_url() ?>surat-rekom-guru/edit?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                         <?php }
                                         } ?>
 
@@ -157,7 +157,7 @@
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'operator') {
                                         ?>
-                                            <a href="../../../process/suket-guru/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="../../../process/surat-rekom-guru/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         <?php } ?>
 
                                         <!-- Button Print -->
@@ -166,7 +166,7 @@
                                             $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
                                             if (mysqli_num_rows($cek_ttd) > 0) {
                                                 while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
-                                                    <a href="<?= base_url() ?>process/suket-guru/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
+                                                    <a href="<?= base_url() ?>process/surat-rekom-guru/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
                                                 <?php }
                                             } else { ?>
                                                 <a href="#" target="_blank" class="btn btn-primary btn-sm" disabled><i class="fa fa-print"></i></a>
@@ -189,13 +189,13 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Berkas Pengajuan Surat Keterangan Guru</h4>
+                        <h4 class="modal-title">Berkas Pengajuan Surat Rekomendasi Guru</h4>
                     </div>
                     <div class="modal-body">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Kepala Sekolah / Madrasah</h3>
+                            <h3 class="box-title">Yang bertanda tangan dibawah ini</h3>
                         </div>
-                        <form action="<?= base_url() ?>process/suket-guru/tambah.php" method="post" id="form_suket_guru">
+                        <form action="<?= base_url() ?>process/surat-rekom-guru/tambah.php" method="post" id="form_surat_rekom_guru">
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="mb-3 row">
@@ -215,6 +215,14 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="mb-3 row">
+                                        <label class="col-sm-2 col-form-label">Pangkat / Golongan</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="golongan" id="golongan" class="form-control" placeholder="Masukkan Pangkat / Golongan" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="mb-3 row">
                                         <label class="col-sm-2 col-form-label">Jabatan</label>
                                         <div class="col-sm-10">
                                             <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Masukkan Jabatan" readonly />
@@ -223,15 +231,15 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="mb-3 row">
-                                        <label class="col-sm-2 col-form-label">Unit Kerja</label>
+                                        <label class="col-sm-2 col-form-label">Asal Instansi</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="unit_kerja" id="unit_kerja" class="form-control" placeholder="Masukkan Unit Kerja" readonly />
+                                            <input type="text" name="instansi" id="instansi" class="form-control" placeholder="Masukkan Unit Kerja" readonly />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="box-header with-border">
-                                <h3 class="box-title">Menerangkan Guru Bersangkutan</h3>
+                                <h3 class="box-title">Memberikan rekomendasi kepada</h3>
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
@@ -239,6 +247,14 @@
                                         <label class="col-sm-2 col-form-label">Nama</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="nama_karyawan" name="nama_karyawan" placeholder="Masukkan Nama Siswa" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-2 col-form-label">NIP</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="nip_karyawan" name="nip_karyawan" placeholder="Masukkan NIP" readonly />
                                         </div>
                                     </div>
                                 </div>
@@ -282,9 +298,9 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="mb-3 row">
-                                        <label class="col-sm-2 col-form-label">Masa Kerja</label>
+                                        <label class="col-sm-2 col-form-label">Perihal</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="masa_kerja" name="masa_kerja" placeholder="Masukkan Masa Kerja" readonly />
+                                            <input type="text" class="form-control" id="perihal" name="perihal" placeholder="Masukkan Perihal" readonly />
                                         </div>
                                     </div>
                                 </div>
@@ -369,11 +385,12 @@
                     // Yang perlu disesuaikan menurut inputan
                     $('#nama_guru').val(data.nama);
                     $('#nip').val(data.nip);
+                    $('#golongan').val(data.golongan);
                     $('#jabatan').val(data.jabatan);
-                    $('#unit_kerja').val(data.instansi);
+                    $('#instansi').val(data.instansi);
 
                     getDataGuru(id_surat)
-                    $('#masa_kerja').val(data.catatan);
+                    $('#perihal').val(data.catatan);
                     // sampai sini
 
                     $.ajax({
@@ -534,7 +551,7 @@
                                     timer: 1500
                                 })
                                 setInterval(function() {
-                                    window.location.href = base_url + "/suket-guru/index";
+                                    window.location.href = base_url + "/surat-rekom-guru/index";
                                 }, 1700);
                             } else {
                                 swalWithBootstrapButtons.fire(
@@ -595,7 +612,7 @@
                                     timer: 1500
                                 })
                                 setInterval(function() {
-                                    window.location.href = base_url + "/suket-guru/index";
+                                    window.location.href = base_url + "/surat-rekom-guru/index";
                                 }, 1700);
                             } else {
                                 swalWithBootstrapButtons.fire(

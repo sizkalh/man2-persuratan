@@ -129,6 +129,11 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Surat Keterangan Guru
             </a>
           </li>
+          <li <?= $uri2[0] == "surat-rekom-guru" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-rekom-guru/index">
+              <i class="fa fa-circle-o"></i>Surat Rekomendasi Guru
+            </a>
+          </li>
           <li <?= $uri2[0] == "cuti-tahunan" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>cuti-tahunan/index">
               <i class="fa fa-circle-o"></i>Cuti Tahunan
@@ -187,11 +192,6 @@ $uri2 = explode('/', trim($uri[0], '/'));
           <li <?= $uri2[0] == "surat-pesanan" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-pesanan/index">
               <i class="fa fa-circle-o"></i>Surat Pesanan
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-rekom-guru" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-rekom-guru/index">
-              <i class="fa fa-circle-o"></i>Surat Rekomendasi Guru
             </a>
           </li>
           <li <?= $uri2[0] == "surat-rekom-siswa" ? "class = 'active'" : "" ?>>

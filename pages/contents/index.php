@@ -72,8 +72,18 @@
 
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>100</h3>
-                        <p>Guru & Tendik aktif</p>
+                        <h3>
+                            <?php
+                            $sql_terbit = mysqli_query($koneksi, 'SELECT
+                                                                        COUNT(*) AS tot_proses
+                                                                        FROM
+                                                                        tbl_guru');
+                            while ($data_terbit = mysqli_fetch_array($sql_terbit)) {
+                                echo $data_terbit['tot_proses'];
+                            }
+                            ?>
+                        </h3>
+                        <p>Guru / Tendik aktif</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users"></i>
@@ -85,7 +95,17 @@
 
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>500</h3>
+                        <h3>
+                            <?php
+                            $sql_terbit = mysqli_query($koneksi, 'SELECT
+                                                                        COUNT(*) AS tot_proses
+                                                                        FROM
+                                                                        tbl_siswa');
+                            while ($data_terbit = mysqli_fetch_array($sql_terbit)) {
+                                echo $data_terbit['tot_proses'];
+                            }
+                            ?>
+                        </h3>
                         <p>Siswa Aktif</p>
                     </div>
                     <div class="icon">

@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Surat Keterangan Guru
+            Surat Rekomendasi Guru
         </h1>
     </section>
 
@@ -11,7 +11,7 @@
         <!-- Default box -->
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">Kepala Sekolah / Madrasah</h3>
+                <h3 class="box-title">Yang bertanda tangan dibawah ini</h3>
             </div>
             <?php
             $id = $_GET['id'];
@@ -24,7 +24,7 @@
                 $query_guru = mysqli_query($koneksi, 'SELECT * FROM tbl_guru WHERE id = ' . $data['keterangan']);
                 $data_guru = mysqli_fetch_array($query_guru);
             ?>
-                <form action="<?= base_url() ?>process/suket-guru/update.php" method="post" id="form_suket_guru">
+                <form action="<?= base_url() ?>process/surat-rekom-guru/update.php" method="post" id="form_surat_rekom_guru">
                     <div class="box-body">
                         <div class="form-group">
                             <div class="mb-3 row">
@@ -54,6 +54,14 @@
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Pangkat / Golongan</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="golongan" id="golongan" value="<?= $data_kepsek['golongan'] ?>" class="form-control" placeholder="Masukkan Pangkat / Golongan" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Jabatan</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="jabatan" id="jabatan" value="<?= $data_kepsek['jabatan'] ?>" class="form-control" placeholder="Masukkan Jabatan" readonly />
@@ -62,7 +70,7 @@
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Unit Kerja</label>
+                                <label class="col-sm-2 col-form-label">Asal Instansi</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="unit_kerja" id="unit_kerja" value="<?= $data_kepsek['instansi'] ?>" class="form-control" placeholder="Masukkan Unit Kerja" readonly />
                                 </div>
@@ -70,7 +78,7 @@
                         </div>
                     </div>
                     <div class="box-header with-border">
-                        <h3 class="box-title">Menerangkan Guru Bersangkutan</h3>
+                        <h3 class="box-title">Memberikan rekomendasi kepada</h3>
                     </div>
                     <div class="box-body">
                         <div class="form-group">
@@ -138,9 +146,9 @@
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Masa Kerja</label>
+                                <label class="col-sm-2 col-form-label">Perihal</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="masa_kerja" name="masa_kerja" value="<?= $data['catatan'] ?>" placeholder="Masukkan Masa Kerja" />
+                                    <input type="text" class="form-control" id="perihal" value="<?= $data['catatan'] ?>" name="perihal" placeholder="Masukkan Perihal" />
                                 </div>
                             </div>
                         </div>
@@ -167,10 +175,10 @@
 
         $("#preview").click(function() {
             var base_url = window.location.origin;
-            var data = $("#form_suket_guru").serialize();
+            var data = $("#form_surat_rekom_guru").serialize();
 
             window.open(
-                base_url + '/process/suket-guru/preview.php?' + data,
+                base_url + '/process/surat-rekom-guru/preview.php?' + data,
                 '_blank' // <- This is what makes it open in a new window.
             );
 
@@ -199,6 +207,7 @@
                     $("#nama_guru").val(data.nama)
                     $("#nip").val(data.nip)
                     $("#jabatan").val(data.jabatan)
+                    $("#golongan").val(data.golongan)
                     $("#instansi").val(data.instansi)
                 }
             });
