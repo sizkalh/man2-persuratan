@@ -33,7 +33,7 @@
             if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
             ?>
                 <div class="box-header">
-                    <a href="<?= base_url() ?>suket-guru/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Keteran Guru</a>
+                    <a href="<?= base_url() ?>suket-guru/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Keterangan Guru</a>
                 </div>
             <?php } ?>
             <div class="box-body">

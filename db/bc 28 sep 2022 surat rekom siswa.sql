@@ -245,9 +245,13 @@ CREATE TABLE `tbl_prestasi` (
   `bidang` text DEFAULT NULL,
   `tahun` int(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_prestasi` */
+
+insert  into `tbl_prestasi`(`id`,`id_siswa`,`prestasi`,`bidang`,`tahun`) values 
+(1,1,'Balap karung se RT','Olahraga',2022),
+(2,1,'Makan baksi','Lomab 17an',2022);
 
 /*Table structure for table `tbl_sekolah` */
 
@@ -338,7 +342,7 @@ CREATE TABLE `tbl_surat` (
   `id_pemohon` int(11) DEFAULT NULL,
   `hapus` enum('y','n') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_surat` */
 
@@ -370,7 +374,8 @@ insert  into `tbl_surat`(`id`,`jenis`,`no_surat`,`hari`,`tgl_pelaksanaan`,`tgl_p
 (33,'suket_siswa',NULL,NULL,NULL,NULL,NULL,NULL,'12',NULL,NULL,NULL,'4','2021/2022','1970-01-01',5,'n'),
 (34,'suket_siswa',NULL,NULL,NULL,NULL,NULL,NULL,'10',NULL,NULL,NULL,'4','2021/2022','2022-09-27',5,'n'),
 (35,'suket_guru','',NULL,NULL,NULL,NULL,NULL,'4',NULL,NULL,NULL,'2','2 Tahun','2022-09-27',5,'n'),
-(36,'surat_rekom_guru','',NULL,NULL,NULL,NULL,NULL,'2',NULL,NULL,NULL,'1','melakukan perjalanan dinas','2022-09-27',5,'n');
+(36,'surat_rekom_guru','',NULL,NULL,NULL,NULL,NULL,'2',NULL,NULL,NULL,'1','melakukan perjalanan dinas','2022-09-27',5,'n'),
+(37,'surat_rekom_siswa',NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,'mendaftar sekolah',NULL,'1','2021/2022','2022-09-27',5,'n');
 
 /*Table structure for table `tbl_surat_balasan` */
 
@@ -518,21 +523,6 @@ CREATE TABLE `tbl_surat_pernyataan` (
 
 /*Data for the table `tbl_surat_pernyataan` */
 
-/*Table structure for table `tbl_surat_rekom` */
-
-DROP TABLE IF EXISTS `tbl_surat_rekom`;
-
-CREATE TABLE `tbl_surat_rekom` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_guru` int(11) DEFAULT NULL,
-  `id_siswa` int(11) DEFAULT NULL,
-  `nama_kampus` text DEFAULT NULL,
-  `th_akademik` varchar(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `tbl_surat_rekom` */
-
 /*Table structure for table `tbl_surat_tugas` */
 
 DROP TABLE IF EXISTS `tbl_surat_tugas`;
@@ -558,7 +548,7 @@ CREATE TABLE `tbl_tanda_tangan` (
   `catatan` text DEFAULT NULL,
   `tgl_proses` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=236 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_tanda_tangan` */
 
@@ -772,7 +762,12 @@ insert  into `tbl_tanda_tangan`(`id`,`id_surat`,`id_user`,`status`,`catatan`,`tg
 (227,36,4,'belum',NULL,NULL),
 (228,36,3,'belum',NULL,NULL),
 (229,36,2,'cek',NULL,NULL),
-(230,36,5,'diterima','','2022-09-27 23:58:18');
+(230,36,5,'diterima','','2022-09-27 23:58:18'),
+(231,37,1,'belum',NULL,NULL),
+(232,37,4,'belum',NULL,NULL),
+(233,37,3,'belum',NULL,NULL),
+(234,37,2,'belum',NULL,NULL),
+(235,37,5,'cek',NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
