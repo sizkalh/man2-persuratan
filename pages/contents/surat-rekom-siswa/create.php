@@ -259,11 +259,27 @@
                 },
                 dataType: "json",
                 success: function(data) {
-                    var nomor = 1
+                    num = 1;
+                    var html = "";
+                    var i;
                     for (i = 0; i < data.length; i++) {
-                        // alert(nomor)
-                        $('#prestasi').append('<tr><td class="text-center">' + nomor++ + '</td><td>' + data[i].prestasi + '</td><td>' + data[i].bidang + '</td><td class="text-center">' + data[i].tahun + '</td></tr>');
+                        html +=
+                            "<tr>" +
+                            "<td class='text-center'>" +
+                            num++ +
+                            "</td>" +
+                            "<td>" +
+                            data[i].prestasi +
+                            "</td>" +
+                            "<td>" +
+                            data[i].bidang +
+                            "</td>" +
+                            "<td>" +
+                            data[i].tahun +
+                            "</td>" +
+                            "</tr>";
                     }
+                    $("#prestasi").html(html);
                 }
             });
         }

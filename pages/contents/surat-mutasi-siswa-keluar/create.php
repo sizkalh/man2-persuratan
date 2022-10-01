@@ -179,13 +179,17 @@
         });
 
         $("#id_siswa").on("change", function() {
-            getDataSiswa()
+            var id = $(this).val()
+            getDataSiswa(id)
         });
 
-        function getDataSiswa() {
+        function getDataSiswa(id) {
             $.ajax({
-                method: "GET",
+                method: "POST",
                 url: base_url + "/process/surat-skkb/getDataSiswa.php",
+                data: {
+                    id: id
+                },
                 dataType: "json",
                 success: function(data) {
                     $("#nis").val(data.nis)

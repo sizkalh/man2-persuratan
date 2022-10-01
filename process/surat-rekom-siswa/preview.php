@@ -74,6 +74,7 @@ function tgl_indo_garing($tanggal)
     #prestasi_data td,
     #prestasi_data th {
       border: 1px solid;
+      padding: 5px;
     }
 
     #prestasi_data {
@@ -102,7 +103,7 @@ function tgl_indo_garing($tanggal)
           Yang bertanda tangan dibawah ini,
         </td>
       </tr>
-      <tr>
+      <tr style="height: 100px; vertical-align: text-top;">
         <td colspan="3">
           <table>
             <tr>
@@ -133,7 +134,7 @@ function tgl_indo_garing($tanggal)
           Dengan ini memberikan rekomendasi kepada siswa tersebut dibawah ini :
         </td>
       </tr>
-      <tr>
+      <tr style="height: 150px; vertical-align: text-top;">
         <td colspan="3">
           <table>
             <tr>
@@ -179,35 +180,44 @@ function tgl_indo_garing($tanggal)
           Berikut daftar prestasi yang diraih ananda sebagai bahan pertimbangan proses seleksi :
         </td>
       </tr>
-      <tr tyle="height: 50px; vertical-align: text-top;">
+      <tr>
         <td colspan="3">
           <table id="prestasi_data">
             <tr>
-              <td style="width: 150px;">No</td>
-              <td>Prestasi</td>
-              <td>Bidang</td>
-              <td class="text-center">Tahun</td>
+              <th style="width: 35px; text-align: center;">No</th>
+              <th>Prestasi</th>
+              <th>Bidang</th>
+              <th style="text-align: center;">Tahun</th>
             </tr>
             <?php
             $no = 1;
             $query_prestasi = mysqli_query($koneksi, 'SELECT
-                                                                                    *
-                                                                                    FROM
-                                                                                    tbl_prestasi
-                                                                                    WHERE id_siswa = ' . $_GET['id_siswa']);
-            while ($prestasi = mysqli_fetch_array($query_prestasi)) {
+                                                      *
+                                                      FROM
+                                                      tbl_prestasi
+                                                      WHERE id_siswa = ' . $_GET['id_siswa']);
+            if (mysqli_num_rows($query_prestasi) > 0) {
+              while ($prestasi = mysqli_fetch_array($query_prestasi)) {
             ?>
+                <tr>
+                  <td style="text-align: center;"><?= $no++ ?></td>
+                  <td><?= $prestasi['prestasi'] ?></td>
+                  <td><?= $prestasi['bidang'] ?></td>
+                  <td style="text-align: center;"><?= $prestasi['tahun'] ?></td>
+                </tr>
+              <?php }
+            } else { ?>
               <tr>
-                <td class="text-center"><?= $no++ ?></td>
-                <td><?= $prestasi['prestasi'] ?></td>
-                <td><?= $prestasi['bidang'] ?></td>
-                <td class="text-center"><?= $prestasi['tahun'] ?></td>
+                <td style="text-align: center;">1</td>
+                <td style="text-align: center;">-</td>
+                <td style="text-align: center;">-</td>
+                <td style="text-align: center;">-</td>
               </tr>
             <?php } ?>
           </table>
         </td>
       </tr>
-      <tr>
+      <tr style="height: 230px;">
         <td></td>
         <td style="width: 50%;"></td>
         <td style="text-align: center;">
