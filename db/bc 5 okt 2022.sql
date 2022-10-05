@@ -30,12 +30,9 @@ CREATE TABLE `tbl_berita_acara` (
   `nip_kedua` varchar(100) DEFAULT NULL,
   `jabatan_kedua` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_berita_acara` */
-
-insert  into `tbl_berita_acara`(`id`,`id_surat`,`nama_pertama`,`nip_pertama`,`jabatan_pertama`,`nama_kedua`,`nip_kedua`,`jabatan_kedua`) values 
-(1,20,'Edo','155','Guru','setian','0999','guru masak');
 
 /*Table structure for table `tbl_detail_kelas` */
 
@@ -226,13 +223,12 @@ CREATE TABLE `tbl_lampiran` (
   `lampiran` varchar(100) DEFAULT NULL,
   `file` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_lampiran` */
 
 insert  into `tbl_lampiran`(`id`,`id_surat`,`lampiran`,`file`) values 
-(1,1,'1 lampiran','228254470_nota_dinas_MODUL_MATERI_COREL_DRAW_X7.pdf'),
-(2,10,'1 lampiran','660777717_nota_dinas_1.PNG');
+(1,1,'2 lampiran','1150275313_nota_dinas_pdficon.png');
 
 /*Table structure for table `tbl_prestasi` */
 
@@ -272,14 +268,14 @@ CREATE TABLE `tbl_sekolah` (
 /*Data for the table `tbl_sekolah` */
 
 insert  into `tbl_sekolah`(`id`,`nama_sekolah`,`npsn`,`alamat`,`telp`,`kode_pos`,`website`,`email`) values 
-(1,'nama_sekolah','MA Negeri 2 Tulungag',NULL,NULL,NULL,NULL,NULL);
+(1,'MA Negeri 2 Tulungagung','20584790','Jl. Ki Mangun Sarkoro, Dusun Krajan, Beji, Kec. Boyolangu, Kabupaten Tulungagung, Jawa Timur 66233\r\n','(0355) 321817',66233,'man2-tulungagung.sch.id','manduatulungagung@gmail.com');
 
 /*Table structure for table `tbl_siswa` */
 
 DROP TABLE IF EXISTS `tbl_siswa`;
 
 CREATE TABLE `tbl_siswa` (
-  `id` varchar(10) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nisn` varchar(15) DEFAULT NULL,
   `nis` varchar(15) DEFAULT NULL,
   `id_detail_kelas` int(11) DEFAULT NULL,
@@ -300,24 +296,25 @@ CREATE TABLE `tbl_siswa` (
   `username` varchar(20) DEFAULT NULL,
   `password` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_siswa` */
 
 insert  into `tbl_siswa`(`id`,`nisn`,`nis`,`id_detail_kelas`,`nama`,`jk`,`tempat_lahir`,`tgl_lahir`,`no_hp`,`alamat`,`nama_wali`,`no_hp_wali`,`pekerjaan_wali`,`nama_ibu`,`no_hp_ibu`,`pekerjaan_ibu`,`satdik`,`jml_saudara`,`username`,`password`) values 
-('1','111222','123',1,'Rika','P','Tulungagung','2005-08-19','088999000999','Kampungdalem','Saipul','089999000999','Gali lobang','SITI','089999000999','wiraswasta','SMA',1,'rika',''),
-('10','9878','1261',2,'luki','L','Tulungagung','2005-09-23','0812345678978','kedungwaru','dulah','0812345678978','wiraswasta','SITI','089999000999','wiraswasta','SMA',2,'luki',''),
-('11','9880','1265',1,'wawan','L','Tulungagung','2005-09-24','0812345678979','kedungwaru','abdul','0812345678979','pegawai swasta','SITI','089999000999','wiraswasta','SMA',3,'wawan',''),
-('12','9882','1269',1,'dadang','L','Tulungagung','2005-09-25','0812345678970','kedungwaru','manab','0812345678970','wiraswasta','SITI','089999000999','wiraswasta','SMA',1,'dadang',''),
-('13','9884','1273',1,'vino','L','Tulungagung','2005-09-26','0812345678982','kedungwaru','mur','0812345678982','wiraswasta','SITI','089999000999','wiraswasta','SMA',2,'vino',''),
-('2','111223','123',1,'deny','L','Tulungagung','2005-08-19','089999898889','Kedungwaru','dessy','089997878788','wiraswasta','SITI','089999000999','wiraswasta','SMA',3,'deny',''),
-('3','1234','1233',2,'adit','L','Tulungagung','2005-09-16','0812345678972','kedungwaru','narto','0812345678972','wiraswasta','SITI','089999000999','wiraswasta','SMA',1,'adit',''),
-('4','2468','1237',3,'ali','L','Tulungagung','2005-09-17','0812345678973','kedungwaru','darto','0812345678973','wiraswasta','SITI','089999000999','wiraswasta','SMA',2,'ali',''),
-('5','4936','1241',3,'didin','L','Tulungagung','2005-09-18','0812345678974','kedungwaru','parto','0812345678974','wiraswasta','SITI','089999000999','wiraswasta','SMA',3,'didin',''),
-('6','2468','1245',4,'kiko','L','Tulungagung','2005-09-19','0812345678975','kedungwaru','yudi','0812345678975','pns','SITI','089999000999','wiraswasta','SMA',1,'kiko',''),
-('7','4936','1249',4,'wahyu','L','Tulungagung','2005-09-20','0812345678976','kedungwaru','gilang','0812345678976','wiraswasta','SITI','089999000999','wiraswasta','SMA',2,'wahyu',''),
-('8','9874','1253',2,'bayu','L','Tulungagung','2005-09-21','0812345678977','kedungwaru','dirga','0812345678977','wiraswasta','SITI','089999000999','wiraswasta','SMA',3,'bayu',''),
-('9','9876','1257',1,'andri','L','Tulungagung','2005-09-22','0812345678972','kedungwaru','patih','0812345678972','pns','SITI','089999000999','wiraswasta','SMA',1,'andri','');
+(1,'111222','123',1,'Rika','P','Tulungagung','2005-08-19','088999000999','Kampungdalem','Saipul','089999000999','Gali lobang','SITI','089999000999','wiraswasta','SMA',1,'rika',''),
+(2,'111223','123',1,'deny','L','Tulungagung','2005-08-19','089999898889','Kedungwaru','dessy','089997878788','wiraswasta','SITI','089999000999','wiraswasta','SMA',3,'deny',''),
+(3,'1234','1233',2,'adit','L','Tulungagung','2005-09-16','0812345678972','kedungwaru','narto','0812345678972','wiraswasta','SITI','089999000999','wiraswasta','SMA',1,'adit',''),
+(4,'2468','1237',3,'ali','L','Tulungagung','2005-09-17','0812345678973','kedungwaru','darto','0812345678973','wiraswasta','SITI','089999000999','wiraswasta','SMA',2,'ali',''),
+(5,'4936','1241',3,'didin','L','Tulungagung','2005-09-18','0812345678974','kedungwaru','parto','0812345678974','wiraswasta','SITI','089999000999','wiraswasta','SMA',3,'didin',''),
+(6,'2468','1245',4,'kiko','L','Tulungagung','2005-09-19','0812345678975','kedungwaru','yudi','0812345678975','pns','SITI','089999000999','wiraswasta','SMA',1,'kiko',''),
+(7,'4936','1249',4,'wahyu','L','Tulungagung','2005-09-20','0812345678976','kedungwaru','gilang','0812345678976','wiraswasta','SITI','089999000999','wiraswasta','SMA',2,'wahyu',''),
+(8,'9874','1253',2,'bayu','L','Tulungagung','2005-09-21','0812345678977','kedungwaru','dirga','0812345678977','wiraswasta','SITI','089999000999','wiraswasta','SMA',3,'bayu',''),
+(9,'9876','1257',1,'andri','L','Tulungagung','2005-09-22','0812345678972','kedungwaru','patih','0812345678972','pns','SITI','089999000999','wiraswasta','SMA',1,'andri',''),
+(10,'9878','1261',2,'luki','L','Tulungagung','2005-09-23','0812345678978','kedungwaru','dulah','0812345678978','wiraswasta','SITI','089999000999','wiraswasta','SMA',2,'luki',''),
+(11,'9880','1265',1,'wawan','L','Tulungagung','2005-09-24','0812345678979','kedungwaru','abdul','0812345678979','pegawai swasta','SITI','089999000999','wiraswasta','SMA',3,'wawan',''),
+(12,'9882','1269',1,'dadang','L','Tulungagung','2005-09-25','0812345678970','kedungwaru','manab','0812345678970','wiraswasta','SITI','089999000999','wiraswasta','SMA',1,'dadang',''),
+(13,'9884','1273',1,'vino','L','Tulungagung','2005-09-26','0812345678982','kedungwaru','mur','0812345678982','wiraswasta','SITI','089999000999','wiraswasta','SMA',2,'vino',''),
+(14,'123444','12233',3,'Seftiqn','L','Tulungagung','2022-09-27','0988888','--','ik','09090909','swasta','ti','0909090090','swasta','SMA',2,'lek',NULL);
 
 /*Table structure for table `tbl_surat` */
 
@@ -342,40 +339,13 @@ CREATE TABLE `tbl_surat` (
   `id_pemohon` int(11) DEFAULT NULL,
   `hapus` enum('y','n') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_surat` */
 
 insert  into `tbl_surat`(`id`,`jenis`,`no_surat`,`hari`,`tgl_pelaksanaan`,`tgl_pelaksanaan2`,`waktu`,`tempat`,`kepada`,`alamat`,`perihal`,`ttd_kamad`,`keterangan`,`catatan`,`tgl_pembuatan`,`id_pemohon`,`hapus`) values 
-(1,'nota_dinas','0188/00G10','senin','2022-09-05',NULL,'08:00 WIB','Aula','guru',NULL,'upacara dinas','','upacara',NULL,'2022-09-06',5,'n'),
-(2,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,NULL,5,'n'),
-(3,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-07',5,'n'),
-(4,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-07',5,'n'),
-(5,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-07',5,'y'),
-(6,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-07',5,'y'),
-(7,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-09',1,'y'),
-(8,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-09',5,'y'),
-(9,'surat_kuasa','0199/00G30','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-09',5,'n'),
-(10,'nota_dinas','','Senin','2022-09-21',NULL,'07:00 WIB','Lapangans','Malikss',NULL,'Upacara','','Upacara bendera',NULL,'2022-09-09',5,'n'),
-(11,'surat_kuasa','','',NULL,NULL,'','',NULL,NULL,'','','',NULL,'2022-09-09',5,'n'),
-(14,'nota_dinas',NULL,'senin','2022-09-11',NULL,'08.00','Lapangan','Sef',NULL,'-',NULL,'-',NULL,'2022-09-25',5,'n'),
-(20,'berita_acara','d0112','rabu','2022-09-12',NULL,NULL,NULL,NULL,NULL,'<ol>\r\n	<li>masuk</li>\r\n	<li>masak</li>\r\n</ol>\r\n',NULL,NULL,NULL,'2022-09-25',5,'n'),
-(21,'surat_kuasa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-26',5,'n'),
-(22,'surat_kuasa','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-26',5,'n'),
-(23,'nota_dinas',NULL,'senin','2022-09-02',NULL,'08.00','Lapangan','Sef',NULL,'surat undangan',NULL,'tes',NULL,'2022-09-26',5,'n'),
-(24,'surat_undangan','','Selasa','1970-01-01',NULL,'08.00','Lapangan depan','sef','Jl. Ki Mangunsarkoro, Beji, Boyolangu, Tulungagung 99','undangan',NULL,'tes',NULL,'2022-09-26',5,'n'),
-(25,'surat_balasan','',NULL,NULL,NULL,NULL,NULL,'',NULL,'tugas mengampu kelas',NULL,NULL,NULL,'2022-09-26',5,'n'),
-(26,'surat_skkb','',NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,'2021/2022',NULL,'2022-09-26',5,'n'),
-(27,'surat_izin_penelitian','',NULL,NULL,NULL,NULL,NULL,'3',NULL,NULL,NULL,NULL,NULL,'2022-09-26',5,'n'),
-(28,'surat_permohonan_narasumber','','senin','2022-09-18',NULL,'08.00','Lapangan','andys','Jl. Ki Mangunsarkoro, Beji, Boyolangu, Tulungagung','tes b',NULL,'pengecekan','memm','2022-09-26',5,'n'),
-(29,'surat_pemberitahuan','','senin','2022-09-21',NULL,'08.00','Lapangan depan','Malikis','Tempat','-',NULL,'surat pemebri',NULL,'2022-09-27',5,'n'),
-(30,'surat_mutasi_siswa_keluar','',NULL,NULL,NULL,NULL,NULL,'1',NULL,'smak',NULL,'k','pp','1970-01-01',5,'n'),
-(32,'suket_siswa',NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,'4','2021/2022','1970-01-01',5,'n'),
-(33,'suket_siswa',NULL,NULL,NULL,NULL,NULL,NULL,'12',NULL,NULL,NULL,'4','2021/2022','1970-01-01',5,'n'),
-(34,'suket_siswa',NULL,NULL,NULL,NULL,NULL,NULL,'10',NULL,NULL,NULL,'4','2021/2022','2022-09-27',5,'n'),
-(35,'suket_guru','',NULL,NULL,NULL,NULL,NULL,'4',NULL,NULL,NULL,'2','2 Tahun','2022-09-27',5,'n'),
-(36,'surat_rekom_guru','',NULL,NULL,NULL,NULL,NULL,'2',NULL,NULL,NULL,'1','melakukan perjalanan dinas','2022-09-27',5,'n'),
-(37,'surat_rekom_siswa',NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,'mendaftar sekolah',NULL,'1','2021/2022','2022-09-27',5,'n');
+(1,'nota_dinas','','senin','2022-09-01',NULL,'08.00','Lapangan','Maliki',NULL,'tes',NULL,'-',NULL,'2022-09-29',5,'n'),
+(2,'surat_rekom_siswa',NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,'-',NULL,'1','-','2022-09-30',5,'n');
 
 /*Table structure for table `tbl_surat_balasan` */
 
@@ -392,12 +362,9 @@ CREATE TABLE `tbl_surat_balasan` (
   `bulan_awal` varchar(100) DEFAULT NULL,
   `bulan_akhir` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_surat_balasan` */
-
-insert  into `tbl_surat_balasan`(`id`,`id_surat`,`nama`,`nip`,`jabatan`,`tugas_diterima`,`keterangan`,`bulan_awal`,`bulan_akhir`) values 
-(1,25,'seftian','123','guru tik','tugas mengampu kelas','mengampu kelas','Januari 2022','Desember 2022');
 
 /*Table structure for table `tbl_surat_dispen` */
 
@@ -430,12 +397,9 @@ CREATE TABLE `tbl_surat_izin_penelitian` (
   `tanggal_mulai` date DEFAULT NULL,
   `tanggal_selesai` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_surat_izin_penelitian` */
-
-insert  into `tbl_surat_izin_penelitian`(`id`,`id_surat`,`nama_mhs`,`nim`,`jurusan`,`semester`,`kampus`,`judul`,`tanggal_mulai`,`tanggal_selesai`) values 
-(1,27,'seftianss','0090909','teknik','1','kampusku','mau ya','2022-08-31','2022-09-24');
 
 /*Table structure for table `tbl_surat_kuasa` */
 
@@ -456,20 +420,9 @@ CREATE TABLE `tbl_surat_kuasa` (
   `jabatan_penerima_kuasa` varchar(60) DEFAULT NULL,
   `ket` text DEFAULT NULL,
   PRIMARY KEY (`id_surat_kuasa`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_surat_kuasa` */
-
-insert  into `tbl_surat_kuasa`(`id_surat_kuasa`,`id_surat`,`id_guru`,`nip`,`pemberi_kuasa`,`pangkat`,`jabatan_pemberi_kuasa`,`instansi`,`penerima_kuasa`,`tempat_lahir`,`tanggal_lahir`,`jabatan_penerima_kuasa`,`ket`) values 
-(1,NULL,NULL,'','finggar','','','','','','0000-00-00','',''),
-(2,5,NULL,'011102010101010','finggar','guru','guru','man 2 tulungagung','dar','tulungagung','2000-10-31','guru','ospek siswa'),
-(3,6,NULL,'132','agus','guru','guru','man','lila','tulungagung','2022-09-13','guru','upacara'),
-(4,7,1,'151','Shieldy','III A','Guru','MAN 2 Tulungagung','Lita','Tulungagung','2022-09-15','Guru','Pelatih upacara'),
-(5,8,5,'','','','','','Mika','Tulungagung','2022-09-08','Guru','Pelatih upacara'),
-(6,9,5,'155','Edo','III A','Guru','MAN 2 Tulungagung','Mila Karmila','Tulungagung','2022-09-14','Guru','Pelatih Tari'),
-(7,11,5,'155','Edo','III A','Guru','MAN 2 Tulungagung','Bunga','Kediri','2022-11-01','Katu','Petugas Tari'),
-(8,21,5,'155','Edo','III A','Guru','MAN 2 Tulungagung','aku','tulu','2022-08-29','guru','-'),
-(9,22,5,'155','Edo','III A','Guru','MAN 2 Tulungagung','akus','tulu','2022-09-13','guru','-');
 
 /*Table structure for table `tbl_surat_kurikulum` */
 
@@ -548,226 +501,34 @@ CREATE TABLE `tbl_tanda_tangan` (
   `catatan` text DEFAULT NULL,
   `tgl_proses` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=236 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_tanda_tangan` */
 
 insert  into `tbl_tanda_tangan`(`id`,`id_surat`,`id_user`,`status`,`catatan`,`tgl_proses`) values 
-(1,1,1,'cek',NULL,NULL),
-(2,1,4,'diterima','','2022-09-09 20:52:54'),
-(3,1,3,'diterima','','2022-09-09 20:52:23'),
-(4,1,2,'diterima','','2022-09-09 20:51:58'),
-(5,1,5,'diterima','','2022-09-06 21:59:54'),
+(1,1,1,'belum',NULL,NULL),
+(2,1,4,'belum',NULL,NULL),
+(3,1,3,'cek',NULL,NULL),
+(4,1,2,'diterima','lampiran kurang 1','2022-09-29 20:55:16'),
+(5,1,5,'diterima','','2022-09-29 20:54:50'),
 (6,2,1,'belum',NULL,NULL),
 (7,2,4,'belum',NULL,NULL),
 (8,2,3,'belum',NULL,NULL),
 (9,2,2,'belum',NULL,NULL),
-(10,2,5,'cek',NULL,NULL),
-(11,3,1,'belum',NULL,NULL),
-(12,3,4,'belum',NULL,NULL),
-(13,3,3,'belum',NULL,NULL),
-(14,3,2,'belum',NULL,NULL),
-(15,3,5,'cek',NULL,NULL),
-(16,4,1,'belum',NULL,NULL),
-(17,4,4,'belum',NULL,NULL),
-(18,4,3,'belum',NULL,NULL),
-(19,4,2,'belum',NULL,NULL),
-(20,4,5,'cek',NULL,NULL),
-(21,5,1,'belum',NULL,NULL),
-(22,5,4,'belum',NULL,NULL),
-(23,5,3,'belum',NULL,NULL),
-(24,5,2,'belum',NULL,NULL),
-(25,5,5,'cek',NULL,NULL),
-(26,6,1,'belum',NULL,NULL),
-(27,6,4,'belum',NULL,NULL),
-(28,6,3,'belum',NULL,NULL),
-(29,6,2,'belum',NULL,NULL),
-(30,6,5,'cek',NULL,NULL),
-(31,7,1,'belum',NULL,NULL),
-(32,7,4,'belum',NULL,NULL),
-(33,7,3,'belum',NULL,NULL),
-(34,7,2,'belum',NULL,NULL),
-(35,7,1,'cek',NULL,NULL),
-(36,8,1,'belum',NULL,NULL),
-(37,8,4,'belum',NULL,NULL),
-(38,8,3,'belum',NULL,NULL),
-(39,8,2,'belum',NULL,NULL),
-(40,8,5,'cek',NULL,NULL),
-(41,9,1,'cek',NULL,NULL),
-(42,9,4,'diterima','Acc','2022-09-09 20:50:47'),
-(43,9,3,'diterima','Betul','2022-09-09 20:16:01'),
-(44,9,2,'diterima','Betul','2022-09-09 20:14:53'),
-(45,9,5,'diterima','','2022-09-09 20:13:30'),
-(46,10,1,'belum',NULL,NULL),
-(47,10,4,'belum',NULL,NULL),
-(48,10,3,'ditolak','kembali','2022-09-25 20:19:02'),
-(49,10,2,'ditolak','salahh','2022-09-25 20:47:11'),
-(50,10,5,'cek','','2022-09-25 20:46:12'),
-(51,11,1,'belum',NULL,NULL),
-(52,11,4,'belum',NULL,NULL),
-(53,11,3,'belum',NULL,NULL),
-(54,11,2,'belum',NULL,NULL),
-(55,11,5,'cek',NULL,NULL),
-(56,11,1,'belum',NULL,NULL),
-(57,11,4,'belum',NULL,NULL),
-(58,11,3,'belum',NULL,NULL),
-(59,11,2,'belum',NULL,NULL),
-(60,11,5,'cek',NULL,NULL),
-(61,11,1,'belum',NULL,NULL),
-(62,11,4,'belum',NULL,NULL),
-(63,11,3,'belum',NULL,NULL),
-(64,11,2,'belum',NULL,NULL),
-(65,11,5,'cek',NULL,NULL),
-(66,11,1,'belum',NULL,NULL),
-(67,11,4,'belum',NULL,NULL),
-(68,11,3,'belum',NULL,NULL),
-(69,11,2,'belum',NULL,NULL),
-(70,11,5,'cek',NULL,NULL),
-(71,11,1,'belum',NULL,NULL),
-(72,11,4,'belum',NULL,NULL),
-(73,11,3,'belum',NULL,NULL),
-(74,11,2,'belum',NULL,NULL),
-(75,11,5,'cek',NULL,NULL),
-(76,13,1,'belum',NULL,NULL),
-(77,13,4,'belum',NULL,NULL),
-(78,13,3,'belum',NULL,NULL),
-(79,13,2,'belum',NULL,NULL),
-(80,13,5,'cek',NULL,NULL),
-(81,14,1,'belum',NULL,NULL),
-(82,14,4,'belum',NULL,NULL),
-(83,14,3,'belum',NULL,NULL),
-(84,14,2,'belum',NULL,NULL),
-(85,14,5,'cek',NULL,NULL),
-(86,14,1,'belum',NULL,NULL),
-(87,14,4,'belum',NULL,NULL),
-(88,14,3,'belum',NULL,NULL),
-(89,14,2,'belum',NULL,NULL),
-(90,14,5,'cek',NULL,NULL),
-(106,18,1,'belum',NULL,NULL),
-(107,18,4,'belum',NULL,NULL),
-(108,18,3,'belum',NULL,NULL),
-(109,18,2,'belum',NULL,NULL),
-(110,18,5,'cek',NULL,NULL),
-(111,19,1,'belum',NULL,NULL),
-(112,19,4,'belum',NULL,NULL),
-(113,19,3,'belum',NULL,NULL),
-(114,19,2,'belum',NULL,NULL),
-(115,19,5,'cek',NULL,NULL),
-(116,20,1,'belum',NULL,NULL),
-(117,20,4,'belum',NULL,NULL),
-(118,20,3,'cek',NULL,NULL),
-(119,20,2,'diterima','sudha benar','2022-09-26 01:20:07'),
-(120,20,5,'diterima','','2022-09-26 01:18:13'),
-(121,21,1,'belum',NULL,NULL),
-(122,21,4,'belum',NULL,NULL),
-(123,21,3,'belum',NULL,NULL),
-(124,21,2,'belum',NULL,NULL),
-(125,21,5,'cek',NULL,NULL),
-(126,22,1,'belum',NULL,NULL),
-(127,22,4,'belum',NULL,NULL),
-(128,22,3,'belum',NULL,NULL),
-(129,22,2,'cek',NULL,NULL),
-(130,22,5,'diterima','','2022-09-26 02:54:13'),
-(131,23,1,'belum',NULL,NULL),
-(132,23,4,'belum',NULL,NULL),
-(133,23,3,'belum',NULL,NULL),
-(134,23,2,'belum',NULL,NULL),
-(135,23,5,'cek',NULL,NULL),
-(136,23,1,'belum',NULL,NULL),
-(137,23,4,'belum',NULL,NULL),
-(138,23,3,'belum',NULL,NULL),
-(139,23,2,'belum',NULL,NULL),
-(140,23,5,'cek',NULL,NULL),
-(141,23,1,'belum',NULL,NULL),
-(142,23,4,'belum',NULL,NULL),
-(143,23,3,'belum',NULL,NULL),
-(144,23,2,'belum',NULL,NULL),
-(145,23,5,'cek',NULL,NULL),
-(146,23,1,'belum',NULL,NULL),
-(147,23,4,'belum',NULL,NULL),
-(148,23,3,'belum',NULL,NULL),
-(149,23,2,'belum',NULL,NULL),
-(150,23,5,'cek',NULL,NULL),
-(151,24,1,'belum',NULL,NULL),
-(152,24,4,'belum',NULL,NULL),
-(153,24,3,'belum',NULL,NULL),
-(154,24,2,'ditolak','salah','2022-09-26 12:54:08'),
-(155,24,5,'cek','','2022-09-26 12:53:36'),
-(156,25,1,'belum',NULL,NULL),
-(157,25,4,'belum',NULL,NULL),
-(158,25,3,'cek',NULL,NULL),
-(159,25,2,'diterima','betul','2022-09-26 14:56:00'),
-(160,25,5,'diterima','','2022-09-26 14:55:39'),
-(161,26,1,'belum',NULL,NULL),
-(162,26,4,'belum',NULL,NULL),
-(163,26,3,'belum',NULL,NULL),
-(164,26,2,'cek',NULL,NULL),
-(165,26,5,'diterima','','2022-09-26 21:15:29'),
-(166,27,1,'belum',NULL,NULL),
-(167,27,4,'belum',NULL,NULL),
-(168,27,3,'belum',NULL,NULL),
-(169,27,2,'cek',NULL,NULL),
-(170,27,5,'diterima','','2022-09-27 02:55:49'),
-(171,28,1,'belum',NULL,NULL),
-(172,28,4,'belum',NULL,NULL),
-(173,28,3,'belum',NULL,NULL),
-(174,28,2,'cek',NULL,NULL),
-(175,28,5,'diterima','','2022-09-26 23:58:45'),
-(176,29,1,'belum',NULL,NULL),
-(177,29,4,'belum',NULL,NULL),
-(178,29,3,'belum',NULL,NULL),
-(179,29,2,'cek',NULL,NULL),
-(180,29,5,'diterima','','2022-09-27 00:30:50'),
-(181,30,1,'belum',NULL,NULL),
-(182,30,4,'belum',NULL,NULL),
-(183,30,3,'belum',NULL,NULL),
-(184,30,2,'cek',NULL,NULL),
-(185,30,5,'diterima','','2022-09-27 02:29:03'),
-(191,32,1,'belum',NULL,NULL),
-(192,32,4,'belum',NULL,NULL),
-(193,32,3,'belum',NULL,NULL),
-(194,32,2,'belum',NULL,NULL),
-(195,32,5,'cek',NULL,NULL),
-(196,33,1,'belum',NULL,NULL),
-(197,33,4,'belum',NULL,NULL),
-(198,33,3,'belum',NULL,NULL),
-(199,33,2,'belum',NULL,NULL),
-(200,33,5,'cek',NULL,NULL),
-(201,33,1,'belum',NULL,NULL),
-(202,33,4,'belum',NULL,NULL),
-(203,33,3,'belum',NULL,NULL),
-(204,33,2,'belum',NULL,NULL),
-(205,33,5,'cek',NULL,NULL),
-(206,33,1,'belum',NULL,NULL),
-(207,33,4,'belum',NULL,NULL),
-(208,33,3,'belum',NULL,NULL),
-(209,33,2,'belum',NULL,NULL),
-(210,33,5,'cek',NULL,NULL),
-(211,33,1,'belum',NULL,NULL),
-(212,33,4,'belum',NULL,NULL),
-(213,33,3,'belum',NULL,NULL),
-(214,33,2,'belum',NULL,NULL),
-(215,33,5,'cek',NULL,NULL),
-(216,34,1,'belum',NULL,NULL),
-(217,34,4,'belum',NULL,NULL),
-(218,34,3,'belum',NULL,NULL),
-(219,34,2,'belum',NULL,NULL),
-(220,34,5,'cek',NULL,NULL),
-(221,35,1,'belum',NULL,NULL),
-(222,35,4,'belum',NULL,NULL),
-(223,35,3,'belum',NULL,NULL),
-(224,35,2,'cek',NULL,NULL),
-(225,35,5,'diterima','','2022-09-28 00:24:15'),
-(226,36,1,'belum',NULL,NULL),
-(227,36,4,'belum',NULL,NULL),
-(228,36,3,'belum',NULL,NULL),
-(229,36,2,'cek',NULL,NULL),
-(230,36,5,'diterima','','2022-09-27 23:58:18'),
-(231,37,1,'belum',NULL,NULL),
-(232,37,4,'belum',NULL,NULL),
-(233,37,3,'belum',NULL,NULL),
-(234,37,2,'belum',NULL,NULL),
-(235,37,5,'cek',NULL,NULL);
+(10,2,5,'cek',NULL,NULL);
+
+/*Table structure for table `tbl_wali_kelas` */
+
+DROP TABLE IF EXISTS `tbl_wali_kelas`;
+
+CREATE TABLE `tbl_wali_kelas` (
+  `id_wali_kelas` int(11) NOT NULL AUTO_INCREMENT,
+  `id_guru` varchar(11) DEFAULT NULL,
+  `id_detail_kelas` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_wali_kelas`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tbl_wali_kelas` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

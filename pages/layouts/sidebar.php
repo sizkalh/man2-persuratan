@@ -212,8 +212,51 @@ $uri2 = explode('/', trim($uri[0], '/'));
           <li><a href="index"><i class="fa fa-circle-o"></i>Proposal</a></li>
         </ul>
       </li>
+      <li class="treeview <?= $uri2[0] == 'data-sekolah' ||
+                            $uri2[0] == 'data-guru' ||
+                            $uri2[0] == 'wali-kelas' ||
+                            $uri2[0] == 'data-kelas' ||
+                            $uri2[0] == 'data-siswa' ? 'active' : '' ?>">
+        <a href="#">
+          <i class="fa fa-gears"></i> <span>Pengaturan</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li <?= $uri2[0] == "data-sekolah" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>data-sekolah/index">
+              <i class="fa fa-circle-o"></i>Data Sekolah
+            </a>
+          </li>
+          <li <?= $uri2[0] == "data-kelas" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>data-kelas/index">
+              <i class="fa fa-circle-o"></i>Data Kelas
+            </a>
+          </li>
+          <li <?= $uri2[0] == "data-guru" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>data-guru/index">
+              <i class="fa fa-circle-o"></i>Data Guru & Tendik
+            </a>
+          </li>
+          <li <?= $uri2[0] == "wali-kelas" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>wali-kelas/index">
+              <i class="fa fa-circle-o"></i>Data Wali Kelas
+            </a>
+          </li>
+          <li <?= $uri2[0] == "data-siswa" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>data-siswa/index">
+              <i class="fa fa-circle-o"></i>Data Siswa
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="btn-danger">
+        <a href="<?= base_url() ?>process/auth/logout.php">
+          <i class="fa fa-power-off"></i> <span>Logout</span>
+        </a>
+      </li>
     </ul>
-    <a href="../../process/auth/logout.php" class="btn btn-danger btn-block btn-flat white"><i class="fa fa-sign-out"></i> Logout</a>
   </section>
   <!-- /.sidebar -->
 </aside>

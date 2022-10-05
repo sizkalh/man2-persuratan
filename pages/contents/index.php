@@ -36,6 +36,7 @@
                     <div class="icon">
                         <i class="fa fa-envelope-o"></i>
                     </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -65,6 +66,7 @@
                     <div class="icon">
                         <i class="fa fa-refresh"></i>
                     </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -88,6 +90,7 @@
                     <div class="icon">
                         <i class="fa fa-users"></i>
                     </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -111,6 +114,7 @@
                     <div class="icon">
                         <i class="fa fa-graduation-cap"></i>
                     </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -119,15 +123,66 @@
         <!-- Default box -->
         <div class="box box-success">
             <div class="box-body">
-                <label for="">Nama Sekolah / Instansi</label> : MAN 2 Tulungagung
-                <p></p>
-                <label for="">Alamat Sekolah / Instansi</label> : Jl. Ki Mangun Sarkoro, Dusun Krajan, Beji, Kec. Boyolangu, Kabupaten Tulungagung, Jawa Timur 66233
-                <p></p>
-                <label for="">No. Telp</label> : (0355) 321817
-                <p></p>
-                <label for="">Email</label> : manduatulungagung@gmail.com
-                <p></p>
-                <label for="">NPSN</label> : 20584790
+                <?php
+                $query_sekolah = mysqli_query($koneksi, 'SELECT * FROM tbl_sekolah');
+                $data = mysqli_fetch_array($query_sekolah);
+                ?>
+                <div class="form-group">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Nama Sekolah / Instansi</label>
+                        <div class="col-sm-10">
+                            <?= $data['nama_sekolah'] ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Alamat Sekolah / Instansi</label>
+                        <div class="col-sm-10">
+                            <?= $data['alamat'] ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">No. Telp</label>
+                        <div class="col-sm-10">
+                            <?= $data['telp'] ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <?= $data['email'] ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Website</label>
+                        <div class="col-sm-10">
+                            <a href="../<?= $data['website'] ?>" target="_blank"><?= $data['website'] ?></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Kode POS</label>
+                        <div class="col-sm-10">
+                            <?= $data['kode_pos'] ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">NPSN</label>
+                        <div class="col-sm-10">
+                            <span><?= $data['npsn'] ?></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
