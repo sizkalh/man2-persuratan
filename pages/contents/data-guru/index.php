@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Data Kelas
+            Data Guru & Tendik
         </h1>
     </section>
 
