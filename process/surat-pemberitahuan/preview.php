@@ -114,7 +114,7 @@ function tgl_indo_garing($tanggal)
             <tr>
               <td>Tanggal</td>
               <td>: <?php if ($_GET['tanggal_pelaksanaan'] <> '') {
-                      echo tgl_indo($_GET['tanggal_pelaksanaan']);
+                      echo tgl_indo_garing($_GET['tanggal_pelaksanaan']);
                     } ?></td>
             </tr>
             <tr>

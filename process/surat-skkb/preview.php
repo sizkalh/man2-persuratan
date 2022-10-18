@@ -87,7 +87,7 @@ function tgl_indo_garing($tanggal)
             <tr>
               <td style="width: 100px;">Nama</td>
               <td>:</td>
-              <td><?= $_GET['id_siswa'] ?></td>
+              <td><?= $_GET['nama'] ?></td>
             </tr>
             <tr>
               <td>TTL</td>

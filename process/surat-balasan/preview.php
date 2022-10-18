@@ -101,8 +101,7 @@ function tgl_indo_garing($tanggal)
       </tr>
       <tr style="height: 100px;">
         <td colspan="3">
-          Menerangkan dengan sebenarnya bahwa kami bersedia untuk menerima <?= $_GET['tugas_diterima'] ?> secara online atau secara offline yang akan dilaksanakan pada bulan <?= $_GET['bulan_awal'] ?>, untuk <?= $_GET['keterangan'] ?> dan bulan <?= $_GET['bulan_akhir'] ?>
-        </td>
+          <?= $_GET['keterangan'] ?>
       </tr>
       <tr>
         <td></td>

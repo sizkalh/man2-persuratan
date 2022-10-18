@@ -101,7 +101,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Perihal</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="3" id="editor1" name="perihal" placeholder="Masukkan Perihal"></textarea>
+                                <textarea class="form-control" rows="10" name="perihal" placeholder="Masukkan Perihal"></textarea>
                             </div>
                         </div>
                     </div>

@@ -32,6 +32,7 @@
             if($_POST['role'] == 'guru'){
                 $_SESSION['jabatan_user'] = $data_user['jabatan'];
                 $_SESSION['pangkat_user'] = $data_user['pangkat'];
+                $_SESSION['role_user'] = $data_user['role'];
                 if($data_user['nip'] != null || $data_user['nip'] != ''){
                     $_SESSION['nip'] = $data_user['nip'];
                 }

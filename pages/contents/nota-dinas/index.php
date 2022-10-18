@@ -130,7 +130,7 @@
                                         if (mysqli_num_rows($cek_lampiran) > 0) {
                                             while ($data_lampiran = mysqli_fetch_array($cek_lampiran)) { ?>
 
-                                                <a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
+                                                <a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="File lampiran"><i class="fa fa-paperclip"></i></a>
                                         <?php }
                                         } ?>
 
@@ -138,6 +138,8 @@
                                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" id="modal-otor" data-id="<?= $myData['id']; ?>" data-target="#modal-default">
                                             <i class="fa fa-file-text-o"></i>
                                         </button>
+
+                                        <a href="<?= base_url() ?>process/nota-dinas/preview_d.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Surat"><i class="fa fa-clipboard"></i></a>
 
                                         <!-- Button Edit -->
                                         <?php

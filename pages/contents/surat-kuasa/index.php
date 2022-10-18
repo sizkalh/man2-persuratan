@@ -40,15 +40,15 @@
                 <table class="table table-condensed table-hover" id="data-table"">
                     <thead>
                         <tr>
-                            <th width="20" class="text-center">~</th>
-                            <th width="30" class="text-center">No</th>
-                            <th class="text-center">Nomor Surat</th>
-                            <th class="text-center">NIP</th>
-                            <th>Nama</th>
-                            <th>Jabatan</th>
-                            <th>Yang Diberi Kuasa</th>
-                            <th class="text-center">Aksi</th>
-                        </tr>
+                            <th width=" 20" class="text-center">~</th>
+                    <th width="30" class="text-center">No</th>
+                    <th class="text-center">Nomor Surat</th>
+                    <th class="text-center">NIP</th>
+                    <th>Nama</th>
+                    <th>Jabatan</th>
+                    <th>Yang Diberi Kuasa</th>
+                    <th class="text-center">Aksi</th>
+                    </tr>
                     </thead>
                     <tbody>
 
@@ -122,6 +122,8 @@
                                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" id="modal-otor" data-id="<?= $myData['id']; ?>" data-target="#modal-default">
                                             <i class="fa fa-file-text-o"></i>
                                         </button>
+
+                                        <a href="<?= base_url() ?>process/surat-kuasa/preview_d.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Surat"><i class="fa fa-clipboard"></i></a>
 
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'guru') {

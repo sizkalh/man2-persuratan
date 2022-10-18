@@ -141,6 +141,8 @@
                                             <i class="fa fa-file-text-o"></i>
                                         </button>
 
+                                        <a href="<?= base_url() ?>process/suket-guru/preview_d.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Surat"><i class="fa fa-clipboard"></i></a>
+
                                         <!-- Button Edit -->
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'guru') {

@@ -14,4 +14,10 @@ $('.datepicker').datepicker({
   autoclose: true
 });
 
+$('#tanggalan').datepicker({
+  format: 'yyyy-mm-dd',
+  autoclose: true
+});
+
 $('.select-nama').select2();
+$('.select-kelas').select2();

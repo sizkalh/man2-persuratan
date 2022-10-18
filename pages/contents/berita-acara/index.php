@@ -155,6 +155,7 @@
                                         ?>
                                             <a href="../../../process/berita-acara/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         <?php } ?>
+                                        <!-- <a href="<?= base_url() ?>process/berita-acara/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a> -->
 
                                         <!-- Button Print -->
                                         <?php

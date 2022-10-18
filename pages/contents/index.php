@@ -163,7 +163,7 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">Website</label>
                         <div class="col-sm-10">
-                            <a href="../<?= $data['website'] ?>" target="_blank"><?= $data['website'] ?></a>
+                            <a href="https://<?= $data['website'] ?>" target="_blank"><?= $data['website'] ?></a>
                         </div>
                     </div>
                 </div>

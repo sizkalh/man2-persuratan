@@ -38,29 +38,9 @@
                     </div>
                     <div class="form-group">
                         <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Tugas Yang Diterima</label>
+                            <label class="col-sm-2 col-form-label">Menerangkan</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="3" name="tugas_diterima" placeholder="Masukkan Tugas Yang Diterima"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Kegiatan / Keterangan</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" rows="3" name="keterangan" placeholder="Masukkan Kegiatan / Keterangan"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Bulan</label>
-                            <div class="col-sm-10">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="bulan_awal" placeholder="Masukkan Bulan" />
-                                    <span class="input-group-addon">s.d.</span>
-                                    <input type="text" class="form-control" name="bulan_akhir" placeholder="Masukkan Bulan" />
-                                </div>
+                                <textarea class="form-control" rows="10" name="keterangan" placeholder="Masukkan Perihal"></textarea>
                             </div>
                         </div>
                     </div>

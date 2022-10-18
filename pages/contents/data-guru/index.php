@@ -33,7 +33,7 @@
             if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
             ?>
                 <div class="box-header">
-                    <a href="<?= base_url() ?>data-kelas/create" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Kels</a>
+                    <a href="<?= base_url() ?>data-guru/create" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Guru & Tendik</a>
                 </div>
             <?php } ?>
             <div class="box-body">
@@ -41,40 +41,45 @@
                     <thead>
                         <tr>
                             <th width="30" class="text-center">No</th>
-                            <th>Kelas</th>
-                            <th width="100" class="text-center">Tingkat</th>
+                            <th>Data Diri</th>
+                            <th>Info Kontak</th>
+                            <th>Jabatan</th>
                             <th class="text-center" width="100">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
+                        <?php
                         $no = 1;
-                        $query_kelas = mysqli_query($koneksi, 'SELECT
-                                                                    A.id_detail_kelas,
-                                                                    A.rombel,
-                                                                    B.nama AS kelas,
-                                                                    B.nama_kelas,
-                                                                    C.nama AS jurusan
-                                                                FROM
-                                                                    tbl_detail_kelas A
-                                                                    INNER JOIN tbl_kelas B
-                                                                    ON A.id_kelas = B.id_kelas
-                                                                    INNER JOIN tbl_jurusan C
-                                                                    ON C.id_jurusan = A.id_jurusan
-                                                                ORDER BY B.id_kelas ASC,
-                                                                    C.id_jurusan ASC,
-                                                                    A.rombel ASC');
-                        while ($data_kelas = mysqli_fetch_array($query_kelas)) {
-                    ?>
-                        <tr>
-                        <td class="text-center"><?= $no++ ?></td>
-                        <td><?= $data_kelas['rombel'] != '0' ? $data_kelas['kelas'].'  '.$data_kelas['jurusan'].'  '.$data_kelas['rombel'] : $data_kelas['kelas'].'  '.$data_kelas['jurusan']  ?></td>
-                        <td class="text-center"><?= $data_kelas['nama_kelas'] ?></td>
-                        <td class="text-center">
-                            <a href="<?= base_url() ?>process/data-kelas/hapus.php?id=<?= $data_kelas['id_detail_kelas'] ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                        </td>
-                        </tr>
-                    <?php } ?>
+                        $query_guru = mysqli_query($koneksi, 'SELECT * FROM tbl_guru');
+                        while ($data_guru = mysqli_fetch_array($query_guru)) {
+                        ?>
+                            <tr>
+                                <td class="text-center"><?= $no++ ?></td>
+                                <td>
+                                    Nama : <?= $data_guru['nama'] ?> <br>
+                                    NIP : <?= $data_guru['nip'] ?> <br>
+                                    Jenis Kelamin : <?= $data_guru['jk'] ?> <br>
+                                    Tempat Lahir : <?= $data_guru['tempat_lahir'] ?> <br>
+                                    Tgl. Lahir : <?= $data_guru['tgl_lahir'] ?> <br>
+                                    <span class="label bg-green" style="font-size: .9em;">USERNAME : <?= $data_guru['username'] ?></span>
+                                </td>
+                                <td>
+                                    No. HP : <?= $data_guru['no_hp'] ?> <br>
+                                    Email : <?= $data_guru['email'] ?> <br>
+                                    Alamat : <?= $data_guru['alamat'] ?>
+                                </td>
+                                <td>
+                                    Pangkat : <?= $data_guru['pangkat'] ?> <br>
+                                    Golongan : <?= $data_guru['golongan'] ?> <br>
+                                    Alamat : <?= $data_guru['alamat'] ?>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" id="reset" data-id="<?= $data_guru['id'] ?>" onclick="reset(<?= $data_guru['id'] ?>)" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i></button>
+                                    <a href="<?= base_url() ?>data-guru/edit?id=<?= $data_guru['id'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                    <a href="<?= base_url() ?>process/data-guru/hapus.php?id=<?= $data_guru['id'] ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -82,3 +87,61 @@
 
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
+
+<script>
+    function reset(id) {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Apakah data sudah benar ?',
+            text: "Silahkan cek kembali apabila data dirasa kurang benar !.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, benar dan ajukan.',
+            cancelButtonText: 'Tidak, batal ajukan.',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    method: "GET",
+                    url: base_url + "/process/data-guru/reset.php",
+                    data: {
+                        id: id
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.status == "sukses") {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data berhasil disimipan.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        } else {
+                            swalWithBootstrapButtons.fire(
+                                'Gagal',
+                                'Data gagal disimpan',
+                                'error'
+                            )
+                        }
+                    }
+                })
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Dibatalkan',
+                    'Berhasil di batalkan',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

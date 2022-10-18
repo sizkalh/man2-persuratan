@@ -169,21 +169,6 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Surat Izin Kegiatan
             </a>
           </li>
-          <li <?= $uri2[0] == "suket-pengganti-ijazah" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>suket-pengganti-ijazah/index">
-              <i class="fa fa-circle-o"></i>Surat Ket. Pengganti Ijazah
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-mutasi-siswa-masuk" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-mutasi-siswa-masuk/index">
-              <i class="fa fa-circle-o"></i>Surat Mutasi Siswa Masuk
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-panggilan" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-panggilan/index">
-              <i class="fa fa-circle-o"></i>Surat Panggilan
-            </a>
-          </li>
           <li <?= $uri2[0] == "surat-pengantar" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-pengantar/index">
               <i class="fa fa-circle-o"></i>Surat Pengantar
@@ -201,7 +186,7 @@ $uri2 = explode('/', trim($uri[0], '/'));
           </li>
         </ul>
       </li>
-      <li class="treeview">
+      <!-- <li class="treeview">
         <a href="#">
           <i class="fa fa-files-o"></i> <span>Proposal</span>
           <span class="pull-right-container">
@@ -211,11 +196,12 @@ $uri2 = explode('/', trim($uri[0], '/'));
         <ul class="treeview-menu">
           <li><a href="index"><i class="fa fa-circle-o"></i>Proposal</a></li>
         </ul>
-      </li>
+      </li> -->
       <li class="treeview <?= $uri2[0] == 'data-sekolah' ||
                             $uri2[0] == 'data-guru' ||
                             $uri2[0] == 'wali-kelas' ||
                             $uri2[0] == 'data-kelas' ||
+                            $uri2[0] == 'profil' ||
                             $uri2[0] == 'data-siswa' ? 'active' : '' ?>">
         <a href="#">
           <i class="fa fa-gears"></i> <span>Pengaturan</span>
@@ -224,31 +210,38 @@ $uri2 = explode('/', trim($uri[0], '/'));
           </span>
         </a>
         <ul class="treeview-menu">
-          <li <?= $uri2[0] == "data-sekolah" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>data-sekolah/index">
-              <i class="fa fa-circle-o"></i>Data Sekolah
+          <?php if($_SESSION['role_user'] == 'operator' || $_SESSION['role_user'] == "superuser"){ ?>
+            <li <?= $uri2[0] == "data-sekolah" ? "class = 'active'" : "" ?>>
+              <a href="<?= base_url() ?>data-sekolah/index">
+                <i class="fa fa-circle-o"></i>Data Sekolah
+              </a>
+            </li>
+            <li <?= $uri2[0] == "data-kelas" ? "class = 'active'" : "" ?>>
+              <a href="<?= base_url() ?>data-kelas/index">
+                <i class="fa fa-circle-o"></i>Data Kelas
+              </a>
+            </li>
+            <li <?= $uri2[0] == "data-guru" ? "class = 'active'" : "" ?>>
+              <a href="<?= base_url() ?>data-guru/index">
+                <i class="fa fa-circle-o"></i>Data Guru & Tendik
+              </a>
+            </li>
+            <li <?= $uri2[0] == "wali-kelas" ? "class = 'active'" : "" ?>>
+              <a href="<?= base_url() ?>wali-kelas/index">
+                <i class="fa fa-circle-o"></i>Data Wali Kelas
+              </a>
+            </li>
+          <?php } ?>
+          <li <?= $uri2[0] == "profil" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>profil/index">
+              <i class="fa fa-circle-o"></i>Profil
             </a>
           </li>
-          <li <?= $uri2[0] == "data-kelas" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>data-kelas/index">
-              <i class="fa fa-circle-o"></i>Data Kelas
-            </a>
-          </li>
-          <li <?= $uri2[0] == "data-guru" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>data-guru/index">
-              <i class="fa fa-circle-o"></i>Data Guru & Tendik
-            </a>
-          </li>
-          <li <?= $uri2[0] == "wali-kelas" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>wali-kelas/index">
-              <i class="fa fa-circle-o"></i>Data Wali Kelas
-            </a>
-          </li>
-          <li <?= $uri2[0] == "data-siswa" ? "class = 'active'" : "" ?>>
+          <!-- <li <?= $uri2[0] == "data-siswa" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>data-siswa/index">
               <i class="fa fa-circle-o"></i>Data Siswa
             </a>
-          </li>
+          </li> -->
         </ul>
       </li>
       <li class="btn-danger">

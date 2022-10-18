@@ -38,6 +38,8 @@
                                         <option value="<?= $data_siswa['id'] ?>"><?= $data_siswa['nama'] ?></option>
                                     <?php } ?>
                                 </select>
+
+                                <input type="hidden" class="form-control" name="nama" id="nama" />
                             </div>
                         </div>
                     </div>
@@ -192,6 +194,7 @@
                 },
                 dataType: "json",
                 success: function(data) {
+                    $("#nama").val(data.nama)
                     $("#nis").val(data.nis)
                     $("#nisn").val(data.nisn)
 

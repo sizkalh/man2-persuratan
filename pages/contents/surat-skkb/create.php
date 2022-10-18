@@ -38,6 +38,8 @@
                                         <option value="<?= $data_siswa['id'] ?>"><?= $data_siswa['nama'] ?></option>
                                     <?php } ?>
                                 </select>
+
+                                <input type="hidden" class="form-control" id="nama" name="nama" />
                             </div>
                         </div>
                     </div>
@@ -45,7 +47,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">NIS</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nis" placeholder="Masukkan NIS" readonly />
+                                <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan NIS" readonly />
                             </div>
                         </div>
                     </div>
@@ -53,7 +55,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">NISN</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nisn" placeholder="Masukkan NISN" readonly />
+                                <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Masukkan NISN" readonly />
                             </div>
                         </div>
                     </div>
@@ -61,7 +63,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Kelas</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="kelas" placeholder="Masukkan Kelas" readonly />
+                                <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Masukkan Kelas" readonly />
                             </div>
                         </div>
                     </div>
@@ -69,12 +71,12 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Tempat, Tanggal Lahir</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="tempat_lahir" placeholder="Masukkan Tempat" readonly />
+                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat" readonly />
                             </div>
                             <div class="col-sm-5">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="text" class="form-control datepicker" id="tgl_lahir" placeholder="Masukkan Tanggal Lahir" readonly />
+                                    <input type="text" class="form-control datepicker" id="tgl_lahir" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" readonly />
                                 </div>
                             </div>
                         </div>
@@ -83,7 +85,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="3" id="alamat" placeholder="Masukkan Alamat" readonly></textarea>
+                                <textarea class="form-control" rows="3" id="alamat" name="alamat" placeholder="Masukkan Alamat" readonly></textarea>
                             </div>
                         </div>
                     </div>
@@ -132,7 +134,7 @@
             getDataSiswa(id)
         });
 
-        function getDataSiswa() {
+        function getDataSiswa(id) {
             $.ajax({
                 method: "POST",
                 url: base_url + "/process/surat-skkb/getDataSiswa.php",
@@ -141,6 +143,7 @@
                 },
                 dataType: "json",
                 success: function(data) {
+                    $("#nama").val(data.nama)
                     $("#nis").val(data.nis)
                     $("#nisn").val(data.nisn)
 

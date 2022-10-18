@@ -39,6 +39,7 @@
                                 <label class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
                                     <input type="hidden" name="id" value="<?= $data['id'] ?>">
+                                    <input type="hidden" name="nama" value="<?= $data_siswa['nama'] ?>">
                                     <input type="text" name="id_siswa" id="id_siswa" value="<?= $data_siswa['nama'] ?>" class="form-control" readonly>
                                 </div>
                             </div>
