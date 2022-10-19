@@ -217,6 +217,11 @@ function tgl_indo_garing($tanggal)
           </table>
         </td>
       </tr>
+      <tr style="height: 50px;">
+        <td colspan="3">
+          Demikian surat rekomendasi ini dibuat untuk dapat dipergunakan sebagaimana mestinya.
+        </td>
+      </tr>
       <tr style="height: 230px;">
         <td></td>
         <td style="width: 50%;"></td>

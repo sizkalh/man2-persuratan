@@ -55,6 +55,8 @@ $id = $_GET['id'];
 // query disesuaikan dengan data yang akan ditampilkan
 $query_surat = mysqli_query($koneksi, 'SELECT * FROM tbl_surat WHERE tbl_surat.id = "' . $id . '"');
 while ($data = mysqli_fetch_array($query_surat)) {
+  $query_guru = mysqli_query($koneksi, 'SELECT * FROM tbl_guru WHERE id = ' . $data['kepada']);
+  $data_guru = mysqli_fetch_array($query_guru);
 ?>
 
   <!DOCTYPE html>
@@ -64,10 +66,10 @@ while ($data = mysqli_fetch_array($query_surat)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Permohonan Narasumber</title>
+    <title>Surat Keterangan Penelitan</title>
   </head>
 
-  <body style="width: 50%; margin: 0 auto;">
+  <body>
     <div>
       <table>
         <tr>
@@ -75,86 +77,102 @@ while ($data = mysqli_fetch_array($query_surat)) {
             <img src="../../dist/img/kop_surat.png" alt="" style="max-width: 100%;">
           </td>
         </tr>
-        <tr style="height: 80px;">
-          <td colspan="2" style="vertical-align: text-top;">
+        <tr>
+          <td colspan="3" style="text-align: center; padding-bottom: 40px;">
+            <b>SURAT IZIN KEGIATAN</b> <br />
+            NOMOR : <?= $data['no_surat'] ?>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            Yang bertanda tangan dibawah ini :
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
             <table>
               <tr>
-                <td>Nomor</td>
-                <td>: <?= $data['no_surat'] ?></td>
+                <td style="width: 150px;">Nama</td>
+                <td>:</td>
+                <td><?= $data_guru['nama'] ?></td>
               </tr>
               <tr>
-                <td>Hal</td>
-                <td>: <?= $data['perihal'] ?></td>
+                <td>NIP</td>
+                <td>:</td>
+                <td><?= $data_guru['nip'] ?></td>
+              </tr>
+              <tr>
+                <td>Jabatan</td>
+                <td>:</td>
+                <td><?= $data_guru['jabatan'] ?></td>
+              </tr>
+              <tr>
+                <td>Unit Kerja</td>
+                <td>:</td>
+                <td><?= $data_guru['instansi'] ?></td>
               </tr>
             </table>
           </td>
-          <td style="vertical-align: text-top; text-align: right;">
-            <?= tgl_indo_garing($data['tgl_pembuatan']) ?>
-          </td>
         </tr>
         <tr>
-          <td style="vertical-align: text-top; width: 35%; padding-bottom: 3em;">
-            Yth. Bapak/Ibu/Sdr <?= $data['kepada'] ?>
-            <br>
-            di <?= $data['alamat'] ?>
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td colspan="3">
-            Sehubungan akan diselenggarakan kegiatan <?= $data['keterangan'] ?> sebagai narasumber dalam kegiatan tersebut yang akan dilaksanakan pada :
+          <td colspan="3" style="padding-top: 20px;">
+            Berdasarkan dari surat <?= $data['alamat'] ?> , Nomor : <?= $data['catatan'] ?> , Tanggal : <?= tgl_indo_garing($data['tgl_pelaksanaan2']) ?> , Perihal : <?= $data['perihal'] ?> , maka dengan ini memberikan Izin untuk mengadakan kegiatan, pada :
           </td>
         </tr>
         <tr>
           <td colspan="3">
             <table>
               <tr>
-                <td rowspan="4" style="vertical-align: text-top;">1.</td>
-                <td style="width: 100px;">Hari, Tanggal</td>
-                <td>: <?= $data['hari'] ?>, <?php if ($data['tgl_pelaksanaan'] <> '') {
-                                              echo tgl_indo($data['tgl_pelaksanaan']);
-                                            } ?></td>
+                <td style="width: 150px;">Hari</td>
+                <td colspan="2">: <?= $data['hari'] ?></td>
+              </tr>
+              <tr>
+                <td>Tanggal</td>
+                <td colspan="2">: <?php if ($data['tgl_pelaksanaan'] <> '') {
+                                    echo tgl_indo_garing($data['tgl_pelaksanaan']);
+                                  } ?></td>
               </tr>
               <tr>
                 <td>Waktu</td>
-                <td>: <?= $data['waktu'] ?></td>
-              </tr>
-              <tr>
-                <td>Materi</td>
-                <td>: <?= $data['catatan'] ?></td>
+                <td colspan="2">: <?= $data['waktu'] ?></td>
               </tr>
               <tr>
                 <td>Tempat</td>
-                <td>: <?= $data['tempat'] ?></td>
+                <td colspan="2">: <?= $data['tempat'] ?></td>
+              </tr>
+              <tr>
+                <td>Kegiatan</td>
+                <td colspan="2">: <?= $data['keterangan'] ?></td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
           <td colspan="3" style="padding-top: 20px; padding-bottom: 40px;">
-            Demikian surat permohonan ini kami sampaikan. Atas kesediaan dan kerjasamanya, disampaikan terima kasih.
+            Demikian surat izin ini dibuat untuk dipergunakan sebagaimana mestinya.
           </td>
         </tr>
         <tr>
           <td></td>
-          <td style="width: 25%;"></td>
+          <td style="width: 35%;"></td>
           <td style="text-align: center;">
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
             <br />
-            <br>
-            <br>
-            <br>
+            <img src="../../dist/img/ttd/contohttd.png" style="max-width: 200px;">
             <br />
-            Mohamad Dopir
+            <u>Drs. Muhamad Dopir, M.Pd.I.</u><br>
+            NIP. 196212061990032001
           </td>
         </tr>
       </table>
     </div>
-  </body>
 
-  </html>
+    <script>
+      window.print();
+    </script>
+  </body>
 
   </html>
 

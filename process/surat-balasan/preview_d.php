@@ -106,7 +106,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr style="height: 100px;">
           <td colspan="3">
-            Menerangkan dengan sebenarnya bahwa kami bersedia untuk menerima <?= $data['tugas_diterima'] ?> secara online atau secara offline yang akan dilaksanakan pada bulan <?= $data['bulan_awal'] ?>, untuk <?= $data['keterangan'] ?> dan bulan <?= $data['bulan_akhir'] ?>
+            <?= $data['keterangan'] ?>
           </td>
         </tr>
         <tr>

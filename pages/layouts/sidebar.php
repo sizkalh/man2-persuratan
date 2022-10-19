@@ -69,11 +69,6 @@ $uri2 = explode('/', trim($uri[0], '/'));
           </span>
         </a>
         <ul class="treeview-menu">
-          <li <?= $uri2[0] == "berita-acara" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>berita-acara/index">
-              <i class="fa fa-circle-o"></i>Berita Acara
-            </a>
-          </li>
           <li <?= $uri2[0] == "nota-dinas" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>nota-dinas/index">
               <i class="fa fa-circle-o"></i>Nota Dinas
@@ -139,24 +134,9 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Surat Rekomendasi Siswa
             </a>
           </li>
-          <li <?= $uri2[0] == "cuti-tahunan" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>cuti-tahunan/index">
-              <i class="fa fa-circle-o"></i>Cuti Tahunan
-            </a>
-          </li>
-          <li <?= $uri2[0] == "permohonan-studi-kampus" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>permohonan-studi-kampus/index">
-              <i class="fa fa-circle-o"></i>Permohonan Studi Kampus
-            </a>
-          </li>
-          <li <?= $uri2[0] == "sppd" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>sppd/index">
-              <i class="fa fa-circle-o"></i>SPPD
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-dispen" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-dispen/index">
-              <i class="fa fa-circle-o"></i>Surat Dispen
+          <li <?= $uri2[0] == "surat-izin-kegiatan" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-izin-kegiatan/index">
+              <i class="fa fa-circle-o"></i>Surat Izin Kegiatan
             </a>
           </li>
           <li <?= $uri2[0] == "surat-tugas" ? "class = 'active'" : "" ?>>
@@ -164,24 +144,19 @@ $uri2 = explode('/', trim($uri[0], '/'));
               <i class="fa fa-circle-o"></i>Surat Tugas
             </a>
           </li>
-          <li <?= $uri2[0] == "surat-izin-kegiatan" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-izin-kegiatan/index">
-              <i class="fa fa-circle-o"></i>Surat Izin Kegiatan
+          <li <?= $uri2[0] == "surat-dispen" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>surat-dispen/index">
+              <i class="fa fa-refresh fa-spin"></i>Surat Dispen
             </a>
           </li>
           <li <?= $uri2[0] == "surat-pengantar" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-pengantar/index">
-              <i class="fa fa-circle-o"></i>Surat Pengantar
+              <i class="fa fa-refresh fa-spin"></i>Surat Pengantar
             </a>
           </li>
           <li <?= $uri2[0] == "surat-pernyataan" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-pernyataan/index">
-              <i class="fa fa-circle-o"></i>Surat Pernyataan
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-pesanan" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-pesanan/index">
-              <i class="fa fa-circle-o"></i>Surat Pesanan
+              <i class="fa fa-refresh fa-spin"></i>Surat Pernyataan
             </a>
           </li>
         </ul>
@@ -201,6 +176,7 @@ $uri2 = explode('/', trim($uri[0], '/'));
                             $uri2[0] == 'data-guru' ||
                             $uri2[0] == 'wali-kelas' ||
                             $uri2[0] == 'data-kelas' ||
+                            $uri2[0] == 'prestasi-siswa' ||
                             $uri2[0] == 'profil' ||
                             $uri2[0] == 'data-siswa' ? 'active' : '' ?>">
         <a href="#">
@@ -210,7 +186,7 @@ $uri2 = explode('/', trim($uri[0], '/'));
           </span>
         </a>
         <ul class="treeview-menu">
-          <?php if($_SESSION['role_user'] == 'operator' || $_SESSION['role_user'] == "superuser"){ ?>
+          <?php if ($_SESSION['role_user'] == 'operator' || $_SESSION['role_user'] == "superuser") { ?>
             <li <?= $uri2[0] == "data-sekolah" ? "class = 'active'" : "" ?>>
               <a href="<?= base_url() ?>data-sekolah/index">
                 <i class="fa fa-circle-o"></i>Data Sekolah
@@ -232,6 +208,11 @@ $uri2 = explode('/', trim($uri[0], '/'));
               </a>
             </li>
           <?php } ?>
+          <li <?= $uri2[0] == "prestasi-siswa" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>prestasi-siswa/index">
+              <i class="fa fa-circle-o"></i>Data Prestasi Siswa
+            </a>
+          </li>
           <li <?= $uri2[0] == "profil" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>profil/index">
               <i class="fa fa-circle-o"></i>Profil
