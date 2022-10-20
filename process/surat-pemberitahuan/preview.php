@@ -75,7 +75,7 @@ function tgl_indo_garing($tanggal)
           <table>
             <tr>
               <td>Nomor</td>
-              <td>: …………………………………</td>
+              <td>: </td>
             </tr>
             <tr>
               <td>Hal</td>
@@ -93,7 +93,7 @@ function tgl_indo_garing($tanggal)
       </tr>
       <tr>
         <td style="vertical-align: text-top; width: 35%; padding-bottom: 3em;">
-          Yth. Wali Murid <?= $_GET['kepada'] ?>
+          Yth. ................ <?= $_GET['kepada'] ?>
           <br>
           di <?= $_GET['alamat'] ?>
         </td>
@@ -101,7 +101,7 @@ function tgl_indo_garing($tanggal)
       </tr>
       <tr>
         <td colspan="3">
-          Dalam rangka akan dilaksanakan Kegiatan <?= $_GET['dalam_rangka'] ?> maka kami mengharap kesediaan Bapak / Ibu Wali Murid memberikan izin kepada putra – putrinya untuk mengikuti kegiatan tersebut, yang akan dilaksanakan, pada :
+          Dalam rangka akan dilaksanakan Kegiatan <?= $_GET['dalam_rangka'] ?> maka kami mengharap kesediaan .......... memberikan izin kepada ................ untuk ..........., yang akan dilaksanakan, pada :
         </td>
       </tr>
       <tr>
@@ -130,7 +130,7 @@ function tgl_indo_garing($tanggal)
       </tr>
       <tr>
         <td colspan="3" style="padding-top: 20px; padding-bottom: 40px;">
-          Demikian, disampaikan terima kasih.
+          Demikian atas kerjasamanya, disampaikan terima kasih.
         </td>
       </tr>
       <tr>

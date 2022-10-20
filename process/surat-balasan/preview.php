@@ -99,19 +99,19 @@ function tgl_indo_garing($tanggal)
           </table>
         </td>
       </tr>
-      <tr style="height: 100px;">
+      <tr style="height: 60px;">
         <td colspan="3">
           <?= $_GET['keterangan'] ?>
       </tr>
       <tr>
-        <td></td>
         <td style="width: 55%;"></td>
-        <td>
+        <td style="width: 50%;"></td>
+        <td style="text-align: left;">
           Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
           <br />
           Kepala Madrasah,
           <br /><br /><br /><br /><br /><br />
-          Muhamad Dopir<br>
+          Muhamad Dopir
         </td>
       </tr>
     </table>

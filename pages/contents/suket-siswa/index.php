@@ -208,6 +208,14 @@
                         <h4 class="modal-title">Berkas Pengajuan Surat Keterangan Siswa</h4>
                     </div>
                     <div class="modal-body">
+                        <div class="form-group">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Nomor Surat</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="no_surat" class="form-control" <?= $_SESSION['pangkat_user'] == 'operator' ? '' : 'disabled'  ?> />
+                                </div>
+                            </div>
+                        </div>
                         <div class="box-header with-border">
                             <h3 class="box-title">Kepala Sekolah / Madrasah</h3>
                         </div>

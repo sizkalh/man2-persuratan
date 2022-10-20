@@ -59,7 +59,7 @@ function tgl_indo_garing($tanggal)
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nota Dinas</title>
+  <title>Surat Undangan</title>
 </head>
 
 <body>
@@ -97,7 +97,7 @@ function tgl_indo_garing($tanggal)
       </tr>
       <tr>
         <td colspan="3">
-          Disampaikan dengan hormat bahwa, berkenaan dengan <?= $_GET['dalam_rangka'] ?>, maka kami mengharap kehadiran Bapak/Ibu/Sdr Wali Murid, pada :
+          Disampaikan dengan hormat bahwa, dalam rangka <?= $_GET['dalam_rangka'] ?>, maka kami mengharap kehadiran Bapak/Ibu/Sdr Wali Murid, pada :
         </td>
       </tr>
       <tr>
@@ -132,12 +132,12 @@ function tgl_indo_garing($tanggal)
       <tr>
         <td></td>
         <td style="width: 30%;"></td>
-        <td>
+        <td style="text-align: left;">
           Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
           <br />
           Kepala Madrasah,
           <br /><br /><br /><br /><br /><br />
-          Muhamad Dopir<br>
+          Muhamad Dopir
         </td>
       </tr>
     </table>

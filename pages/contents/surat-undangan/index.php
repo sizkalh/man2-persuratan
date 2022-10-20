@@ -126,13 +126,14 @@
                                     <td class="text-center">
                                         <!-- Button Lampiran -->
                                         <?php
-                                        $cek_lampiran = mysqli_query($koneksi, 'select * from tbl_lampiran where id_surat = "' . $myData['id'] . '"');
-                                        if (mysqli_num_rows($cek_lampiran) > 0) {
-                                            while ($data_lampiran = mysqli_fetch_array($cek_lampiran)) { ?>
+                                        //$cek_lampiran = mysqli_query($koneksi, 'select * from tbl_lampiran where id_surat = "' . $myData['id'] . '"');
+                                        //if (mysqli_num_rows($cek_lampiran) > 0) {
+                                        //    while ($data_lampiran = mysqli_fetch_array($cek_lampiran)) { ?>
 
-                                                <a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
-                                        <?php }
-                                        } ?>
+                                                <!--<a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
+                                        -->
+                                        <?php //}
+                                        //} ?>
 
                                         <!-- Button Pop Up -->
                                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" id="modal-otor" data-id="<?= $myData['id']; ?>" data-target="#modal-default">
@@ -232,6 +233,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--
                         <div class="form-group">
                             <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Lampiran</label>
@@ -240,6 +242,7 @@
                                 </div>
                             </div>
                         </div>
+                        -->
                         <div class="form-group">
                             <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Dalam Rangka</label>
@@ -361,11 +364,11 @@
                     $('#alamat').val(data.alamat);
                     $('#perihal').val(data.perihal);
                     $('#tgl_pembuatan').val(data.tgl_pembuatan);
-                    if (data.lampiran != null) {
-                        $('#lampiran').val(data.lampiran);
-                    } else {
-                        $('#lampiran').val("-");
-                    }
+                    //if (data.lampiran != null) {
+                     //   $('#lampiran').val(data.lampiran);
+                    //} else {
+                    //    $('#lampiran').val("-");
+                    //}
 
                     $('#keterangan').val(data.keterangan);
                     $('#hari').val(data.hari);

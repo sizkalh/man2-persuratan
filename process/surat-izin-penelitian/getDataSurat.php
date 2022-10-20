@@ -9,6 +9,8 @@
     $id_surat = $_POST['id_surat'];
 
     $query_surat = mysqli_query($koneksi, "SELECT
+                                            tbl_surat.id AS id_surat,
+                                            tbl_surat.no_surat,
                                             tbl_guru.*,
                                             tbl_surat_izin_penelitian.*
                                             FROM
