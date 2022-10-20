@@ -74,7 +74,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
 
   <body>
     <div style="margin-top: -50px;">
-      <table style="margin: 0 auto;">
+      <table style="margin: 0 auto; border-collapse: collapse;">
         <tr>
           <td colspan="3">
             <img src="../../dist/img/kop_surat.png" alt="" style="max-width: 100%;">
@@ -93,7 +93,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr>
           <td colspan="3">
-            <table>
+            <table style="border-collapse: collapse;">
               <tr>
                 <td style="width: 150px;">Nama</td>
                 <td>:</td>
@@ -129,7 +129,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr>
           <td colspan="3">
-            <table>
+            <table style = "border-collapse: collapse;">
               <tr>
                 <td style="width: 150px;">Nama</td>
                 <td>:</td>
@@ -182,7 +182,6 @@ while ($data = mysqli_fetch_array($query_surat)) {
             Kepala Madrasah,
             <img style="position: absolute; max-width: 280px; left: 21em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
-            <br>
             <br>
             <br>
             <br>

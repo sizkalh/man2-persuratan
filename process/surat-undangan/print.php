@@ -69,13 +69,13 @@ while ($data = mysqli_fetch_array($query_surat)) {
 
   <body>
     <div style="margin-top: -50px;">
-      <table style="margin: 0 auto;">
+      <table style="margin: 0 auto; border-collapse: collapse;">
         <tr>
           <td colspan="3">
             <img src="../../dist/img/kop_surat.png" alt="" style="max-width: 100%;">
           </td>
         </tr>
-        <tr style="height: 80px;">
+        <tr style="height: 60px;">
           <td colspan="2" style="vertical-align: text-top;">
             <table>
               <tr>
@@ -93,34 +93,33 @@ while ($data = mysqli_fetch_array($query_surat)) {
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: text-top; width: 35%; padding-bottom: 3em;">
+          <td style="vertical-align: text-top; width: 35%; padding-bottom: 15px;">
             Yth. Bapak/Ibu/Sdr <?= $data['kepada'] ?>
             <br>
             di <?= $data['alamat'] ?>
           </td>
-          <td></td>
         </tr>
-        <tr>
-          <td colspan="3">
+        <tr style="padding-bottom: 15px;">
+          <td colspan="3" style="padding: 0 !important;">
             Disampaikan dengan hormat bahwa, berkenaan dengan <?= $data['keterangan'] ?>, maka kami mengharap kehadiran Bapak/Ibu/Sdr Wali Murid, pada :
           </td>
         </tr>
         <tr>
           <td colspan="3">
-            <table>
+            <table style="border-collapse: collapse;">
               <tr>
-                <td style="width: 100px;">Hari</td>
-                <td>: <?= $data['hari'] ?></td>
+                <td style="width: 100px; padding: 0 !important;">Hari</td>
+                <td style="padding: 0 !important;">: <?= $data['hari'] ?></td>
               </tr>
               <tr>
-                <td>Tanggal</td>
-                <td>: <?php if ($data['tgl_pelaksanaan'] <> '') {
+                <td style="padding: 0 !important;">Tanggal</td>
+                <td style="padding: 0 !important;">: <?php if ($data['tgl_pelaksanaan'] <> '') {
                         echo tgl_indo_garing($data['tgl_pelaksanaan']);
                       } ?></td>
               </tr>
               <tr>
-                <td>Tempat</td>
-                <td>: <?= $data['tempat'] ?></td>
+                <td style="padding: 0 !important;">Tempat</td>
+                <td style="padding: 0 !important;">: <?= $data['tempat'] ?></td>
               </tr>
               <tr>
                 <td>Waktu</td>
@@ -141,9 +140,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
-            <img style="position: absolute; max-width: 280px; left: 26em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <img style="position: absolute; max-width: 280px; left: 24em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
-            <br>
             <br>
             <br>
             <br>

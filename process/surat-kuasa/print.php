@@ -70,7 +70,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
 
     <body>
         <div style="margin-top: -50px;">
-            <table style="margin: 0 auto;">
+            <table style="margin: 0 auto; border-collapse: collapse;">
                 <tr>
                     <td colspan="3">
                         <img src="../../dist/img/kop_surat.png" alt="" style="max-width: 100%;">
@@ -143,9 +143,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
                         Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
                         <br />
                         Kepala Madrasah,
-                        <img style="position: absolute; max-width: 280px; left: 26em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+                        <img style="position: absolute; max-width: 280px; left: 24em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
                         <br />
-                        <br>
                         <br>
                         <br>
                         <br>
@@ -158,7 +157,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </div>
 
         <script>
-            // window.print();
+         window.print();
         </script>
     </body>
 

@@ -77,8 +77,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
           </td>
         </tr>
         <tr style="height: 80px;">
-          <td colspan="2" style="vertical-align: text-top;">
-            <table>
+          <td colspan="2" style="vertical-align: text-top; padding: 0px">
+            <table style = "border-collapse: collapse;">
               <tr>
                 <td>Nomor</td>
                 <td>: <?= $data['no_surat'] ?></td>
@@ -108,7 +108,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: text-top; width: 35%; padding-bottom: 3em;">
+          <td>
             Yth. Wali Murid <?= $data['kepada'] ?>
             <br>
             di <?= $data['alamat'] ?>
@@ -116,13 +116,13 @@ while ($data = mysqli_fetch_array($query_surat)) {
           <td></td>
         </tr>
         <tr>
-          <td colspan="3">
+          <td colspan="3" style="padding-top: 20px;">
             Dalam rangka akan dilaksanakan Kegiatan <?= $data['keterangan'] ?> maka kami mengharap kesediaan Bapak / Ibu Wali Murid memberikan izin kepada putra – putrinya untuk mengikuti kegiatan tersebut, yang akan dilaksanakan, pada :
           </td>
         </tr>
         <tr>
           <td colspan="3">
-            <table>
+            <table style="border-collapse: collapse;">
               <tr>
                 <td style="width: 100px;">Hari</td>
                 <td>: <?= $data['hari'] ?></td>
@@ -156,9 +156,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
-            <img style="position: absolute; max-width: 280px; left: 23em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <img style="position: absolute; max-width: 270px; left: 20em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
-            <br>
             <br>
             <br>
             <br>
