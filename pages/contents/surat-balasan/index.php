@@ -30,7 +30,7 @@
         ?>
         <div class="box box-success">
             <?php
-            if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
+            if ($_SESSION['pangkat_user'] == 'guru') {
             ?>
                 <div class="box-header">
                     <a href="<?= base_url() ?>surat-balasan/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Balasan</a>
@@ -45,7 +45,7 @@
                             <th>No. Surat</th>
                             <th class="text-center" width="110">Tgl. Pembuatan</th>
                             <th>Menerangkan</th>
-                            <th class="text-center">Aksi</th>
+                            <th width="150" class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

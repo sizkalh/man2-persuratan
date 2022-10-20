@@ -151,12 +151,7 @@ $uri2 = explode('/', trim($uri[0], '/'));
           </li>
           <li <?= $uri2[0] == "surat-pengantar" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-pengantar/index">
-              <i class="fa fa-refresh fa-spin"></i>Surat Pengantar
-            </a>
-          </li>
-          <li <?= $uri2[0] == "surat-pernyataan" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>surat-pernyataan/index">
-              <i class="fa fa-refresh fa-spin"></i>Surat Pernyataan
+              <i class="fa fa-circle-o"></i>Surat Pengantar
             </a>
           </li>
         </ul>
@@ -207,22 +202,22 @@ $uri2 = explode('/', trim($uri[0], '/'));
                 <i class="fa fa-circle-o"></i>Data Wali Kelas
               </a>
             </li>
-          <?php } ?>
-          <!-- <li <?= $uri2[0] == "prestasi-siswa" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>prestasi-siswa/index">
-              <i class="fa fa-circle-o"></i>Data Prestasi Siswa
+            <li <?= $uri2[0] == "data-siswa" ? "class = 'active'" : "" ?>>
+            <a href="<?= base_url() ?>data-siswa/index">
+              <i class="fa fa-circle-o"></i>Data Siswa
             </a>
-          </li> -->
+          </li>
+            <li <?= $uri2[0] == "prestasi-siswa" ? "class = 'active'" : "" ?>>
+              <a href="<?= base_url() ?>prestasi-siswa/index">
+                <i class="fa fa-circle-o"></i>Data Prestasi Siswa
+              </a>
+            </li>
+          <?php } ?>
           <li <?= $uri2[0] == "profil" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>profil/index">
               <i class="fa fa-circle-o"></i>Profil
             </a>
           </li>
-          <!-- <li <?= $uri2[0] == "data-siswa" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>data-siswa/index">
-              <i class="fa fa-circle-o"></i>Data Siswa
-            </a>
-          </li> -->
         </ul>
       </li>
       <li class="btn-danger">

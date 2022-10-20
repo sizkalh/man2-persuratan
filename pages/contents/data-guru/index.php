@@ -69,7 +69,7 @@
                                     Alamat : <?= $data_guru['alamat'] ?>
                                 </td>
                                 <td>
-                                    Pangkat : <?= $data_guru['pangkat'] ?> <br>
+                                    Pangkat : <?= $data_guru['pangkat_guru'] ?> <br>
                                     Golongan : <?= $data_guru['golongan'] ?> <br>
                                     Alamat : <?= $data_guru['alamat'] ?>
                                 </td>

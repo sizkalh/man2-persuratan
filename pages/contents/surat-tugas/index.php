@@ -30,7 +30,7 @@
         ?>
         <div class="box box-success">
             <?php
-            if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
+            if ($_SESSION['pangkat_user'] == 'guru') {
             ?>
                 <div class="box-header">
                     <a href="<?= base_url() ?>process/surat-tugas/tambah.php" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Surat Tugas</a>

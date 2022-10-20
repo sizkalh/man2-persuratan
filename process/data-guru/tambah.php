@@ -34,7 +34,7 @@
                                     tempat_lahir = "' . $tempat_lahir . '",
                                     tgl_lahir = "' . $tgl_lahir . '",
                                     alamat = "' . $alamat . '",
-                                    pangkat = "' . $pangkat . '",
+                                    pangkat_guru = "' . $pangkat . '",
                                     golongan = "' . $golongan . '",
                                     jabatan = "' . $jabatan . '",
                                     lama_pengabdian = "' . $lama_pengabdian . '",

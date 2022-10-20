@@ -30,7 +30,7 @@
         ?>
         <div class="box box-success">
             <?php
-            if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
+            if ($_SESSION['pangkat_user'] == 'guru') {
             ?>
                 <div class="box-header">
                     <a href="<?= base_url() ?>surat-izin-penelitian/create" class="btn btn-primary"><i class="fa fa-plus"></i> Buat Izin Penelitian</a>

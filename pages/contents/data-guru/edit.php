@@ -93,7 +93,7 @@
             <div class="mb-3 row">
               <label class="col-sm-2 col-form-label">Pangkat</label>
               <div class="col-sm-10">
-                <input type="text" name="pangkat" id="pangkat" class="form-control" placeholder="Masukkan Pangkat" value="<?= $data['pangkat'] ?>">
+                <input type="text" name="pangkat" id="pangkat" class="form-control" placeholder="Masukkan Pangkat" value="<?= $data['pangkat_guru'] ?>">
               </div>
             </div>
           </div>
