@@ -110,7 +110,7 @@ function tgl_indo_garing($tanggal)
           Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
           <br />
           Kepala Madrasah,
-          <br /><br /><br /><br /><br /><br />
+          <br /><br /><br /><br /><br />
           Muhamad Dopir
         </td>
       </tr>

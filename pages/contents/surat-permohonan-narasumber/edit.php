@@ -55,22 +55,6 @@
                         </div>
                         <div class="form-group">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Lampiran</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="lampiran" placeholder="Masukkan Lampiran" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">File Lampiran</label>
-                                <div class="col-sm-10">
-                                    <input type="file" name="file_lampiran" class="form-control" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Dalam Rangka</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" name="dalam_rangka" rows="3" placeholder="Masukkan Dalam Rangka"><?= $data['keterangan'] ?></textarea>

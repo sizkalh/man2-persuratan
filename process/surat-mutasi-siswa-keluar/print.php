@@ -98,13 +98,13 @@ while ($data = mysqli_fetch_array($query_surat)) {
           </td>
         </tr>
         <tr>
-          <td colspan="3">
+          <td colspan="3" style="padding-bottom: 15px;">
             Dengan ini Kepala Madrasah Aliyah Negeri 2 Tulungagung memberikan izin pindah kepada siswa :
           </td>
         </tr>
         <tr>
           <td colspan="3">
-            <table>
+            <table style="border-collapse: collapse;">
               <tr>
                 <td style="width: 210px;">Nama</td>
                 <td>:</td>
@@ -176,7 +176,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
             </table>
           </td>
         </tr>
-        <tr style="height: 80px;">
+        <tr style="height: 50px;">
           <td colspan="3">
             Demikian surat keterangan ini dibuat untuk dapat dipergunakan sebagaimana mestinya.
           </td>

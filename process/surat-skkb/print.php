@@ -85,7 +85,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
 
   <body>
     <div style="margin-top: -50px;">
-      <table style="margin: 0 auto;">
+      <table style="margin: 0 auto; border-collapse: collapse;">
         <tr>
           <td colspan="3">
             <img src="../../dist/img/kop_surat.png" alt="" style="max-width: 100%;">
@@ -98,13 +98,13 @@ while ($data = mysqli_fetch_array($query_surat)) {
           </td>
         </tr>
         <tr>
-          <td colspan="3">
+          <td colspan="3"; style ="padding-bottom: 0px;">
             Yang bertanda tangan dibawah ini Kepala Madrasah Aliyah Negeri 2 Tulungagung menerangkan dengan sebenarnya bahwa:
           </td>
         </tr>
         <tr>
           <td colspan="3">
-            <table>
+            <table style="height:20px; border-collapse: collapse;">
               <tr>
                 <td style="width: 100px;">Nama</td>
                 <td>:</td>
@@ -159,7 +159,6 @@ while ($data = mysqli_fetch_array($query_surat)) {
             Kepala Madrasah,
             <img style="position: absolute; max-width: 280px; left: 22em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
-            <br>
             <br>
             <br>
             <br>
