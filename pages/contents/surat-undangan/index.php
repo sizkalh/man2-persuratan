@@ -128,12 +128,14 @@
                                         <?php
                                         //$cek_lampiran = mysqli_query($koneksi, 'select * from tbl_lampiran where id_surat = "' . $myData['id'] . '"');
                                         //if (mysqli_num_rows($cek_lampiran) > 0) {
-                                        //    while ($data_lampiran = mysqli_fetch_array($cek_lampiran)) { ?>
+                                        //    while ($data_lampiran = mysqli_fetch_array($cek_lampiran)) { 
+                                        ?>
 
-                                                <!--<a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
+                                        <!--<a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
                                         -->
                                         <?php //}
-                                        //} ?>
+                                        //} 
+                                        ?>
 
                                         <!-- Button Pop Up -->
                                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" id="modal-otor" data-id="<?= $myData['id']; ?>" data-target="#modal-default">
@@ -142,6 +144,19 @@
 
                                         <a href="<?= base_url() ?>process/surat-undangan/preview_d.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Surat"><i class="fa fa-clipboard"></i></a>
 
+                                        <!-- Button Print -->
+                                        <?php
+                                        if ($_SESSION['pangkat_user'] == "guru" || $_SESSION['pangkat_user'] == "operator") {
+                                            $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
+                                            if (mysqli_num_rows($cek_ttd) > 0) {
+                                                while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
+                                                    <a href="<?= base_url() ?>process/surat-undangan/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
+                                                <?php }
+                                            } else { ?>
+                                                <a href="#" target="_blank" class="btn btn-primary btn-sm" disabled><i class="fa fa-print"></i></a>
+                                        <?php }
+                                        } ?>
+                                        
                                         <!-- Button Edit -->
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'guru') {
@@ -160,19 +175,6 @@
                                         ?>
                                             <a href="../../../process/surat-undangan/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         <?php } ?>
-
-                                        <!-- Button Print -->
-                                        <?php
-                                        if ($_SESSION['pangkat_user'] == "guru" || $_SESSION['pangkat_user'] == "operator") {
-                                            $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
-                                            if (mysqli_num_rows($cek_ttd) > 0) {
-                                                while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
-                                                    <a href="<?= base_url() ?>process/surat-undangan/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
-                                                <?php }
-                                            } else { ?>
-                                                <a href="#" target="_blank" class="btn btn-primary btn-sm" disabled><i class="fa fa-print"></i></a>
-                                        <?php }
-                                        } ?>
                                     </td>
                                 </tr>
                         <?php }
@@ -365,7 +367,7 @@
                     $('#perihal').val(data.perihal);
                     $('#tgl_pembuatan').val(data.tgl_pembuatan);
                     //if (data.lampiran != null) {
-                     //   $('#lampiran').val(data.lampiran);
+                    //   $('#lampiran').val(data.lampiran);
                     //} else {
                     //    $('#lampiran').val("-");
                     //}

@@ -141,13 +141,28 @@ while ($data = mysqli_fetch_array($query_surat)) {
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
+            <?php
+            $query = mysqli_query($koneksi, 'SELECT
+                                                  *
+                                                FROM
+                                                  tbl_tanda_tangan A
+                                                  INNER JOIN tbl_guru B
+                                                    ON A.id_user = B.id
+                                                WHERE B.pangkat = "kamad"
+                                                  AND A.id_surat = "' . $id . '"
+                                                  ');
+            $data = mysqli_fetch_array($query);
+            if ($data['status'] == "diterima") {
+            ?>
+              <img style="position: absolute; max-width: 280px; right: 24em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <?php } ?>
             <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <!-- <img src="../../dist/img/ttd/contohttd.png" style="max-width: 200px;"> -->
-            <br />
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             Muhamad Dopir
             <?php
             $query = mysqli_query($koneksi, 'SELECT
