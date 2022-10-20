@@ -147,14 +147,13 @@ function tgl_indo_garing($tanggal)
       </tr>
       <tr>
         <td></td>
-        <td style="width: 35%;"></td>
-        <td style="text-align: center;">
+        <td style="width: 65%;"></td>
+        <td>
           Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
           <br />
           Kepala Madrasah,
           <br /><br /><br /><br /><br /><br />
-          <u>Drs. Muhamad Dopir, M.Pd.I.</u><br>
-          NIP. 196212061990032001
+          Muhamad Dopir<br>
         </td>
       </tr>
     </table>

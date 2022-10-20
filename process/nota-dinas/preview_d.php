@@ -148,8 +148,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr>
           <td></td>
-          <td style="width: 50%;"></td>
-          <td style="text-align: center;">
+          <td style="width: 55%;"></td>
+          <td>
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
@@ -160,8 +160,23 @@ while ($data = mysqli_fetch_array($query_surat)) {
             <br />
             <!-- <img src="../../dist/img/ttd/contohttd.png" style="max-width: 200px;"> -->
             <br />
-            <u>Drs. Muhamad Dopir, M.Pd.I.</u> <br>
-            NIP. 196212061990032001
+            Muhamad Dopir 
+            <?php 
+              $query = mysqli_query($koneksi, 'SELECT
+                                                  *
+                                                FROM
+                                                  tbl_tanda_tangan A
+                                                  INNER JOIN tbl_guru B
+                                                    ON A.id_user = B.id
+                                                WHERE B.pangkat = "katu"
+                                                  AND A.id_surat = "'.$id.'"
+                                                  ');
+              $data = mysqli_fetch_array($query);
+              if($data['status'] == "diterima"){
+            ?>
+            <img style="max-height: 20px;" src="../../dist/img/ttd/paraf.png">
+            <?php } ?>
+            <br>
           </td>
         </tr>
       </table>

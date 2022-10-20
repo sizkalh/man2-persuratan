@@ -101,8 +101,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
   </head>
 
   <body>
-    <div>
-      <table>
+    <div style="margin-top: -50px;">
+      <table style="margin: 0 auto;">
         <tr>
           <td colspan="3">
             <img src="../../dist/img/kop_surat.png" alt="" style="max-width: 100%;">
@@ -240,13 +240,20 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr style="height: 230px;">
           <td></td>
-          <td style="width: 50%;"></td>
-          <td style="text-align: center;">
+          <td style="width: 60%;"></td>
+          <td>
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
-            <br /><br /><br /><br /><br /><br />
-            Mohamad Dopir
+            <img style="position: absolute; max-width: 280px; left: 21em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <br />
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            Muhamad Dopir <img style="max-height: 20px;" src="../../dist/img/ttd/paraf.png"><br>
           </td>
         </tr>
       </table>

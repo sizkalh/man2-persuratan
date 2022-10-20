@@ -59,7 +59,7 @@ function tgl_indo_garing($tanggal)
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nota Dinas</title>
+  <title>Surat Permohonan Narasumber</title>
 </head>
 
 <body>
@@ -132,13 +132,13 @@ function tgl_indo_garing($tanggal)
       </tr>
       <tr>
         <td></td>
-        <td style="width: 30%;"></td>
-        <td style="text-align: center;">
+        <td style="width: 25%;"></td>
+        <td>
           Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
           <br />
           Kepala Madrasah,
           <br /><br /><br /><br /><br /><br />
-          Mohamad Dopir
+          Muhamad Dopir<br>
         </td>
       </tr>
     </table>

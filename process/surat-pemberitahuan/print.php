@@ -55,7 +55,7 @@ $id = $_GET['id'];
 // query disesuaikan dengan data yang akan ditampilkan
 $query_surat = mysqli_query($koneksi, 'SELECT * FROM tbl_surat WHERE tbl_surat.id = "' . $id . '"');
 while ($data = mysqli_fetch_array($query_surat)) {
-  
+
 ?>
 
   <!DOCTYPE html>
@@ -69,8 +69,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
   </head>
 
   <body>
-    <div>
-      <table>
+    <div style="margin-top: -50px;">
+      <table style="margin: 0 auto;">
         <tr>
           <td colspan="3">
             <img src="../../dist/img/kop_surat.png" alt="" style="max-width: 100%;">
@@ -89,15 +89,15 @@ while ($data = mysqli_fetch_array($query_surat)) {
               </tr>
               <tr>
                 <td>Lapiran</td>
-                <td>: 
+                <td>:
                   <?php
-                      $query_lampiran = mysqli_query($koneksi, 'SELECT * FROM tbl_lampiran LEFT JOIN tbl_surat ON tbl_surat.id=tbl_lampiran.id_surat WHERE tbl_surat.id = "' . $id . '"');
-                      if (mysqli_num_rows($query_lampiran) > 0) {
-                        $data_lapiran = mysqli_fetch_array($query_lampiran);
-                        echo $data_lapiran['lampiran'];
-                      }else{
-                        echo '-';
-                      }
+                  $query_lampiran = mysqli_query($koneksi, 'SELECT * FROM tbl_lampiran LEFT JOIN tbl_surat ON tbl_surat.id=tbl_lampiran.id_surat WHERE tbl_surat.id = "' . $id . '"');
+                  if (mysqli_num_rows($query_lampiran) > 0) {
+                    $data_lapiran = mysqli_fetch_array($query_lampiran);
+                    echo $data_lapiran['lampiran'];
+                  } else {
+                    echo '-';
+                  }
                   ?>
                 </td>
               </tr>
@@ -152,14 +152,19 @@ while ($data = mysqli_fetch_array($query_surat)) {
         <tr>
           <td></td>
           <td style="width: 30%;"></td>
-          <td style="text-align: center;">
+          <td>
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
+            <img style="position: absolute; max-width: 280px; left: 23em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
-            <img src="../../dist/img/ttd/contohttd.png" style="max-width: 200px;">
-            <br />
-            Mohamad Dopir
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            Muhamad Dopir <img style="max-height: 20px;" src="../../dist/img/ttd/paraf.png"><br>
           </td>
         </tr>
       </table>
