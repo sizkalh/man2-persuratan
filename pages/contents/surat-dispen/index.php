@@ -201,8 +201,7 @@
                             <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input type="hidden" name="nama_guru" id="nama_guru">
-                                    <input type="text">
+                                    <input type="text" name="nama_guru" class="form-control" id="nama_guru" readonly>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +226,7 @@
                             <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Kegiatan</label>
                                 <div class="col-sm-10">
-                                    <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukkan kegiatan"></textarea>
+                                    <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukkan kegiatan" readonly></textarea>
                                 </div>
                             </div>
                         </div>
@@ -235,7 +234,7 @@
                             <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Hari Kegiatan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="hari" id="hari" placeholder="Masukkan Hari Kegiatan" />
+                                    <input type="text" class="form-control" name="hari" id="hari" placeholder="Masukkan Hari Kegiatan" readonly />
                                 </div>
                             </div>
                         </div>
@@ -245,14 +244,14 @@
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input type="text" class="form-control datepicker" id="tanggal_pelaksanaan" name="tanggal_pelaksanaan" placeholder="Masukkan Tanggal" />
+                                        <input type="text" class="form-control" id="tanggal_pelaksanaan" name="tanggal_pelaksanaan" placeholder="Masukkan Tanggal" readonly />
                                     </div>
                                 </div>
                                 <label class="col-sm-2 col-form-label" style="text-align: right;">Waktu</label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                        <input type="text" class="form-control timepicker" id="waktu" name="waktu" placeholder="Masukkan Waktu" />
+                                        <input type="text" class="form-control timepicker" id="waktu" name="waktu" placeholder="Masukkan Waktu" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -261,15 +260,7 @@
                             <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Tempat</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="tempat" id="tempat" placeholder="Masukkan Tempat" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label"></label>
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                                    <input type="text" class="form-control" name="tempat" id="tempat" placeholder="Masukkan Tempat" readonly />
                                 </div>
                             </div>
                         </div>
@@ -285,25 +276,10 @@
                                                 <th>Nama</th>
                                                 <th class="text-center">Kelas</th>
                                                 <th>Keterangan</th>
-                                                <th width="150" class="text-center">Aksi</th>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">~</td>
-                                                <td>
-                                                    <input type="hidden" name="id_surat">
-                                                    <input type="hidden" name="id_detail_kelas" id="id_detail_kelas">
-                                                    <input type="text">
-                                                </td>
-                                                <td></td>
-                                                <td>
-                                                    <textarea name="keterangan" class="form-control"></textarea>
-                                                </td>
-                                                <td class="text-center">
-                                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> tambah</button>
-                                                </td>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="data-petugas">
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -386,6 +362,9 @@
                     }
 
                     // Yang perlu disesuaikan menurut inputan
+                    $('#nama_guru').val(data.nama);
+                    $('#nip').val(data.nip);
+                    $('#jabatan').val(data.jabatan);
                     $('#perihal').val(data.perihal);
                     $('#keterangan').val(data.keterangan);
                     $('#alamat').val(data.alamat);
@@ -408,12 +387,16 @@
                             var no = 1;
                             for (i = 0; i < data.length; i++) {
                                 content += '<tr>';
-                                content += '<td>' + no++ + '</td>';
-                                content += '<td>Nama : <b>' + data[i].nama + ' </b> ';
-                                content += '<br>NIP : <b>' + data[i].nip + ' </b> ';
-                                content += '<br>Pangkat/Gol : <b>' + data[i].golongan + ' </b> ';
-                                content += '<br>Jabatan : <b>' + data[i].jabatan + ' </b> ';
+                                content += '<td class="text-center">' + no++ + '</td>';
+                                content += '<td>' + data[i].nama + '</td>';
+                                content += '<td class="text-center">';
+                                if (data[i].rombel != "0") {
+                                    content += data[i].kelas + '  ' + data[i].jurusan + '  ' + data[i].rombel;
+                                } else {
+                                    content += data[i].kelas + '  ' + data[i].jurusan;
+                                }
                                 content += '</td>';
+                                content += '<td>' + data[i].keterangan + '</td>';
                                 content += '</tr>';
                             }
                             $('#data-petugas').html(content)

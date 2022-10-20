@@ -146,7 +146,7 @@ $uri2 = explode('/', trim($uri[0], '/'));
           </li>
           <li <?= $uri2[0] == "surat-dispen" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>surat-dispen/index">
-              <i class="fa fa-refresh fa-spin"></i>Surat Dispen
+              <i class="fa fa-circle-o"></i>Surat Dispen
             </a>
           </li>
           <li <?= $uri2[0] == "surat-pengantar" ? "class = 'active'" : "" ?>>
@@ -208,11 +208,11 @@ $uri2 = explode('/', trim($uri[0], '/'));
               </a>
             </li>
           <?php } ?>
-          <li <?= $uri2[0] == "prestasi-siswa" ? "class = 'active'" : "" ?>>
+          <!-- <li <?= $uri2[0] == "prestasi-siswa" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>prestasi-siswa/index">
               <i class="fa fa-circle-o"></i>Data Prestasi Siswa
             </a>
-          </li>
+          </li> -->
           <li <?= $uri2[0] == "profil" ? "class = 'active'" : "" ?>>
             <a href="<?= base_url() ?>profil/index">
               <i class="fa fa-circle-o"></i>Profil
