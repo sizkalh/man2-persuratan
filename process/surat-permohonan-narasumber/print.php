@@ -152,7 +152,6 @@ while ($data = mysqli_fetch_array($query_surat)) {
             <br>
             <br>
             <br>
-            <br>
             Muhamad Dopir <img style="max-height: 20px;" src="../../dist/img/ttd/paraf.png"><br>
           </td>
         </tr>

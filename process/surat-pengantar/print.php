@@ -160,11 +160,9 @@ while ($data = mysqli_fetch_array($query_surat)) {
             $data = mysqli_fetch_array($query);
             if ($data['status'] == "diterima") {
             ?>
-              <img style="position: absolute; max-width: 280px; left: 23em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+              <img style="position: absolute; max-width: 240px; left: 23em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <?php } ?>
             <br />
-            <br>
-            <br>
             <br>
             <br>
             <br>

@@ -161,9 +161,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
             Tulungagung
             <br />
             Kepala Madrasah,
-            <img style="position: absolute; max-width: 270px; left: 23em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <img style="position: absolute; max-width: 240px; left: 23em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
-            <br>
             <br>
             <br>
             <br>
