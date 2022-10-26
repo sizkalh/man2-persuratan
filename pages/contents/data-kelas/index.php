@@ -34,9 +34,9 @@
             ?>
                 <div class="box-header">
                     <a href="<?= base_url() ?>data-kelas/create" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Kelas</a>
-                    <button type="button" class="btn btn-success" data-toggle="modal" id="modal-upload" data-id="" data-target="#modal-upload-file">
+                    <!-- <button type="button" class="btn btn-success" data-toggle="modal" id="modal-upload" data-id="" data-target="#modal-upload-file">
                         <i class="fa fa-file-excel-o"></i> Upload format Excel
-                    </button>
+                    </button> -->
                 </div>
             <?php } ?>
             <div class="box-body">
