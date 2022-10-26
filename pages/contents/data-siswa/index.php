@@ -30,7 +30,7 @@
         ?>
         <div class="box box-success">
             <?php
-            if ($_SESSION['pangkat_user'] == 'guru' || 'superuser') {
+            if ($_SESSION['pangkat_user'] == 'operator' || $_SESSION['pangkat_user'] == 'superuser') {
             ?>
                 <div class="box-header">
                     <a href="<?= base_url() ?>data-siswa/create" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Siswa</a>

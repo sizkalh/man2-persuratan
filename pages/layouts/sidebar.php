@@ -17,7 +17,10 @@ $uri2 = explode('/', trim($uri[0], '/'));
       </div>
       <div class="pull-left info">
         <p>
-          <?= $_SESSION['nama_user'] ?> <br>
+          <small>
+            <?= $_SESSION['nama_user'] ?>
+          </small> 
+          <br>
           <small>
             <?= $_SESSION['jabatan_user'] ?>
           </small>
@@ -33,7 +36,7 @@ $uri2 = explode('/', trim($uri[0], '/'));
       <li class="header">MENU</li>
       <li <?= $page_uri == "/" ? "class = 'active'" : "" ?>>
         <a href="<?= base_url() ?>">
-          <i class="fa fa-dashboard"></i> <span>Beranda</span>
+          <i class="fa fa-home"></i> <span>Beranda</span>
         </a>
       </li>
       <li class="treeview <?= $uri2[0] == 'berita-acara' ||
@@ -203,10 +206,10 @@ $uri2 = explode('/', trim($uri[0], '/'));
               </a>
             </li>
             <li <?= $uri2[0] == "data-siswa" ? "class = 'active'" : "" ?>>
-            <a href="<?= base_url() ?>data-siswa/index">
-              <i class="fa fa-circle-o"></i>Data Siswa
-            </a>
-          </li>
+              <a href="<?= base_url() ?>data-siswa/index">
+                <i class="fa fa-circle-o"></i>Data Siswa
+              </a>
+            </li>
             <li <?= $uri2[0] == "prestasi-siswa" ? "class = 'active'" : "" ?>>
               <a href="<?= base_url() ?>prestasi-siswa/index">
                 <i class="fa fa-circle-o"></i>Data Prestasi Siswa

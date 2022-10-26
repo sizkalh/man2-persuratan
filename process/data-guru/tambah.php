@@ -40,6 +40,7 @@
                                     lama_pengabdian = "' . $lama_pengabdian . '",
                                     username = "' . $username . '",
                                     role = "' . $role . '",
+                                    pangkat = "' . $role . '",
                                     password = "' . $passwordmd . '",
                                     password2 = "' . $password . '",
                                     instansi = "MAN 2 Tulungagung"

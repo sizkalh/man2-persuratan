@@ -30,6 +30,8 @@ if (isset($_SESSION['status']) != 'login') {
   <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Animate -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
   <link href="https://repo.rachmat.id/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
@@ -77,6 +79,17 @@ if (isset($_SESSION['status']) != 'login') {
     tr.strikeout td:after {
       content: "\00B7";
       font-size: 1px;
+    }
+    div.dataTables_wrapper {
+      width: 100% !important;
+      margin: 0 auto !important;
+    }
+
+    #data-table,
+    #data-table2,
+    #data-table3,
+    #data-table4 {
+      width: 100% !important;
     }
   </style>
 </head>

@@ -65,6 +65,11 @@ while ($data = mysqli_fetch_array($query_surat)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Undangan</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
   </head>
 
   <body>
@@ -89,7 +94,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
             </table>
           </td>
           <td style="vertical-align: text-top; text-align: right;">
-            <?= tgl_indo_garing($data['tgl_pembuatan']) ?>
+            <?= tgl_indo($data['tgl_pembuatan']) ?>
           </td>
         </tr>
         <tr>
@@ -114,8 +119,8 @@ while ($data = mysqli_fetch_array($query_surat)) {
               <tr>
                 <td style="padding: 0 !important;">Tanggal</td>
                 <td style="padding: 0 !important;">: <?php if ($data['tgl_pelaksanaan'] <> '') {
-                        echo tgl_indo_garing($data['tgl_pelaksanaan']);
-                      } ?></td>
+                                                        echo tgl_indo_garing($data['tgl_pelaksanaan']);
+                                                      } ?></td>
               </tr>
               <tr>
                 <td style="padding: 0 !important;">Tempat</td>
@@ -137,7 +142,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
           <td></td>
           <td style="width: 35%;"></td>
           <td>
-            Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
+            Tulungagung
             <br />
             Kepala Madrasah,
             <img style="position: absolute; max-width: 280px; left: 24em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">

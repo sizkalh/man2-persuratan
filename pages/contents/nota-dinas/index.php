@@ -37,7 +37,7 @@
                 </div>
             <?php } ?>
             <div class="box-body">
-                <table class="table table-condensed table-hover" id="data-table">
+                <table class="table table-condensed table-hover nowrap" id="data-table">
                     <thead>
                         <tr>
                             <th width="20" class="text-center">~</th>
@@ -129,8 +129,27 @@
                                         $cek_lampiran = mysqli_query($koneksi, 'select * from tbl_lampiran where id_surat = "' . $myData['id'] . '"');
                                         if (mysqli_num_rows($cek_lampiran) > 0) {
                                             while ($data_lampiran = mysqli_fetch_array($cek_lampiran)) { ?>
-
-                                                <a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="File lampiran"><i class="fa fa-paperclip"></i></a>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fa fa-paperclip"></i> &nbsp;
+                                                        <span class="caret"></span>
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            <a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank">
+                                                                <i class="fa fa-eye"></i>
+                                                                Lihat lampiran
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="<?= base_url() ?>process/nota-dinas/hapusLampiran.php?id=<?= $data_lampiran['id_surat']; ?>&jenis=nota-dinas">
+                                                                <i class="fa fa-trash"></i>
+                                                                Hapus lampiran
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                         <?php }
                                         } ?>
 
@@ -141,7 +160,7 @@
 
 
                                         <a href="<?= base_url() ?>process/nota-dinas/preview_d.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-sm btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Surat">
-                                            <i class="fa fa-clipboard"></i>
+                                            <i class="fa fa-eye"></i>
                                         </a>
 
                                         <!-- Button Print -->
@@ -171,7 +190,7 @@
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'operator') {
                                         ?>
-                                            <a href="../../../process/nota-dinas/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="<?= base_url() ?>process/nota-dinas/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         <?php } ?>
                                     </td>
                                 </tr>
@@ -436,14 +455,14 @@
                                     if (data[i].status != "diterima") {
                                         content += '<td><button class="btn btn-sm btn-default" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                     } else {
-                                        content += '<td><button class="btn btn-sm btn-success" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
+                                        content += '<td><button class="btn btn-sm bg-purple" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                     }
                                 } else {
                                     if (data[i].status != "cek") {
                                         if (data[i].status != "diterima") {
                                             content += '<td><button class="btn btn-sm btn-default" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                         } else {
-                                            content += '<td><button class="btn btn-sm btn-success" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
+                                            content += '<td><button class="btn btn-sm bg-purple" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                             $('#edit_surat').attr("disabled");
                                         }
                                     } else {

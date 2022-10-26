@@ -4,10 +4,20 @@ function goBack() {
 }
 //====== END of membuat tombol kembali =
 
-$('#data-table').DataTable();
-$('#data-table2').DataTable();
-$('#data-table3').DataTable();
-$('#data-table4').DataTable();
+$('#data-table').DataTable({
+  scrollX: true,
+});
+$('#data-table2').DataTable({
+  scrollX: true,
+});
+$('#data-table3').DataTable({
+  scrollX: true,
+});
+$('#data-table4').DataTable({
+  scrollX: true,
+  pageLength: 5,
+});
+
 $('#datepicker').datepicker({
   format: 'dd/mm/yyyy',
   autoclose: true

@@ -5,6 +5,11 @@
         <b>Version</b> 2.4.18
     </div>
 -->
+    <div style="position: fixed; right: 3em; bottom: 3.5rem;">
+        <button class="btn bg-navy btn-flat" id="toTop">
+            <i class="fa fa-arrow-up"></i>
+        </button>
+    </div>
     <strong>Copyright &copy; 2022 <a href="https://man2-tulungagung.sch.id/" target="blank">MAN 2 Tulungagung</a>.</strong>
 </footer>
 </div><!-- ./wrapper -->
@@ -42,12 +47,63 @@
 <!-- AdminLTE for demo purposes -->
 <script src="https://adminlte.io/themes/AdminLTE/dist/js/demo.js"></script>
 
-<script>
+<!-- <script>
     $(function() {
         // Replace the <textarea id="editor1"> with a CKEditor
         // instance, using default configuration.
         CKEDITOR.replace('editor1')
         //bootstrap WYSIHTML5 - text editor
+    })
+</script> -->
+
+<script>
+    $(document).ready(function() {
+        var dateNow = new Date();
+        $('#calendar').datepicker("setDate", dateNow);
+
+        setInterval(function() {
+            var date = new Date();
+
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+
+            $('#jam-dinding').html(
+                (day < 10 ? '0' : '') + day + '/' +
+                (month < 10 ? '0' : '') + month + '/' +
+                date.getFullYear() +
+                " - " +
+                date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+            );
+        }, 500);
+
+        $('a[href*="#"]').on('click', function(e) {
+            e.preventDefault()
+
+            $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top,
+                },
+                800,
+                'linear'
+            )
+        })
+
+        $(window).scroll(function() {
+            if ($(this).scrollTop()) {
+                $('#toTop').fadeIn();
+            } else {
+                $('#toTop').fadeOut();
+            }
+        });
+
+        $("#toTop").click(function() {
+            //1 second of animation time
+            //html works for FFX but not Chrome
+            //body works for Chrome but not FFX
+            //This strange selector seems to work universally
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1000);
+        });
     })
 </script>
 </body>

@@ -442,14 +442,14 @@
                                     if (data[i].status != "diterima") {
                                         content += '<td><button class="btn btn-sm btn-default" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                     } else {
-                                        content += '<td><button class="btn btn-sm btn-success" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
+                                        content += '<td><button class="btn btn-sm bg-purple" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                     }
                                 } else {
                                     if (data[i].status != "cek") {
                                         if (data[i].status != "diterima") {
                                             content += '<td><button class="btn btn-sm btn-default" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                         } else {
-                                            content += '<td><button class="btn btn-sm btn-success" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
+                                            content += '<td><button class="btn btn-sm bg-purple" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                             $('#edit_surat').attr("disabled");
                                         }
                                     } else {

@@ -68,6 +68,11 @@ function tgl_indo_garing($tanggal)
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SURAT REKOMENDASI SISWA</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
 
   <style>
     #prestasi_data,

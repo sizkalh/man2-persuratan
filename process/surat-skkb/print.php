@@ -81,6 +81,11 @@ while ($data = mysqli_fetch_array($query_surat)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Keterangan Kelakuan Baik</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
   </head>
 
   <body>
@@ -98,7 +103,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
           </td>
         </tr>
         <tr>
-          <td colspan="3"; style ="padding-bottom: 0px;">
+          <td colspan="3" ; style="padding-bottom: 0px;">
             Yang bertanda tangan dibawah ini Kepala Madrasah Aliyah Negeri 2 Tulungagung menerangkan dengan sebenarnya bahwa:
           </td>
         </tr>

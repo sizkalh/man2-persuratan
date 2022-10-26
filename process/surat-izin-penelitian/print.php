@@ -70,6 +70,11 @@ while ($data = mysqli_fetch_array($query_surat)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Keterangan Penelitan</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
   </head>
 
   <body>
@@ -129,7 +134,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr>
           <td colspan="3">
-            <table style = "border-collapse: collapse;">
+            <table style="border-collapse: collapse;">
               <tr>
                 <td style="width: 150px;">Nama</td>
                 <td>:</td>

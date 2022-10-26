@@ -48,7 +48,11 @@
                                 <div class="col-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input type="text" class="form-control" name="tanggal_pembuatan" value="<?= $data['tgl_pembuatan'] ?>" readonly />
+                                        <?php
+                                        $tanggal_pembuatan = str_replace('-', '/', $data['tgl_pembuatan']);
+                                        $new_tanggal_pembuatan = date('d/m/Y', strtotime($tanggal_pembuatan));
+                                        ?>
+                                        <input type="text" class="form-control" name="tanggal_pembuatan" value="<?= $new_tanggal_pembuatan ?>" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -91,7 +95,11 @@
                                 <div class="col-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input type="text" class="form-control" id="datepicker" value="<?= $data['tgl_pelaksanaan'] ?>" name="tanggal_pelaksanaan" autocomplete="off" placeholder="Masukkan Tanggal Pelaksanaan" />
+                                        <?php
+                                        $tanggal_pelaksanaan = str_replace('-', '/', $data['tgl_pelaksanaan']);
+                                        $new_tanggal_pelaksanaan = date('d/m/Y', strtotime($tanggal_pelaksanaan));
+                                        ?>
+                                        <input type="text" class="form-control" id="datepicker" value="<?= $new_tanggal_pelaksanaan ?>" name="tanggal_pelaksanaan" autocomplete="off" placeholder="Masukkan Tanggal Pelaksanaan" />
                                     </div>
                                 </div>
                             </div>

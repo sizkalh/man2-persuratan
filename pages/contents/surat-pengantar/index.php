@@ -37,7 +37,7 @@
                 </div>
             <?php } ?>
             <div class="box-body">
-                <table class="table table-condensed table-hover" id="data-table">
+                <table class="table table-condensed table-hover compact nowrap" id="data-table">
                     <thead>
                         <tr>
                             <th width="20" class="text-center">~</th>
@@ -141,7 +141,7 @@
 
 
                                         <a href="<?= base_url() ?>process/surat-pengantar/preview_d.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-sm btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Surat">
-                                            <i class="fa fa-clipboard"></i>
+                                            <i class="fa fa-eye"></i>
                                         </a>
 
                                         <!-- Button Print -->
@@ -446,14 +446,14 @@
                                     if (data[i].status != "diterima") {
                                         content += '<td><button class="btn btn-sm btn-default" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                     } else {
-                                        content += '<td><button class="btn btn-sm btn-success" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
+                                        content += '<td><button class="btn btn-sm bg-purple" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                     }
                                 } else {
                                     if (data[i].status != "cek") {
                                         if (data[i].status != "diterima") {
                                             content += '<td><button class="btn btn-sm btn-default" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                         } else {
-                                            content += '<td><button class="btn btn-sm btn-success" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
+                                            content += '<td><button class="btn btn-sm bg-purple" id="otorisasi" pangkat="' + pangkat + '" disabled><i class="fa fa-check"></i></button></td>';
                                             $('#edit_surat').attr("disabled");
                                         }
                                     } else {

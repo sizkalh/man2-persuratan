@@ -60,6 +60,11 @@ function tgl_indo_garing($tanggal)
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Surat Pengantar</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
 </head>
 
 <body>
@@ -84,7 +89,7 @@ function tgl_indo_garing($tanggal)
           </table>
         </td>
         <td style="vertical-align: text-top; text-align: right;">
-          <?= $_GET['tanggal_pembuatan'] ?>
+          <?= tgl_indo_garing($_GET['tanggal_pembuatan']) ?>
         </td>
       </tr>
       <tr>
@@ -134,7 +139,7 @@ function tgl_indo_garing($tanggal)
         <td></td>
         <td style="width: 30%;"></td>
         <td style="text-align: left;">
-          Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
+          Tulungagung
           <br />
           Kepala Madrasah,
           <br /><br /><br /><br /><br /><br />

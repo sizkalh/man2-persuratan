@@ -1,52 +1,54 @@
 <?php
-function tgl_indo($tanggal){
-	$bulan = array (
-		1 =>   'Januari',
-		'Februari',
-		'Maret',
-		'April',
-		'Mei',
-		'Juni',
-		'Juli',
-		'Agustus',
-		'September',
-		'Oktober',
-		'November',
-		'Desember'
-	);
-	$pecahkan = explode('-', $tanggal);
-	
-	// variabel pecahkan 0 = tanggal
-	// variabel pecahkan 1 = bulan
-	// variabel pecahkan 2 = tahun
- 
-	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+function tgl_indo($tanggal)
+{
+  $bulan = array(
+    1 =>   'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember'
+  );
+  $pecahkan = explode('-', $tanggal);
+
+  // variabel pecahkan 0 = tanggal
+  // variabel pecahkan 1 = bulan
+  // variabel pecahkan 2 = tahun
+
+  return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 }
 
-function tgl_indo_garing($tanggal){
-	$bulan = array (
-		1 =>   'Januari',
-		'Februari',
-		'Maret',
-		'April',
-		'Mei',
-		'Juni',
-		'Juli',
-		'Agustus',
-		'September',
-		'Oktober',
-		'November',
-		'Desember'
-	);
-	$pecahkan = explode('/', $tanggal);
-	
-	// variabel pecahkan 0 = tanggal
-	// variabel pecahkan 1 = bulan
-	// variabel pecahkan 2 = tahun
- 
-	return  $pecahkan[0]. ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2];
+function tgl_indo_garing($tanggal)
+{
+  $bulan = array(
+    1 =>   'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember'
+  );
+  $pecahkan = explode('/', $tanggal);
+
+  // variabel pecahkan 0 = tanggal
+  // variabel pecahkan 1 = bulan
+  // variabel pecahkan 2 = tahun
+
+  return  $pecahkan[0] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[2];
 }
- 
+
 // echo tgl_indo_garing("01/08/2022");
 ?>
 
@@ -58,6 +60,11 @@ function tgl_indo_garing($tanggal){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nota Dinas</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
 </head>
 
 <body>
@@ -111,7 +118,9 @@ function tgl_indo_garing($tanggal){
       </tr>
       <tr>
         <td>Tanggal</td>
-        <td colspan="2">: <?php if($_GET['tanggal_pelaksanaan']<>''){echo tgl_indo_garing($_GET['tanggal_pelaksanaan']);} ?></td>
+        <td colspan="2">: <?php if ($_GET['tanggal_pelaksanaan'] <> '') {
+                            echo tgl_indo_garing($_GET['tanggal_pelaksanaan']);
+                          } ?></td>
       </tr>
       <tr>
         <td>Waktu</td>

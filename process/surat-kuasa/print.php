@@ -66,6 +66,11 @@ while ($data = mysqli_fetch_array($query_surat)) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Surat Kuasa</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
     </head>
 
     <body>
@@ -157,7 +162,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </div>
 
         <script>
-         window.print();
+            window.print();
         </script>
     </body>
 

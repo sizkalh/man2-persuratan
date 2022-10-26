@@ -73,6 +73,11 @@ while ($data = mysqli_fetch_array($query_surat)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SURAT KETERANGAN KESEDIAAN</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
   </head>
 
   <body>
@@ -96,7 +101,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr>
           <td colspan="3">
-            <table style = "border-collapse: collapse;">
+            <table style="border-collapse: collapse;">
               <tr>
                 <td style="width: 100px;">Nama</td>
                 <td>: <?= $data['nama'] ?></td>
@@ -114,16 +119,16 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr style="height: 100px;">
           <td colspan="3">
-          <?= $data['keterangan'] ?>
+            <?= $data['keterangan'] ?>
           </td>
         </tr>
         <tr>
           <td></td>
           <td style="width: 60%;"></td>
           <td>
-          <br>
-          <br>
-          <br>
+            <br>
+            <br>
+            <br>
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,

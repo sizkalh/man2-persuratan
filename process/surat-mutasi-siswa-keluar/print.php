@@ -81,6 +81,11 @@ while ($data = mysqli_fetch_array($query_surat)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SURAT KETERANGAN PENGUNDURAN DIRI</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
   </head>
 
   <body>
@@ -99,7 +104,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr>
           <td colspan="3" style="padding-bottom: 15px;">
-            Dengan ini Kepala Madrasah Aliyah Negeri 2 Tulungagung memberikan izin pindah kepada siswa :
+            Dengan ini Kepala Madrasah Aliyah Negeri 2 Tulungagung memberikan izin pindah <br>kepada siswa :
           </td>
         </tr>
         <tr>

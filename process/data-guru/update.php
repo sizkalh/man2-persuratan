@@ -38,6 +38,7 @@
                                     lama_pengabdian = "' . $lama_pengabdian . '",
                                     username = "' . $username . '",
                                     role = "' . $role . '",
+                                    pangkat = "' . $role . '",
                                     instansi = "MAN 2 Tulungagung"
                                     WHERE id="' . $id . '"');
     

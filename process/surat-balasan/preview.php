@@ -60,6 +60,11 @@ function tgl_indo_garing($tanggal)
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SURAT KETERANGAN KESEDIAAN</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
 </head>
 
 <body>
@@ -104,7 +109,7 @@ function tgl_indo_garing($tanggal)
           <?= $_GET['keterangan'] ?>
       </tr>
       <tr>
-        <td style="width: 55%;"></td>
+        <td></td>
         <td style="width: 50%;"></td>
         <td style="text-align: left;">
           Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>

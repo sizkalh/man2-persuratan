@@ -65,10 +65,15 @@ while ($data = mysqli_fetch_array($query_surat)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nota Dinas</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
   </head>
 
   <body>
-    <div style="margin-top: -50px;">
+    <div style="margin-top: -40px; padding: 0 50px;">
       <table style="margin: 0 auto;  border-collapse: collapse;">
         <tr>
           <td colspan="3">
@@ -148,14 +153,13 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr>
           <td></td>
-          <td style="width: 55%;"></td>
+          <td style="width: 50%;"></td>
           <td>
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
-            <img style="position: absolute; max-width: 280px; left: 24em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <img style="position: absolute; max-width: 220px; left: 22em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
-            <br>
             <br>
             <br>
             <br>
@@ -167,7 +171,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
     </div>
 
     <script>
-    window.print();
+      // window.print();
     </script>
   </body>
 

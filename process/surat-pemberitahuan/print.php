@@ -66,6 +66,11 @@ while ($data = mysqli_fetch_array($query_surat)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Pemberitahuan</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
   </head>
 
   <body>
@@ -78,7 +83,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr style="height: 80px;">
           <td colspan="2" style="vertical-align: text-top; padding: 0px">
-            <table style = "border-collapse: collapse;">
+            <table style="border-collapse: collapse;">
               <tr>
                 <td>Nomor</td>
                 <td>: <?= $data['no_surat'] ?></td>
@@ -104,7 +109,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
             </table>
           </td>
           <td style="vertical-align: text-top; text-align: right;">
-            <?= $data['tgl_pembuatan'] ?>
+            <?= tgl_indo($data['tgl_pembuatan']) ?>
           </td>
         </tr>
         <tr>
@@ -153,10 +158,10 @@ while ($data = mysqli_fetch_array($query_surat)) {
           <td></td>
           <td style="width: 30%;"></td>
           <td>
-            Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
+            Tulungagung
             <br />
             Kepala Madrasah,
-            <img style="position: absolute; max-width: 270px; left: 20em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <img style="position: absolute; max-width: 270px; left: 23em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
             <br>
             <br>

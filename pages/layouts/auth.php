@@ -32,7 +32,18 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="index.php"><b>MAN 2</b> Tulungagung</a>
+      <div class="row">
+        <div class="col-sm-3">
+          <div style="width: 100%;">
+            <img src="../../dist/img/man/logo-man.png" alt="logo" style="max-width: 80px;" class="img-responsive">
+          </div>
+        </div>
+        <div class="col-sm-9 text-left" style="font-size: .8em;">
+          <a href="<?= base_url() ?>">
+            <b>MAN 2</b> Tulungagung <small style="font-size: .7em;">Aplikasi Persuratan</small>
+          </a>
+        </div>
+      </div>
     </div>
 
     <?php
@@ -77,11 +88,13 @@
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <select class="form-control" name="role" required>
+          <!-- <select class="form-control" name="role" required>
             <option value="">-- Pilih Hak Akses --</option>
             <option value="guru">Guru / Karyawan</option>
             <option value="siswa">Siswa</option>
-          </select>
+          </select> -->
+          <input type="text" class="form-control" name="role" value="guru" readonly>
+          <span class="glyphicon glyphicon-education form-control-feedback"></span>
         </div>
         <div class="row">
           <!--
@@ -96,29 +109,20 @@
           <!-- /.col -->
           <div class="col-xs-12">
             <button type="submit" class="btn btn-success btn-block btn-flat"><i class="fa fa-check-square-o"></i> Sign In</button>
-            <!-- <a href="#" class="btn btn-primary btn-block btn-flat"><i class="fa fa-pencil-square-o"></i> Register</a> -->
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <!--
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-    </div>
-
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
-    -->
-
     </div>
     <!-- /.login-box-body -->
   </div>
   <!-- /.login-box -->
+
+  <div class="lockscreen-footer text-center">
+    <strong>Copyright &copy; 2022 <a href="https://man2-tulungagung.sch.id/" target="blank">MAN 2 Tulungagung</a>.</strong><br>
+    All rights reserved
+  </div>
 
   <!-- jQuery 3 -->
   <script src="../../plugins/jquery/dist/jquery.min.js"></script>
