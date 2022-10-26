@@ -73,7 +73,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
   </head>
 
   <body>
-    <div style="margin-top: -40px; padding: 0 50px;">
+    <div style="margin-top: -40px; padding: 0 50p x;">
       <table style="margin: 0 auto;  border-collapse: collapse;">
         <tr>
           <td colspan="3">

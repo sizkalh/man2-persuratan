@@ -88,13 +88,13 @@
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <!-- <select class="form-control" name="role" required>
+          <select class="form-control" name="role" required>
             <option value="">-- Pilih Hak Akses --</option>
             <option value="guru">Guru / Karyawan</option>
             <option value="siswa">Siswa</option>
-          </select> -->
-          <input type="text" class="form-control" name="role" value="guru" readonly>
-          <span class="glyphicon glyphicon-education form-control-feedback"></span>
+          </select>
+          <!-- <input type="text" class="form-control" name="role" value="guru" readonly>
+          <span class="glyphicon glyphicon-education form-control-feedback"></span> -->
         </div>
         <div class="row">
           <!--
