@@ -171,7 +171,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
     </div>
 
     <script>
-      // window.print();
+      window.print();
     </script>
   </body>
 
