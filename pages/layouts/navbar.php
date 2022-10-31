@@ -9,7 +9,6 @@
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
           <img src="<?= base_url() ?>dist/img/man/logo-header.png" alt="logo" class="img-responsive">
-          <!-- <b>MAN 2 </b>Tulungagung -->
         </span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
@@ -45,18 +44,7 @@
                                                       AND tbl_tanda_tangan.status = "cek"
                                                       AND tbl_tanda_tangan.status_notif = "diajukan"
                                                       ');
-                // $query_notif = mysqli_query($koneksi, 'SELECT 
-                //                                       *
-                //                                       FROM tbl_tanda_tangan 
-                //                                       INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user 
-                //                                       INNER JOIN tbl_surat ON tbl_surat.id=tbl_tanda_tangan.id_surat 
-                //                                       WHERE tbl_guru.pangkat = "' .  $_SESSION['pangkat_user'] . '" 
-                //                                       AND tbl_guru.id = "' .  $_SESSION['id_user'] . '"
-                //                                       AND tbl_tanda_tangan.status = "cek"
-                //                                       AND tbl_tanda_tangan.status_notif = "ditolak"
-                //                                       ');
                 $count = mysqli_fetch_array($query_count);
-                // $notif = mysqli_fetch_array($query_notif);
 
                 if ($count['notif'] != 0) {
                 ?>
@@ -70,7 +58,6 @@
 
               </a>
               <ul class="dropdown-menu">
-                <!--<li class="header">You have 4 messages</li>-->
                 <li>
                   <!-- inner menu: contains the actual data -->
                   <ul class="menu">

@@ -1,10 +1,5 @@
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    <!--    
-    <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.18
-    </div>
--->
     <div style="position: fixed; right: 3em; bottom: 3.5rem;">
         <button class="btn bg-navy btn-flat" id="toTop">
             <i class="fa fa-arrow-up"></i>
@@ -47,14 +42,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="https://adminlte.io/themes/AdminLTE/dist/js/demo.js"></script>
 
-<!-- <script>
-    $(function() {
-        // Replace the <textarea id="editor1"> with a CKEditor
-        // instance, using default configuration.
-        CKEDITOR.replace('editor1')
-        //bootstrap WYSIHTML5 - text editor
-    })
-</script> -->
 
 <script>
     $(document).ready(function() {

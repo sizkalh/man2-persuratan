@@ -8,15 +8,15 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../plugins/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../plugins/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/plugins/iCheck/square/blue.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -76,7 +76,6 @@
 
     <!-- /.login-logo -->
     <div class="login-box-body">
-      <!--<p class="login-box-msg">Sign in to start your session</p>-->
 
       <form method="post" action="../../process/auth/login.php">
         <div class="form-group has-feedback">
@@ -93,19 +92,8 @@
             <option value="guru">Guru / Karyawan</option>
             <option value="siswa">Siswa</option>
           </select>
-          <!-- <input type="text" class="form-control" name="role" value="guru" readonly>
-          <span class="glyphicon glyphicon-education form-control-feedback"></span> -->
         </div>
         <div class="row">
-          <!--
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
-        </div>
-        -->
           <!-- /.col -->
           <div class="col-xs-12">
             <button type="submit" class="btn btn-success btn-block btn-flat"><i class="fa fa-check-square-o"></i> Sign In</button>
@@ -125,11 +113,15 @@
   </div>
 
   <!-- jQuery 3 -->
-  <script src="../../plugins/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="../../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- jQuery 3 -->
+  <script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery-ui/jquery-ui.min.js"></script>
+
   <!-- iCheck -->
-  <script src="../../plugins/iCheck/icheck.min.js"></script>
+  <script src="https://adminlte.io/themes/AdminLTE/plugins/iCheck/icheck.min.js"></script>
+
+  <!-- Bootstrap 3.3.7 -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script>
     $(function() {
       $('input').iCheck({
