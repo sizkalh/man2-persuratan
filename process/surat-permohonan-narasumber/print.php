@@ -73,7 +73,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
   </head>
 
   <body style="border-collapse: collapse;">
-    <div style="margin-top: -50px;">
+    <div style="margin-top: -38px;  padding: 0 23px;">
       <table style="margin: 0 auto;">
         <tr>
           <td colspan="3">
@@ -89,15 +89,16 @@ while ($data = mysqli_fetch_array($query_surat)) {
               </tr>
               <tr>
                 <td>Hal</td>
-                <td>: <?= $data['perihal'] ?></td>
+                <td>: <?= $data['perihal'] ?>
+                </td>
               </tr>
             </table>
           </td>
-          <td style="vertical-align: text-top; text-align: right;">
+          <td style="vertical-align: text-top; text-align: right; width: 60%;">
             <?= tgl_indo($data['tgl_pembuatan']) ?>
           </td>
         </tr>
-        <tr style="height: 60px;">
+        <tr style="height: 100px;">
           <td>
             Yth. Bapak/Ibu/Sdr <?= $data['kepada'] ?>
             <br>
@@ -134,20 +135,17 @@ while ($data = mysqli_fetch_array($query_surat)) {
             </table>
           </td>
         </tr>
-        <tr>
+        <tr style="height: 70px;">
           <td colspan="3">
             Demikian surat permohonan ini kami sampaikan. Atas kesediaan dan kerjasamanya, disampaikan terima kasih.
           </td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
+          <td colspan="2" style="width:75%;"></td>
           <td>
-            Tulungagung
-            <br />
+            <br>
             Kepala Madrasah,
-            <img style="position: absolute; max-width: 280px; left: 25em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
-            <br />
+            <img style="position: absolute; max-width: 259px; left: 27em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br>
             <br>
             <br>
