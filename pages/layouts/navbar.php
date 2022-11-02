@@ -208,6 +208,8 @@
                             echo '<a href="' . base_url() . 'suket-pengganti-ijazah/index">';
                           } else if ($data['jenis'] == 'suket_siswa') {
                             echo '<a href="' . base_url() . 'suket-siswa/index">';
+                          } else if ($data['jenis'] == 'suket_guru') {
+                            echo '<a href="' . base_url() . 'suket-guru/index">';
                           } else if ($data['jenis'] == 'surat_mutasi_siswa_keluar') {
                             echo '<a href="' . base_url() . 'surat-mutasi-siswa-keluar/index">';
                           } else if ($data['jenis'] == 'surat_mutasi_siswa_masuk') {
@@ -341,6 +343,8 @@
                               echo 'Surat Ket. Pengganti Ijazah';
                             } else if ($data['jenis'] == 'suket_siswa') {
                               echo 'Surat Keterangan Siswa';
+                            } else if ($data['jenis'] == 'suket_guru') {
+                              echo 'Surat Keterangan Guru';
                             } else if ($data['jenis'] == 'surat_mutasi_siswa_keluar') {
                               echo 'Surat Mutasi Siswa Keluar';
                             } else if ($data['jenis'] == 'surat_mutasi_siswa_masuk') {

@@ -51,12 +51,51 @@
         setInterval(function() {
             var date = new Date();
 
-            var month = date.getMonth() + 1;
+            var month = date.getMonth();
             var day = date.getDate();
 
+            switch (month) {
+                case 0:
+                    month = "Jan";
+                    break;
+                case 1:
+                    month = "Feb";
+                    break;
+                case 2:
+                    month = "Mar";
+                    break;
+                case 3:
+                    month = "Apr";
+                    break;
+                case 4:
+                    month = "Mei";
+                    break;
+                case 5:
+                    month = "Jun";
+                    break;
+                case 6:
+                    month = "Jul";
+                    break;
+                case 7:
+                    month = "Agu";
+                    break;
+                case 8:
+                    month = "Sep";
+                    break;
+                case 9:
+                    month = "Okt";
+                    break;
+                case 10:
+                    month = "Nov";
+                    break;
+                case 11:
+                    month = "Des";
+                    break;
+            }
+
             $('#jam-dinding').html(
-                (day < 10 ? '0' : '') + day + '/' +
-                (month < 10 ? '0' : '') + month + '/' +
+                (day < 10 ? '0' : '') + day + ' ' +
+                month + ' ' +
                 date.getFullYear() +
                 " - " +
                 date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()

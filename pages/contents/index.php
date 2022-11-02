@@ -191,7 +191,7 @@ $data = mysqli_fetch_array($query_sekolah);
                 <div class="box box-solid bg-green-gradient">
                     <div class="box-header">
                         <i class="fa fa-calendar"></i>
-                        <h3 class="box-title">Calendar</h3>
+                        <h3 class="box-title">Kalender</h3>
 
                         <div class="pull-right box-tools">
                             <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -293,6 +293,8 @@ $data = mysqli_fetch_array($query_sekolah);
                                                 echo '<a href="' . base_url() . 'suket-pengganti-ijazah/index">';
                                             } else if ($data_surat_terbit['jenis'] == 'suket_siswa') {
                                                 echo '<a href="' . base_url() . 'suket-siswa/index">';
+                                            } else if ($data_surat_terbit['jenis'] == 'suket_guru') {
+                                                echo '<a href="' . base_url() . 'suket-guru/index">';
                                             } else if ($data_surat_terbit['jenis'] == 'surat_mutasi_siswa_keluar') {
                                                 echo '<a href="' . base_url() . 'surat-mutasi-siswa-keluar/index">';
                                             } else if ($data_surat_terbit['jenis'] == 'surat_mutasi_siswa_masuk') {
@@ -489,6 +491,8 @@ $data = mysqli_fetch_array($query_sekolah);
                                                 echo '<a href="' . base_url() . 'suket-pengganti-ijazah/index">';
                                             } else if ($data_surat_terbit['jenis'] == 'suket_siswa') {
                                                 echo '<a href="' . base_url() . 'suket-siswa/index">';
+                                            } else if ($data_surat_terbit['jenis'] == 'suket_guru') {
+                                                echo '<a href="' . base_url() . 'suket-guru/index">';
                                             } else if ($data_surat_terbit['jenis'] == 'surat_mutasi_siswa_keluar') {
                                                 echo '<a href="' . base_url() . 'surat-mutasi-siswa-keluar/index">';
                                             } else if ($data_surat_terbit['jenis'] == 'surat_mutasi_siswa_masuk') {

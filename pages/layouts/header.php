@@ -61,6 +61,8 @@ if (isset($_SESSION['status']) != 'login') {
   <script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
   <!-- jQuery 3 -->
   <script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery-ui/jquery-ui.min.js"></script>
+  <!-- <script src="<?= base_url() ?>dist/js/jquery-ui-main/ui/i18n/datepicker-id.js"></script> -->
+  <!-- <script src="i18n/datepicker-id.js"></script> -->
 
   <script>
     var base_url = window.location.origin;
@@ -80,6 +82,7 @@ if (isset($_SESSION['status']) != 'login') {
       content: "\00B7";
       font-size: 1px;
     }
+
     div.dataTables_wrapper {
       width: 100% !important;
       margin: 0 auto !important;

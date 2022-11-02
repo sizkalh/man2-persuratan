@@ -37,18 +37,18 @@
                 </div>
             <?php } ?>
             <div class="box-body">
-                <table class="table table-condensed table-hover compact nowrap" id="data-table">
+                <table class="table table-condensed table-hover compact" style="table-layout: fixed;" width="100%" id="data-table5">
                     <thead>
                         <tr>
                             <th width="20" class="text-center">~</th>
                             <th width="30" class="text-center">No</th>
-                            <th>No. Surat</th>
+                            <th width="200">No. Surat</th>
                             <th class="text-center" width="110">Tgl. Pembuatan</th>
-                            <th>Dalam Rangka</th>
-                            <th>Penerima Tugas</th>
-                            <th>Catatan</th>
-                            <th class="text-center">Tgl. Pelaksanaan</th>
-                            <th class="text-center">Aksi</th>
+                            <th width="250">Dalam Rangka</th>
+                            <th width="250">Penerima Tugas</th>
+                            <th width="250">Catatan</th>
+                            <th width="150" class="text-center">Tgl. Pelaksanaan</th>
+                            <th width="150" class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
