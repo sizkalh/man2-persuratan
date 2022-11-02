@@ -102,6 +102,10 @@ while ($data = mysqli_fetch_array($query_surat)) {
         width: 100%;
         border-collapse: collapse;
       }
+
+      table tr td {
+        padding: 0;
+      }
     </style>
   </head>
 
@@ -128,7 +132,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
           <td colspan="3">
             <table>
               <tr>
-                <td style="width: 150px;">Nama</td>
+                <td style="width: 200px;">Nama</td>
                 <td>:</td>
                 <td><?= $data_guru['nama'] ?></td>
               </tr>
@@ -155,11 +159,11 @@ while ($data = mysqli_fetch_array($query_surat)) {
             Dengan ini memberikan rekomendasi kepada siswa tersebut dibawah ini :
           </td>
         </tr>
-        <tr style="height: 150px; vertical-align: text-top;">
+        <tr>
           <td colspan="3">
             <table>
               <tr>
-                <td style="width: 150px;">Nama</td>
+                <td style="width: 200px;">Nama</td>
                 <td>:</td>
                 <td><?= $data_siswa['nama'] ?></td>
               </tr>
@@ -191,18 +195,19 @@ while ($data = mysqli_fetch_array($query_surat)) {
             </table>
           </td>
         </tr>
-        <tr style="height: 50px;">
+        <tr>
           <td colspan="3">
+            <br>
             Untuk mengikuti Seleksi Mahasiswa Baru Jalur Mandiri Prestasi Akademik/Non Akademik <?= $data['perihal'] ?> Tahun Akademik <?= $data['catatan'] ?>
           </td>
         </tr>
-        <tr style="height: 50px; vertical-align: text-top;">
+        <tr>
           <td colspan="3">
             Berikut daftar prestasi yang diraih ananda sebagai bahan pertimbangan proses seleksi :
           </td>
         </tr>
         <tr>
-          <td colspan="3">
+          <td colspan="3" style="padding-top: 20px;">
             <table id="prestasi_data">
               <tr>
                 <th style="width: 35px; text-align: center;">No</th>

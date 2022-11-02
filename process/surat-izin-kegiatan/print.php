@@ -75,7 +75,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
   </head>
 
   <body>
-    <div style="margin-top: -50px;">
+    <div style="margin-top: -38px;  padding: 0 23px;">
       <table style="margin: 0 auto;">
         <tr>
           <td colspan="3">
@@ -129,25 +129,30 @@ while ($data = mysqli_fetch_array($query_surat)) {
             <table>
               <tr>
                 <td style="width: 150px;">Hari</td>
-                <td colspan="2">: <?= $data['hari'] ?></td>
+                <td>: </td>
+                <td><?= $data['hari'] ?></td>
               </tr>
               <tr>
                 <td>Tanggal</td>
-                <td colspan="2">: <?php if ($data['tgl_pelaksanaan'] <> '') {
+                <td>: </td>
+                <td><?php if ($data['tgl_pelaksanaan'] <> '') {
                                     echo tgl_indo_garing($data['tgl_pelaksanaan']);
                                   } ?></td>
               </tr>
               <tr>
                 <td>Waktu</td>
-                <td colspan="2">: <?= $data['waktu'] ?></td>
+                <td>: </td>
+                <td><?= $data['waktu'] ?></td>
               </tr>
               <tr>
                 <td>Tempat</td>
-                <td colspan="2">: <?= $data['tempat'] ?></td>
+                <td>: </td>
+                <td><?= $data['tempat'] ?></td>
               </tr>
               <tr>
-                <td>Kegiatan</td>
-                <td colspan="2">: <?= $data['keterangan'] ?></td>
+                <td style="vertical-align: top;">Kegiatan</td>
+                <td style="vertical-align: top;">: </td>
+                <td><?= $data['keterangan'] ?></td>
               </tr>
             </table>
           </td>
@@ -164,7 +169,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
-            <img style="position: absolute; max-width: 280px; left: 21em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <img style="position: absolute; max-width: 259px; left: 21em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
             <br>
             <br>

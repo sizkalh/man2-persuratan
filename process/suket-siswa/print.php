@@ -93,14 +93,14 @@ while ($data = mysqli_fetch_array($query_surat)) {
 
   <body>
     <div style="margin-top: -50px;">
-      <table style="margin: 0 auto;">
+      <table style="margin-top: -38px;  padding: 0 23px;">
         <tr>
           <td colspan="3">
             <img src="../../dist/img/kop_surat.png" alt="" style="max-width: 100%;">
           </td>
         </tr>
         <tr>
-          <td colspan="3" style="text-align: center; padding-bottom: 40px;">
+          <td colspan="3" style="text-align: center; padding-bottom: 30px;">
             <b>SURAT KETERANGAN</b> <br>
             NOMOR : <?= $data['no_surat'] ?>
           </td>
@@ -187,24 +187,27 @@ while ($data = mysqli_fetch_array($query_surat)) {
             </table>
           </td>
         </tr>
-        <tr style="height: 50px;">
+        <tr style="vertical-align: top;">
           <td colspan="3">
             adalah benar-benar siswa Madrasah Aliyah Negeri 2 Tulungagung Tahun Pelajaran <?= $data['catatan'] ?>
           </td>
         </tr>
-        <tr style="height: 50px; vertical-align: text-top;">
+        <tr style="vertical-align: text-top;">
           <td colspan="3">
+            <br>
             Demikian surat keterangan ini dibuat, untuk dipergunakan sebagaimana mestinya.
           </td>
         </tr>
         <tr>
           <td></td>
-          <td style="width: 55%;"></td>
+          <td style="width: 60%;"></td>
           <td>
+            <br>
+            <br>
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
-            <img style="position: absolute; max-width: 240px; left: 19em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <img style="position: absolute; max-width: 259px; left: 22em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
             <br>
             <br>

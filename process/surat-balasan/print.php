@@ -81,7 +81,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
   </head>
 
   <body>
-    <div style="margin-top: -50px;">
+    <div style="margin-top: -38px;  padding: 0 23px;">
       <table style="margin: 0 auto; border-collapse: collapse;">
         <tr>
           <td colspan="3">
@@ -128,11 +128,10 @@ while ($data = mysqli_fetch_array($query_surat)) {
           <td>
             <br>
             <br>
-            <br>
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
             Kepala Madrasah,
-            <img style="position: absolute; max-width: 230px; left: 21em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+            <img style="position: absolute; max-width: 259px; left: 21em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <br />
             <br>
             <br>

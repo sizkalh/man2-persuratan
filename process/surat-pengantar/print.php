@@ -73,7 +73,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
   </head>
 
   <body>
-    <div style="margin-top: -50px;">
+    <div style="margin-top: -38px;  padding: 0 23px">
       <table style="margin: 0 auto;">
         <tr>
           <td colspan="3">
@@ -144,7 +144,6 @@ while ($data = mysqli_fetch_array($query_surat)) {
           <td></td>
           <td style="width: 30%;"></td>
           <td>
-            Tulungagung
             <br />
             Kepala Madrasah,
             <?php
@@ -160,7 +159,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
             $data = mysqli_fetch_array($query);
             if ($data['status'] == "diterima") {
             ?>
-              <img style="position: absolute; max-width: 240px; left: 23em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
+              <img style="position: absolute; max-width: 259px; left: 23em; margin-top: -1em;" src="../../dist/img/ttd/contohttd.png">
             <?php } ?>
             <br />
             <br>
