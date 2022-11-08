@@ -306,6 +306,16 @@
                                                                           WHERE tbl_tanda_tangan.id_surat = "' . $data['id_surat'] . '"
                                                                             AND tbl_guru.pangkat = "operator"
                                                                             AND tbl_tanda_tangan.status_notif = "ditolak"');
+                            } else if ($_SESSION['pangkat_user'] == 'superuser') {
+                              $query_tgl_notif = mysqli_query($koneksi, 'SELECT
+                                                                            tgl_proses
+                                                                          FROM
+                                                                            tbl_tanda_tangan
+                                                                            INNER JOIN tbl_guru
+                                                                              ON tbl_guru.id = tbl_tanda_tangan.id_user
+                                                                          WHERE tbl_tanda_tangan.id_surat = "' . $data['id_surat'] . '"
+                                                                            AND tbl_guru.pangkat = "kamad"
+                                                                            AND tbl_tanda_tangan.status_notif = "diterima"');
                             }
                             while ($tgl = mysqli_fetch_array($query_tgl_notif)) {
                             ?>
