@@ -34,6 +34,7 @@
             ?>
                 <div class="box-header">
                     <a href="<?= base_url() ?>data-siswa/create" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Siswa</a>
+                    <button type="button" class="btn btn-success" data-toggle="modal" id="modal-otor" data-target="#modal-default"><i class=" fa fa-file-excel-o"></i> Import Data Siswa</button>
                 </div>
             <?php } ?>
             <div class="box-body">
@@ -99,6 +100,53 @@
                 </table>
             </div>
         </div><!-- /.box -->
+
+        <div class="modal fade" id="modal-default">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <form method="post" enctype="multipart/form-data" action="<?= base_url() ?>process/data-siswa/upload.php">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Import data siswa dengan file excel</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label">Upload file excel</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" id="file_e" name="file_e" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <br>
+                                        <p>
+                                            Untuk format file yang akan diupload bisa didownload dengan klik tombol download dibawah ini.
+                                        </p>
+                                        <a href="<?= base_url() ?>dist/format-data-siswa.xls" class="btn btn-success"><i class="fa fa-download"></i> Download format file</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Upload file</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
