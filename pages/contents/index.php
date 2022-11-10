@@ -14,6 +14,9 @@ $data = mysqli_fetch_array($query_sekolah);
     <!-- Main content -->
     <section class="content">
         <div class="row">
+            <?php 
+                if($_SESSION['pangkat_user'] != 'siswa') {
+            ?>
             <div class="col-lg-3 col-xs-6">
 
                 <div class="small-box bg-aqua">
@@ -73,6 +76,7 @@ $data = mysqli_fetch_array($query_sekolah);
                     <a href="#surat-proses" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <?php } ?>
 
             <div class="col-lg-3 col-xs-6">
 
@@ -186,6 +190,9 @@ $data = mysqli_fetch_array($query_sekolah);
             </div>
         </div>
 
+        <?php 
+            if($_SESSION['pangkat_user'] != 'siswa') {
+        ?>
         <div class="row">
             <div class="col-sm-3">
                 <div class="box box-solid bg-green-gradient">
@@ -658,9 +665,10 @@ $data = mysqli_fetch_array($query_sekolah);
                 </div>
             </div>
         </div>
-
+        <?php } ?>
+        
         <div class="row">
-            <div class="col-md-6" id="guru">
+            <div class="<?= $_SESSION['pangkat_user'] != 'siswa' ? 'col-md-6' : 'col-md-12'?>" id="guru">
                 <div class="box">
                     <div class="box-header">
                         <i class="fa fa-users"></i>
@@ -704,6 +712,9 @@ $data = mysqli_fetch_array($query_sekolah);
                     </div>
                 </div>
             </div>
+            <?php 
+                if($_SESSION['pangkat_user'] != 'siswa') {
+            ?>
             <div class="col-md-6" id="siswa">
                 <div class="box">
                     <div class="box-header">
@@ -768,6 +779,7 @@ $data = mysqli_fetch_array($query_sekolah);
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
 
     </section>

@@ -35,8 +35,14 @@
       <div class="box-body">
         <?php
         $id = $_SESSION['id_user'];
-        $query_mysql = mysqli_query($koneksi, "SELECT * FROM tbl_guru WHERE id='" . $id . "'");
+        if($_SESSION['pangkat_user'] != 'siswa'){
+          $query_mysql = mysqli_query($koneksi, "SELECT * FROM tbl_guru WHERE id='" . $id . "'");
+        }else{
+          $query_mysql = mysqli_query($koneksi, "SELECT * FROM tbl_siswa WHERE id='" . $id . "'");
+        }
+        
         $data = mysqli_fetch_array($query_mysql);
+        if ($_SESSION['pangkat_user'] != 'siswa') {
         ?>
         <form action="<?= base_url() ?>process/profil/update.php" enctype="multipart/form-data" method="post" id="form_data_profil">
           <div class="form-group">
@@ -181,6 +187,11 @@
             </div>
           </div>
         </form>
+        <?php 
+          } else {
+            include("profil-siswa.php");
+          }
+        ?>
       </div>
     </div><!-- /.box -->
 

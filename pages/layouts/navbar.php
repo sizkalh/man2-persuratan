@@ -27,6 +27,9 @@
                 <b><span id="jam-dinding"></span></b>
               </a>
             </li>
+            <?php 
+              if ($_SESSION['pangkat_user'] != 'siswa'){
+            ?>
             <li class="dropdown messages-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <?php
@@ -399,6 +402,7 @@
                 </li>
               </ul>
             </li>
+            <?php } ?>
           </ul>
         </div>
       </nav>

@@ -53,27 +53,27 @@
                                     WHERE id="' . $id . '"');
     
 
-    echo 'UPDATE tbl_siswa set 
-                                    satdik = "' . $satdik . '", 
-                                    id_detail_kelas = "' . $id_detail_kelas . '", 
-                                    nis = "' . $nis . '", 
-                                    nisn = "' . $nisn . '", 
-                                    nama = "' . $nama . '", 
-                                    jk = "' . $jk . '",
-                                    tempat_lahir = "' . $tempat_lahir . '",
-                                    tgl_lahir = "' . $tgl_lahir . '",
-                                    jml_saudara = "' . $jml_saudara . '",
-                                    alamat = "' . $alamat . '",
-                                    no_hp = "' . $no_hp . '",
-                                    nama_wali = "' . $nama_wali . '",
-                                    no_hp_wali = "' . $no_hp_wali . '",
-                                    pekerjaan_wali = "' . $pekerjaan_wali . '",
-                                    nama_ibu = "' . $nama_ibu . '",
-                                    no_hp_ibu = "' . $no_hp_ibu . '",
-                                    pekerjaan_ibu = "' . $pekerjaan_ibu . '",
-                                    username = "' . $username . '",
-                                    role = "' . $role . '"
-                                    WHERE id="' . $id . '"';
+    // echo 'UPDATE tbl_siswa set 
+    //                                 satdik = "' . $satdik . '", 
+    //                                 id_detail_kelas = "' . $id_detail_kelas . '", 
+    //                                 nis = "' . $nis . '", 
+    //                                 nisn = "' . $nisn . '", 
+    //                                 nama = "' . $nama . '", 
+    //                                 jk = "' . $jk . '",
+    //                                 tempat_lahir = "' . $tempat_lahir . '",
+    //                                 tgl_lahir = "' . $tgl_lahir . '",
+    //                                 jml_saudara = "' . $jml_saudara . '",
+    //                                 alamat = "' . $alamat . '",
+    //                                 no_hp = "' . $no_hp . '",
+    //                                 nama_wali = "' . $nama_wali . '",
+    //                                 no_hp_wali = "' . $no_hp_wali . '",
+    //                                 pekerjaan_wali = "' . $pekerjaan_wali . '",
+    //                                 nama_ibu = "' . $nama_ibu . '",
+    //                                 no_hp_ibu = "' . $no_hp_ibu . '",
+    //                                 pekerjaan_ibu = "' . $pekerjaan_ibu . '",
+    //                                 username = "' . $username . '",
+    //                                 role = "' . $role . '"
+    //                                 WHERE id="' . $id . '"';
     
     if ($query != 0) {
         header("location:" . base_url() . "data-siswa/index?pesan=berhasil");

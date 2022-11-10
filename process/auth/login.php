@@ -37,7 +37,7 @@
                     $_SESSION['nip'] = $data_user['nip'];
                 }
             }else if($_POST['role'] == 'siswa'){
-                $_SESSION['jabatan_user'] = 'siswa';
+                $_SESSION['pangkat_user'] = 'siswa';
             }            
         }
 

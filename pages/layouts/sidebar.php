@@ -22,7 +22,7 @@ $uri2 = explode('/', trim($uri[0], '/'));
           </small> 
           <br>
           <small>
-            <?= $_SESSION['jabatan_user'] ?>
+            <?= $_SESSION['pangkat_user'] != 'siswa'? $_SESSION['jabatan_user'] : 'siswa' ?>
           </small>
         </p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -39,6 +39,9 @@ $uri2 = explode('/', trim($uri[0], '/'));
           <i class="fa fa-home"></i> <span>Beranda</span>
         </a>
       </li>
+      <?php 
+          if($_SESSION['pangkat_user'] != 'siswa') {
+      ?>
       <li class="treeview <?= $uri2[0] == 'berita-acara' ||
                             $uri2[0] == 'nota-dinas' ||
                             $uri2[0] == 'cuti-tahunan' ||
@@ -159,6 +162,7 @@ $uri2 = explode('/', trim($uri[0], '/'));
           </li>
         </ul>
       </li>
+      <?php } ?>
       <!-- <li class="treeview">
         <a href="#">
           <i class="fa fa-files-o"></i> <span>Proposal</span>
@@ -184,7 +188,7 @@ $uri2 = explode('/', trim($uri[0], '/'));
           </span>
         </a>
         <ul class="treeview-menu">
-          <?php if ($_SESSION['role_user'] == 'operator' || $_SESSION['role_user'] == "superuser") { ?>
+          <?php if ($_SESSION['pangkat_user'] == 'operator' || $_SESSION['pangkat_user'] == "superuser") { ?>
             <li <?= $uri2[0] == "data-sekolah" ? "class = 'active'" : "" ?>>
               <a href="<?= base_url() ?>data-sekolah/index">
                 <i class="fa fa-circle-o"></i>Data Sekolah
