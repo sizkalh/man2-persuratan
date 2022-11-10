@@ -112,7 +112,7 @@ function tgl_indo_garing($tanggal)
         <td colspan="3">
           <table>
             <tr>
-              <td style="width: 150px;">Nama</td>
+              <td style="width: 180px;">Nama</td>
               <td>:</td>
               <td><?= $_GET['nama_guru'] ?></td>
             </tr>
@@ -143,7 +143,7 @@ function tgl_indo_garing($tanggal)
         <td colspan="3">
           <table>
             <tr>
-              <td style="width: 150px;">Nama</td>
+              <td style="width: 180px;">Nama</td>
               <td>:</td>
               <td><?= $_GET['nama_siswa'] ?></td>
             </tr>

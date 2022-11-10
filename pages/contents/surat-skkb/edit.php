@@ -36,6 +36,14 @@
                     <form action="<?= base_url() ?>process/surat-skkb/update.php" method="post" id="form_surat_skkb">
                         <div class="form-group">
                             <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Kelas</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="kelas" id="kelas" value="<?= $data_siswa['nama_kel'] . ' ' . $data_siswa['nama_jurusan'] . ' ' . $data_siswa['rombel'] ?>" placeholder="Masukkan Kelas" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
                                     <input type="hidden" name="id" value="<?= $data['id'] ?>">
@@ -57,14 +65,6 @@
                                 <label class="col-sm-2 col-form-label">NISN</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="nisn" id="nisn" value="<?= $data_siswa['nisn'] ?>" placeholder="Masukkan NISN" readonly />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Kelas</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="kelas" id="kelas" value="<?= $data_siswa['nama_kel'] . ' ' . $data_siswa['nama_jurusan'] . ' ' . $data_siswa['rombel'] ?>" placeholder="Masukkan Kelas" readonly />
                                 </div>
                             </div>
                         </div>

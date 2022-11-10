@@ -14,29 +14,40 @@
                 <form action="<?= base_url() ?>process/surat-mutasi-siswa-keluar/tambah.php" method="post" id="form_surat_mutasi_siswa_keluar">
                     <div class="form-group">
                         <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Kelas</label>
+                            <div class="col-sm-10">
+                                <select name="id_detail_kelas" id="id_detail_kelas" class="form-control">
+                                    <option value="">-- Pilih Kelas</option>
+                                    <?php
+                                    $query_kelas = mysqli_query($koneksi, 'SELECT
+                                                                    A.id_detail_kelas,
+                                                                    A.rombel,
+                                                                    B.nama AS kelas,
+                                                                    B.nama_kelas,
+                                                                    C.nama AS jurusan
+                                                                FROM
+                                                                    tbl_detail_kelas A
+                                                                    INNER JOIN tbl_kelas B
+                                                                    ON A.id_kelas = B.id_kelas
+                                                                    INNER JOIN tbl_jurusan C
+                                                                    ON C.id_jurusan = A.id_jurusan
+                                                                ORDER BY B.id_kelas ASC,
+                                                                    C.id_jurusan ASC,
+                                                                    A.rombel ASC');
+                                    while ($data_kelas = mysqli_fetch_array($query_kelas)) {
+                                    ?>
+                                        <option value="<?= $data_kelas['id_detail_kelas'] ?>"><?= $data_kelas['rombel'] != '0' ? $data_kelas['kelas'] . '  ' . $data_kelas['jurusan'] . '  ' . $data_kelas['rombel'] : $data_kelas['kelas'] . '  ' . $data_kelas['jurusan']  ?></option>
+                                    <?php } ?>
+                                </select>
+                                <input type="hidden" class="form-control" id="kelas" name="kelas" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
                                 <select name="id_siswa" id="id_siswa" class="form-control select-nama">
-                                    <option value="">-- Pilih Nama Siswa</option>
-                                    <?php
-                                    $query_siswa = mysqli_query($koneksi, "SELECT
-                                                                                tbl_siswa.*,
-                                                                                tbl_kelas.nama AS nama_kel,
-                                                                                tbl_kelas.nama_kelas,
-                                                                                tbl_jurusan.nama AS nama_jurusan,
-                                                                                tbl_detail_kelas.rombel
-                                                                                FROM
-                                                                                tbl_siswa
-                                                                                LEFT JOIN tbl_detail_kelas
-                                                                                    ON tbl_detail_kelas.id_detail_kelas = tbl_siswa.id_detail_kelas
-                                                                                INNER JOIN tbl_kelas
-                                                                                    ON tbl_kelas.id_kelas = tbl_detail_kelas.id_kelas
-                                                                                INNER JOIN tbl_jurusan
-                                                                                    ON tbl_jurusan.id_jurusan = tbl_detail_kelas.id_jurusan");
-                                    while ($data_siswa = mysqli_fetch_array($query_siswa)) {
-                                    ?>
-                                        <option value="<?= $data_siswa['id'] ?>"><?= $data_siswa['nama'] ?></option>
-                                    <?php } ?>
                                 </select>
 
                                 <input type="hidden" class="form-control" name="nama" id="nama" />
@@ -56,14 +67,6 @@
                             <label class="col-sm-2 col-form-label">NISN</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="nisn" id="nisn" placeholder="Masukkan NISN" readonly />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Kelas</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="kelas" id="kelas" placeholder="Masukkan Kelas" readonly />
                             </div>
                         </div>
                     </div>
@@ -180,6 +183,14 @@
             // console.log(base_url);
         });
 
+        $("#id_siswa").prop("disabled", true)
+
+        $("#id_detail_kelas").on("change", function() {
+            var id = $(this).val()
+            $("#id_siswa").prop("disabled", false)
+            getDataSiswaByKelas(id)
+        })
+
         $("#id_siswa").on("change", function() {
             var id = $(this).val()
             getDataSiswa(id)
@@ -215,6 +226,25 @@
                     $("#nama_ortu").val(data.nama_wali)
                     $("#pekerjaan_ortu").val(data.pekerjaan_wali)
 
+                }
+            });
+        }
+
+        function getDataSiswaByKelas(id) {
+            $.ajax({
+                method: "POST",
+                url: base_url + "/process/surat-skkb/getDataSiswaByKelas.php",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function(data) {
+                    var content = '';
+                    content += '<option value =""> -- Pilih Nama Siswa</option>';
+                    for (i = 0; i < data.length; i++) {
+                        content += '<option value ="' + data[i].id + '"> ' + data[i].nama + '</option>';
+                    }
+                    $('#id_siswa').html(content)
                 }
             });
         }

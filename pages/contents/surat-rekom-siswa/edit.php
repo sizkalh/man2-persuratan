@@ -90,6 +90,37 @@
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <div class="mb-3 row">
+                                    <label class="col-sm-3 col-form-label">Kelas</label>
+                                    <div class="col-sm-9">
+                                        <select name="id_detail_kelas" id="id_detail_kelas" class="form-control">
+                                            <option value="">-- Pilih Kelas</option>
+                                            <?php
+                                            $query_kelas = mysqli_query($koneksi, 'SELECT
+                                                                    A.id_detail_kelas,
+                                                                    A.rombel,
+                                                                    B.nama AS kelas,
+                                                                    B.nama_kelas,
+                                                                    C.nama AS jurusan
+                                                                FROM
+                                                                    tbl_detail_kelas A
+                                                                    INNER JOIN tbl_kelas B
+                                                                    ON A.id_kelas = B.id_kelas
+                                                                    INNER JOIN tbl_jurusan C
+                                                                    ON C.id_jurusan = A.id_jurusan
+                                                                ORDER BY B.id_kelas ASC,
+                                                                    C.id_jurusan ASC,
+                                                                    A.rombel ASC');
+                                            while ($data_kelas = mysqli_fetch_array($query_kelas)) {
+                                            ?>
+                                                <option value="<?= $data_kelas['id_detail_kelas'] ?>" <?= $data_kelas['id_detail_kelas'] == $data_siswa['id_detail_kelas'] ? 'selected' : '' ?>><?= $data_kelas['rombel'] != '0' ? $data_kelas['kelas'] . '  ' . $data_kelas['jurusan'] . '  ' . $data_kelas['rombel'] : $data_kelas['kelas'] . '  ' . $data_kelas['jurusan']  ?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <input type="hidden" class="form-control" id="kelas" name="kelas" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Nama</label>
                                     <div class="col-sm-9">
                                         <input type="hidden" id="nama_siswa" name="nama_siswa" value="<?= $data_siswa['nama'] ?>">
@@ -129,14 +160,6 @@
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                             <input type="text" class="form-control datepicker" name="tgl_lahir" value="<?= $data_siswa['tgl_lahir'] ?>" id="tgl_lahir" placeholder="Masukkan Tanggal Lahir" readonly />
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="mb-3 row">
-                                    <label class="col-sm-3 col-form-label">Kelas</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="kelas" id="kelas" value="<?= $data_siswa['nama_kel'] . ' ' . $data_siswa['nama_jurusan'] . ' ' . $data_siswa['rombel'] ?>" placeholder="Masukkan Kelas" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -267,6 +290,14 @@
             });
         }
 
+        $("#id_siswa").prop("disabled", true)
+
+        $("#id_detail_kelas").on("change", function() {
+            var id = $(this).val()
+            $("#id_siswa").prop("disabled", false)
+            getDataSiswaByKelas(id)
+        })
+
         $("#id_siswa").on("change", function() {
             var id = $(this).val()
             getDataSiswa(id)
@@ -326,6 +357,25 @@
                             "</tr>";
                     }
                     $("#prestasi").html(html);
+                }
+            });
+        }
+
+        function getDataSiswaByKelas(id) {
+            $.ajax({
+                method: "POST",
+                url: base_url + "/process/surat-skkb/getDataSiswaByKelas.php",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function(data) {
+                    var content = '';
+                    content += '<option value =""> -- Pilih Nama Siswa</option>';
+                    for (i = 0; i < data.length; i++) {
+                        content += '<option value ="' + data[i].id + '"> ' + data[i].nama + '</option>';
+                    }
+                    $('#id_siswa').html(content)
                 }
             });
         }

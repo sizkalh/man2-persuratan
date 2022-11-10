@@ -1,14 +1,14 @@
 <?php
-    include_once("../../config/database.php");
-    session_start();
-    if ($_SESSION['status'] != "login") {
-        $_SESSION['massage'] = 'belum_login';
-        redirect('auth');
-    }
+include_once("../../config/database.php");
+session_start();
+if ($_SESSION['status'] != "login") {
+    $_SESSION['massage'] = 'belum_login';
+    redirect('auth');
+}
 
-    $id = $_POST['id'];
+$id = $_POST['id'];
 
-    $query_siswa = mysqli_query($koneksi, "SELECT
+$query_siswa = mysqli_query($koneksi, "SELECT
                                             tbl_siswa.*,
                                             tbl_kelas.nama AS nama_kel,
                                             tbl_kelas.nama_kelas,
@@ -22,6 +22,10 @@
                                                 ON tbl_kelas.id_kelas = tbl_detail_kelas.id_kelas
                                             INNER JOIN tbl_jurusan
                                                 ON tbl_jurusan.id_jurusan = tbl_detail_kelas.id_jurusan 
-                                            WHERE tbl_siswa.id = ". $id);
-    $data_siswa = mysqli_fetch_array($query_siswa);
-    echo json_encode($data_siswa);
+                                            WHERE tbl_siswa.id_detail_kelas = " . $id);
+// $data_siswa = mysqli_fetch_array($query_siswa);
+while ($row = mysqli_fetch_assoc($query_siswa)) {
+    $data[] = $row;
+}
+// echo json_encode($data_siswa);
+echo json_encode($data);

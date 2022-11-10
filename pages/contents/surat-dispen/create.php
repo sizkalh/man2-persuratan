@@ -159,41 +159,44 @@ function tgl_indo_garing($tanggal)
                                         <thead>
                                             <tr>
                                                 <th width="50" class="text-center">No</th>
+                                                <th class="text-center" width="250">Kelas</th>
                                                 <th>Nama</th>
-                                                <th class="text-center">Kelas</th>
                                                 <th>Keterangan</th>
                                                 <th width="150" class="text-center">Aksi</th>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">~</td>
                                                 <td>
-                                                    <input type="hidden" name="id_surat" value="<?= $_GET['id'] ?>">
-                                                    <input type="hidden" name="id_detail_kelas" id="id_detail_kelas">
-                                                    <select name="id_siswa" id="id_siswa" class="form-control select-nama" style="width: 100%;">
-                                                        <option value="">-- Pilih Nama</option>
+                                                    <select name="id_detail_kelas" id="id_detail_kelas" class="form-control" style="width: 100%;">
+                                                        <option value="">-- Pilih Kelas</option>
                                                         <?php
-                                                        $query_guru_opt = mysqli_query($koneksi, "SELECT
-                                                                                                    A.*,
-                                                                                                    B.id_detail_kelas,
-                                                                                                    B.rombel,
-                                                                                                    C.nama AS kelas,
-                                                                                                    C.nama_kelas,
-                                                                                                    D.nama AS jurusan
-                                                                                                    FROM
-                                                                                                    tbl_siswa A
-                                                                                                    INNER JOIN tbl_detail_kelas B
-                                                                                                        ON B.id_detail_kelas = A.id_detail_kelas
-                                                                                                    INNER JOIN tbl_kelas C
-                                                                                                        ON C.id_kelas = B.id_kelas
-                                                                                                    INNER JOIN tbl_jurusan D
-                                                                                                        ON D.id_jurusan = B.id_jurusan");
-                                                        while ($data_guru_opt = mysqli_fetch_array($query_guru_opt)) {
+                                                        $query_kelas = mysqli_query($koneksi, 'SELECT
+                                                                    A.id_detail_kelas,
+                                                                    A.rombel,
+                                                                    B.nama AS kelas,
+                                                                    B.nama_kelas,
+                                                                    C.nama AS jurusan
+                                                                FROM
+                                                                    tbl_detail_kelas A
+                                                                    INNER JOIN tbl_kelas B
+                                                                    ON A.id_kelas = B.id_kelas
+                                                                    INNER JOIN tbl_jurusan C
+                                                                    ON C.id_jurusan = A.id_jurusan
+                                                                ORDER BY B.id_kelas ASC,
+                                                                    C.id_jurusan ASC,
+                                                                    A.rombel ASC');
+                                                        while ($data_kelas = mysqli_fetch_array($query_kelas)) {
                                                         ?>
-                                                            <option value="<?= $data_guru_opt['id'] ?>" <?= $data_guru_opt['id'] ?>><?= $data_guru_opt['nama'] ?> (<?= $data_guru_opt['rombel'] != '0' ? $data_guru_opt['kelas'] . '  ' . $data_guru_opt['jurusan'] . '  ' . $data_guru_opt['rombel'] : $data_guru_opt['kelas'] . '  ' . $data_guru_opt['jurusan']  ?>)</option>
+                                                            <option value="<?= $data_kelas['id_detail_kelas'] ?>"><?= $data_kelas['rombel'] != '0' ? $data_kelas['kelas'] . '  ' . $data_kelas['jurusan'] . '  ' . $data_kelas['rombel'] : $data_kelas['kelas'] . '  ' . $data_kelas['jurusan']  ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </td>
-                                                <td></td>
+                                                <td>
+                                                    <input type="hidden" name="id_surat" value="<?= $_GET['id'] ?>">
+                                                    <input type="hidden" name="id_detail_kelas" id="id_detail_kelas">
+                                                    <select name="id_siswa" id="id_siswa" class="form-control select-nama" style="width: 100%;">
+                                                    </select>
+                                                </td>
                                                 <td>
                                                     <textarea name="keterangan" class="form-control"></textarea>
                                                 </td>
@@ -230,8 +233,8 @@ function tgl_indo_garing($tanggal)
                                             ?>
                                                 <tr>
                                                     <td class="text-center"><?= $no++ ?></td>
-                                                    <td><?= $data_petugas['nama'] ?></td>
                                                     <td class="text-center"><?= $data_petugas['rombel'] != '0' ? $data_petugas['kelas'] . '  ' . $data_petugas['jurusan'] . '  ' . $data_petugas['rombel'] : $data_petugas['kelas'] . '  ' . $data_petugas['jurusan']  ?></td>
+                                                    <td><?= $data_petugas['nama'] ?></td>
                                                     <td><?= $data_petugas['keterangan'] ?></td>
                                                     <td class="text-center">
                                                         <a href="<?= base_url() ?>process/surat-dispen/hapus-petugas.php?id=<?= $data_petugas['id_surat_dispen'] ?>&id_surat=<?= $data['id'] ?>" class="btn btn-sm btn-danger">
@@ -279,12 +282,13 @@ function tgl_indo_garing($tanggal)
             // console.log(base_url);
         });
 
+        $("#id_siswa").prop("disabled", true)
 
-
-        $("#id_siswa").on("change", function() {
+        $("#id_detail_kelas").on("change", function() {
             var id = $(this).val()
-            $("#id_detail_kelas").val(id)
-        });
+            $("#id_siswa").prop("disabled", false)
+            getDataSiswaByKelas(id)
+        })
 
         $("#id_guru").on("change", function() {
             var id = $(this).val()
@@ -305,6 +309,25 @@ function tgl_indo_garing($tanggal)
                     $("#golongan").val(data.golongan)
                     $("#jabatan").val(data.jabatan)
                     $("#unit_kerja").val(data.instansi)
+                }
+            });
+        }
+
+        function getDataSiswaByKelas(id) {
+            $.ajax({
+                method: "POST",
+                url: base_url + "/process/surat-skkb/getDataSiswaByKelas.php",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function(data) {
+                    var content = '';
+                    content += '<option value =""> -- Pilih Nama Siswa</option>';
+                    for (i = 0; i < data.length; i++) {
+                        content += '<option value ="' + data[i].id + '"> ' + data[i].nama + '</option>';
+                    }
+                    $('#id_siswa').html(content)
                 }
             });
         }
