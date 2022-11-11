@@ -72,7 +72,7 @@
                                 <td>
                                     Nama : <?= $data_siswa['nama'] ?> <br>
                                     NIS : <?= $data_siswa['nis'] ?> <br>
-                                    NISN : <?= $data_siswa['nis'] ?> <br>
+                                    NISN : <?= $data_siswa['nisn'] ?> <br>
                                     Jenis Kelamin : <?= $data_siswa['jk'] ?> <br>
                                     Tempat Lahir : <?= $data_siswa['tempat_lahir'] ?> <br>
                                     Tgl. Lahir : <?= $data_siswa['tgl_lahir'] ?> <br>

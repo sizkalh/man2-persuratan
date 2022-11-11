@@ -30,7 +30,7 @@ for ($i = 2; $i <= $baris; $i++) {
     $satdik = $data->val($i, 15);
     $jml_saudara = $data->val($i, 16);
 
-    $username = $data->val($i, 17);
+    $username = $data->val($i, 1);
     $id_detail_kelas = $data->val($i, 18);
     $role = "siswa";
 
