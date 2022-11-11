@@ -10,6 +10,7 @@ $data    = new Spreadsheet_Excel_Reader($_FILES['file_e']['name'], false);
 
 $baris = $data->rowcount($sheet_index = 0);
 
+$berhasil = 0;
 for ($i = 2; $i <= $baris; $i++) {
 
     $nisn = $data->val($i, 1);
@@ -37,28 +38,31 @@ for ($i = 2; $i <= $baris; $i++) {
     $password = "123";
     $passwordmd = md5($password);
 
-    $query = mysqli_query($koneksi, 'insert into tbl_siswa set 
-                                    satdik = "' . $satdik . '", 
-                                    id_detail_kelas = "' . $id_detail_kelas . '", 
-                                    nis = "' . $nis . '", 
-                                    nisn = "' . $nisn . '", 
-                                    nama = "' . $nama . '", 
-                                    jk = "' . $jk . '",
-                                    tempat_lahir = "' . $tempat_lahir . '",
-                                    tgl_lahir = "' . $tgl_lahir . '",
-                                    jml_saudara = "' . $jml_saudara . '",
-                                    alamat = "' . $alamat . '",
-                                    no_hp = "' . $no_hp . '",
-                                    nama_wali = "' . $nama_wali . '",
-                                    no_hp_wali = "' . $no_hp_wali . '",
-                                    pekerjaan_wali = "' . $pekerjaan_wali . '",
-                                    nama_ibu = "' . $nama_ibu . '",
-                                    no_hp_ibu = "' . $no_hp_ibu . '",
-                                    pekerjaan_ibu = "' . $pekerjaan_ibu . '",
-                                    username = "' . $username . '",
-                                    role = "' . $role . '",
-                                    password = "' . $passwordmd . '"
-                                    ');
+    if ($nama != "" || $nama != null) {
+        $query = mysqli_query($koneksi, 'insert into tbl_siswa set 
+                                        satdik = "' . $satdik . '", 
+                                        id_detail_kelas = "' . $id_detail_kelas . '", 
+                                        nis = "' . $nis . '", 
+                                        nisn = "' . $nisn . '", 
+                                        nama = "' . $nama . '", 
+                                        jk = "' . $jk . '",
+                                        tempat_lahir = "' . $tempat_lahir . '",
+                                        tgl_lahir = "' . $tgl_lahir . '",
+                                        jml_saudara = "' . $jml_saudara . '",
+                                        alamat = "' . $alamat . '",
+                                        no_hp = "' . $no_hp . '",
+                                        nama_wali = "' . $nama_wali . '",
+                                        no_hp_wali = "' . $no_hp_wali . '",
+                                        pekerjaan_wali = "' . $pekerjaan_wali . '",
+                                        nama_ibu = "' . $nama_ibu . '",
+                                        no_hp_ibu = "' . $no_hp_ibu . '",
+                                        pekerjaan_ibu = "' . $pekerjaan_ibu . '",
+                                        username = "' . $username . '",
+                                        role = "' . $role . '",
+                                        password = "' . $passwordmd . '"
+                                        ');
+        $berhasil++;
+    }
 }
 
 if ($query != 0) {

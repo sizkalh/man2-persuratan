@@ -10,6 +10,7 @@ $data    = new Spreadsheet_Excel_Reader($_FILES['file_e']['name'], false);
 
 $baris = $data->rowcount($sheet_index = 0);
 
+$berhasil = 0;
 for ($i = 2; $i <= $baris; $i++) {
 
     $nip = $data->val($i, 1);
@@ -32,7 +33,8 @@ for ($i = 2; $i <= $baris; $i++) {
     $password = "123";
     $passwordmd = md5($password);
 
-    $query = mysqli_query($koneksi, 'insert into tbl_guru set 
+    if ($nama != "" || $nama != null) {
+        $query = mysqli_query($koneksi, 'insert into tbl_guru set 
                                     nama = "' . $nama . '", 
                                     nip = "' . $nip . '", 
                                     jk = "' . $jk . '",
@@ -50,8 +52,10 @@ for ($i = 2; $i <= $baris; $i++) {
                                     pangkat = "' . $role . '",
                                     password = "' . $passwordmd . '",
                                     password2 = "' . $password . '",
-                                    instansi = "MAN 2 Tulungagung"
+                                    instansi = "MAN 2 Tulungagung";
                                     ');
+        $berhasil++;
+    }
 }
 
 if ($query != 0) {
