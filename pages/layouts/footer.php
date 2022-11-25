@@ -38,6 +38,8 @@
 
 <script src="https://adminlte.io/themes/AdminLTE/bower_components/ckeditor/ckeditor.js"></script>
 
+<script src="https://cdn.datatables.net/fixedcolumns/4.2.1/js/dataTables.fixedColumns.min.js"></script>
+
 <script src="<?= base_url() ?>library/helper.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="https://adminlte.io/themes/AdminLTE/dist/js/demo.js"></script>
@@ -45,6 +47,8 @@
 
 <script>
     $(document).ready(function() {
+        $(".preloader").fadeOut();
+
         var dateNow = new Date();
         $('#calendar').datepicker("setDate", dateNow);
 
@@ -130,6 +134,25 @@
                 scrollTop: 0
             }, 1000);
         });
+
+        $(document).on('click', '#notif', function() {
+            var id = $(this).attr("data");
+            notif(id);
+        });
+
+        function notif(id) {
+            $.ajax({
+                method: "POST",
+                url: base_url + "/process/notif/update.php",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function(data) {
+                    console.log("sukses");
+                }
+            });
+        }
     })
 </script>
 </body>

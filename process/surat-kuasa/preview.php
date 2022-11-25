@@ -87,7 +87,7 @@ function tgl_indo_garing($tanggal)
         </td>
       </tr>
       <tr>
-        <td style="width: 30%;">Nama</td>
+        <td style="width: 35%;">Nama</td>
         <td colspan="2">: <?= $_GET['pemberi_kuasa'] ?></td>
       </tr>
       <tr>
@@ -137,7 +137,7 @@ function tgl_indo_garing($tanggal)
       </tr>
       <tr>
         <td></td>
-        <td style="width: 35%;"></td>
+        <td style="width: 25%;"></td>
         <td>
           Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
           <br />

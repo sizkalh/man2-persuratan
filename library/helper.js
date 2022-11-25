@@ -5,6 +5,15 @@ function goBack() {
 //====== END of membuat tombol kembali =
 
 $('#data-table').DataTable({
+  // scrollY: 300,
+  scrollX: true,
+  scrollCollapse: true,
+  // paging: false,
+  fixedColumns: {
+    left: 3
+  }
+});
+$('#data-table1').DataTable({
   scrollX: true,
 });
 $('#data-table2').DataTable({

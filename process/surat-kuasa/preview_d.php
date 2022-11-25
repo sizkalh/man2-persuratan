@@ -93,7 +93,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 30%;">Nama</td>
+                    <td style="width: 35%;">Nama</td>
                     <td colspan="2">: <?= $data['pemberi_kuasa'] ?></td>
                 </tr>
                 <tr>
@@ -143,7 +143,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
                 </tr>
                 <tr>
                     <td></td>
-                    <td style="width: 35%;"></td>
+                    <td style="width: 25%;"></td>
                     <td>
                         Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
                         <br />

@@ -63,21 +63,21 @@
     
     
 
-    echo 'UPDATE tbl_guru set 
-                                        nama = "' . $nama . '", 
-                                        nip = "' . $nip . '", 
-                                        jk = "' . $jk . '",
-                                        no_hp = "' . $no_hp . '",
-                                        email = "' . $email . '",
-                                        tempat_lahir = "' . $tempat_lahir . '",
-                                        tgl_lahir = "' . $tgl_lahir . '",
-                                        alamat = "' . $alamat . '",
-                                        pangkat = "' . $pangkat . '",
-                                        golongan = "' . $golongan . '",
-                                        jabatan = "' . $jabatan . '",
-                                        lama_pengabdian = "' . $lama_pengabdian . '",
-                                        username = "' . $username . '"
-                                        WHERE id="' . $id . '"';
+    // echo 'UPDATE tbl_guru set 
+    //                                     nama = "' . $nama . '", 
+    //                                     nip = "' . $nip . '", 
+    //                                     jk = "' . $jk . '",
+    //                                     no_hp = "' . $no_hp . '",
+    //                                     email = "' . $email . '",
+    //                                     tempat_lahir = "' . $tempat_lahir . '",
+    //                                     tgl_lahir = "' . $tgl_lahir . '",
+    //                                     alamat = "' . $alamat . '",
+    //                                     pangkat = "' . $pangkat . '",
+    //                                     golongan = "' . $golongan . '",
+    //                                     jabatan = "' . $jabatan . '",
+    //                                     lama_pengabdian = "' . $lama_pengabdian . '",
+    //                                     username = "' . $username . '"
+    //                                     WHERE id="' . $id . '"';
     
     if ($query != 0) {
         header("location:" . base_url() . "profil/index?pesan=berhasil");
