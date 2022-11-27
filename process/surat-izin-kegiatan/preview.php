@@ -152,7 +152,7 @@ function tgl_indo_garing($tanggal)
       </tr>
       <tr>
         <td></td>
-        <td style="width: 65%;"></td>
+        <td style="width: 55%;"></td>
         <td>
           Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
           <br />

@@ -65,7 +65,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Kelas</label>
                             <div class="col-sm-10">
-                                <select name="id_detail_kelas" id="id_detail_kelas" class="form-control">
+                                <select name="id_detail_kelas" id="id_detail_kelas" class="form-control select-kelas">
                                     <option value="">-- Pilih Kelas</option>
                                     <?php
                                     $query_kelas = mysqli_query($koneksi, 'SELECT

@@ -167,7 +167,7 @@ function tgl_indo_garing($tanggal)
                                             <tr>
                                                 <td class="text-center">~</td>
                                                 <td>
-                                                    <select name="id_detail_kelas" id="id_detail_kelas" class="form-control" style="width: 100%;">
+                                                    <select name="id_detail_kelas" id="id_detail_kelas" class="form-control select-kelas" style="width: 100%;">
                                                         <option value="">-- Pilih Kelas</option>
                                                         <?php
                                                         $query_kelas = mysqli_query($koneksi, 'SELECT
@@ -193,7 +193,7 @@ function tgl_indo_garing($tanggal)
                                                 </td>
                                                 <td>
                                                     <input type="hidden" name="id_surat" value="<?= $_GET['id'] ?>">
-                                                    <input type="hidden" name="id_detail_kelas" id="id_detail_kelas">
+                                                    <!-- <input type="hidden" name="id_detail_kelas" id="id_detail_kelas"> -->
                                                     <select name="id_siswa" id="id_siswa" class="form-control select-nama" style="width: 100%;">
                                                     </select>
                                                 </td>

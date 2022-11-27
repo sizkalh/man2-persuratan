@@ -80,11 +80,13 @@ function tgl_indo_garing($tanggal)
           <table>
             <tr>
               <td>Nomor</td>
-              <td>: …………………………………</td>
+              <td>:</td>
+              <td>…………………………………</td>
             </tr>
             <tr>
-              <td>Hal</td>
-              <td>: <?= $_GET['perihal'] ?></td>
+              <td style="vertical-align: top;">Hal</td>
+              <td style="vertical-align: top;">:</td>
+              <td><?= $_GET['perihal'] ?></td>
             </tr>
           </table>
         </td>
@@ -111,21 +113,25 @@ function tgl_indo_garing($tanggal)
             <tr>
               <td rowspan="4" style="vertical-align: text-top;">1.</td>
               <td style="width: 100px;">Hari, Tanggal</td>
-              <td>: <?= $_GET['hari'] ?>, <?php if ($_GET['tanggal_pelaksanaan'] <> '') {
-                                            echo tgl_indo_garing($_GET['tanggal_pelaksanaan']);
-                                          } ?></td>
+              <td>:</td>
+              <td><?= $_GET['hari'] ?>, <?php if ($_GET['tanggal_pelaksanaan'] <> '') {
+                                          echo tgl_indo_garing($_GET['tanggal_pelaksanaan']);
+                                        } ?></td>
             </tr>
             <tr>
               <td>Waktu</td>
-              <td>: <?= $_GET['waktu'] ?></td>
+              <td>:</td>
+              <td><?= $_GET['waktu'] ?></td>
             </tr>
             <tr>
-              <td>Materi</td>
-              <td>: <?= $_GET['materi'] ?></td>
+              <td style="vertical-align: top;">Materi</td>
+              <td style="vertical-align: top;">:</td>
+              <td><?= $_GET['materi'] ?></td>
             </tr>
             <tr>
-              <td>Tempat</td>
-              <td>: <?= $_GET['tempat'] ?></td>
+              <td style="vertical-align: top;">Tempat</td>
+              <td style="vertical-align: top;">:</td>
+              <td><?= $_GET['tempat'] ?></td>
             </tr>
           </table>
         </td>

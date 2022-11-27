@@ -32,7 +32,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Perihal</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="perihal" rows="3" placeholder="Masukkan Perihal"></textarea>
+                                <textarea class="form-control" name="perihal" rows="7" placeholder="Masukkan Perihal"></textarea>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Dalam Rangka</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="dalam_rangka" rows="3" placeholder="Masukkan Dalam Rangka"></textarea>
+                                <textarea class="form-control" name="dalam_rangka" rows="7" placeholder="Masukkan Dalam Rangka"></textarea>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">Materi</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="materi" placeholder="Masukkan Materi"></textarea>
+                                <textarea class="form-control" rows="7" name="materi" placeholder="Masukkan Materi"></textarea>
                             </div>
                         </div>
                     </div>

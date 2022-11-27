@@ -20,6 +20,13 @@
                                     keterangan="' . $keterangan . '"
                                     ');
 
+                                    // echo 'insert into tbl_surat_dispen set 
+                                    // id_surat="' . $id_surat . '",
+                                    // id_siswa="' . $id_siswa . '",
+                                    // id_detail_kelas="' . $id_detail_kelas . '",
+                                    // keterangan="' . $keterangan . '"
+                                    // ';
+
     
     
     if ($query != 0) {

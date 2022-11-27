@@ -109,7 +109,7 @@ if (isset($_SESSION['status']) != 'login') {
       width: 100%;
       height: 100%;
       z-index: 9999;
-      background-color: #1fe78a;
+      background-color: #EDF0F4;
     }
 
     .preloader .loading {
@@ -232,7 +232,7 @@ if (isset($_SESSION['status']) != 'login') {
       top: 100%;
       margin-top: 20px;
       text-align: center;
-      color: #fff;
+      color: #222D32;
       font-weight: bold;
     }
 

@@ -39,14 +39,15 @@
             <div class="box-body">
                 <table class="table table-condensed table-hover compact nowrap" id="data-table">
                     <thead>
-                        <tr>
-                            <th width="20" class="text-center">~</th>
-                            <th width="30" class="text-center">No</th>
+                        <tr class="bg-navy">
+                            <th width="20" class="text-center bg-navy">~</th>
+                            <th width="30" class="text-center bg-navy">No</th>
+                            <th class="bg-navy">Pemohon Surat</th>
                             <th>No. Surat</th>
                             <th class="text-center" width="110">Tgl. Pembuatan</th>
                             <th>Alasan Dispen</th>
                             <th class="text-center">Tgl. Pelaksanaan</th>
-                            <th class="text-center">Aksi</th>
+                            <th width="150" class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,9 +57,26 @@
                         $id_user = mysqli_query($koneksi, "select * from tbl_guru where id = '" . $_SESSION['id_user'] . "'");
                         while ($cek_jabatan = mysqli_fetch_array($id_user)) {
                             if ($cek_jabatan['pangkat'] == 'guru') {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_dispen' AND id_pemohon = '" . $_SESSION['id_user'] . "' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT
+                                                                tbl_surat.*,
+                                                                tbl_guru.nama
+                                                                FROM
+                                                                tbl_surat
+                                                                INNER JOIN tbl_guru
+                                                                    ON tbl_guru.id = tbl_surat.id_pemohon
+                                                                WHERE tbl_surat.jenis = 'surat_dispen' 
+                                                                AND tbl_surat.id_pemohon = '" . $_SESSION['id_user'] . "' 
+                                                                ORDER BY tbl_surat.id DESC");
                             } else {
-                                $data = mysqli_query($koneksi, "SELECT * FROM tbl_surat WHERE jenis='surat_dispen' ORDER BY id DESC");
+                                $data = mysqli_query($koneksi, "SELECT
+                                                                tbl_surat.*,
+                                                                tbl_guru.nama
+                                                                FROM
+                                                                tbl_surat
+                                                                INNER JOIN tbl_guru
+                                                                    ON tbl_guru.id = tbl_surat.id_pemohon
+                                                                WHERE tbl_surat.jenis = 'surat_dispen'
+                                                                ORDER BY tbl_surat.id DESC");
                             }
                         }
 
@@ -70,8 +88,22 @@
                             <?php
                             if ($myData['hapus'] == 'n') {
                             ?>
-                                <tr <?= $myData['alamat'] == null || $myData['alamat'] == '' ? 'class="bg-warning"' : '' ?>>
-                                    <td class="text-center">
+                                <?php
+                                if (isset($_GET['data_id'])) {
+                                    if ($_GET['data_id'] == $myData["id"]) {
+                                        echo "<tr class='info'>";
+                                    }
+                                } else {
+                                ?>
+                                    <tr <?= $myData['alamat'] == null || $myData['alamat'] == '' ? 'class="bg-warning"' : '' ?>>
+                                    <?php } ?>
+                                    <td <?php
+                                        if (isset($_GET['data_id'])) {
+                                            if ($_GET['data_id'] == $myData["id"]) {
+                                                echo "style='background-color: #D9EDF7;'";
+                                            }
+                                        }
+                                        ?> class="text-center">
                                         <?php
                                         $data_ttd = mysqli_query($koneksi, "SELECT * FROM tbl_tanda_tangan WHERE id_surat = " . $myData['id']);
                                         if (mysqli_num_rows($data_ttd) > 0) {
@@ -113,8 +145,41 @@
                                         ?>
 
                                     </td>
-                                    <td class="text-center"><?= $no++; ?></td>
-                                    <td><?= $myData['no_surat'] ?></td>
+                                    <td <?php
+                                        if (isset($_GET['data_id'])) {
+                                            if ($_GET['data_id'] == $myData["id"]) {
+                                                echo "style='background-color: #D9EDF7;'";
+                                            }
+                                        } else {
+                                            if ($myData['alamat'] == null || $myData['alamat'] == '') {
+                                                echo 'class="bg-warning"';
+                                            } else {
+                                                echo "class='active'";
+                                            }
+                                        }
+                                        ?> class="text-center">
+                                        <?= $no++; ?>
+                                    </td>
+                                    <td <?php
+                                        if (isset($_GET['data_id'])) {
+                                            if ($_GET['data_id'] == $myData["id"]) {
+                                                echo "style='background-color: #D9EDF7;'";
+                                            }
+                                        } else {
+                                            if ($myData['alamat'] == null || $myData['alamat'] == '') {
+                                                echo 'class="bg-warning"';
+                                            } else {
+                                                echo "class='active'";
+                                            }
+                                        }
+                                        ?>>
+                                        <?= $myData['nama'] ?>
+                                    </td>
+                                    <td>
+                                        <span class="text-primary">
+                                            <?= $myData['no_surat'] == null || $myData['no_surat'] == '' ? 'menunggu' : '<b>' . $myData['no_surat'] . '</b>' ?>
+                                        </span>
+                                    </td>
                                     <td class="text-center"><?= date('d-m-Y', strtotime($myData['tgl_pembuatan'])) ?></td>
                                     <td><?= $myData['alamat'] ?></td>
                                     <td class="text-center"><?= $myData['tgl_pelaksanaan'] ?></td>
@@ -128,16 +193,16 @@
                                         if (mysqli_num_rows($cek_lampiran) > 0) {
                                             while ($data_lampiran = mysqli_fetch_array($cek_lampiran)) { ?>
 
-                                                <a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-paperclip"></i></a>
+                                                <a href="../../../upload/<?= $data_lampiran['file'] ?>" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-paperclip"></i></a>
                                         <?php }
                                         } ?>
 
                                         <!-- Button Pop Up -->
-                                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" id="modal-otor" data-id="<?= $myData['id']; ?>" data-target="#modal-default">
+                                        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" id="modal-otor" data-id="<?= $myData['id']; ?>" data-target="#modal-default">
                                             <i class="fa fa-file-text-o"></i>
                                         </button>
 
-                                        <a href="<?= base_url() ?>process/surat-dispen/preview_d.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Surat">
+                                        <a href="<?= base_url() ?>process/surat-dispen/preview_d.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Surat">
                                             <i class="fa fa-eye"></i>
                                         </a>
 
@@ -146,10 +211,10 @@
                                         $cek_ttd = mysqli_query($koneksi, 'SELECT tbl_guru.pangkat, tbl_tanda_tangan.status FROM tbl_tanda_tangan INNER JOIN tbl_guru ON tbl_guru.id=tbl_tanda_tangan.id_user WHERE tbl_tanda_tangan.id_surat = "' . $myData['id'] . '" AND tbl_guru.pangkat = "kamad" AND tbl_tanda_tangan.status = "diterima"');
                                         if (mysqli_num_rows($cek_ttd) > 0) {
                                             while ($ttd = mysqli_fetch_array($cek_ttd)) { ?>
-                                                <a href="<?= base_url() ?>process/surat-dispen/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
+                                                <a href="<?= base_url() ?>process/surat-dispen/print.php?id=<?= $myData['id'] ?>" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-print"></i></a>
                                             <?php }
                                         } else { ?>
-                                            <a href="#" target="_blank" class="btn btn-primary btn-sm" disabled><i class="fa fa-print"></i></a>
+                                            <a href="#" target="_blank" class="btn btn-primary btn-xs" disabled><i class="fa fa-print"></i></a>
                                         <?php } ?>
 
                                         <!-- Button Edit -->
@@ -158,9 +223,9 @@
                                             $cek_edit = mysqli_query($koneksi, 'SELECT * FROM tbl_tanda_tangan WHERE id_surat = "' . $myData['id'] . '" AND id_user = "' . $_SESSION['id_user'] . '" AND status = "diterima"');
                                             if (mysqli_num_rows($cek_edit) > 0) {
                                         ?>
-                                                <a href="#" id="edit_surat" class="btn btn-primary btn-sm" disabled><i class="fa fa-pencil"></i></a>
+                                                <a href="#" id="edit_surat" class="btn btn-primary btn-xs" disabled><i class="fa fa-pencil"></i></a>
                                             <?php } else { ?>
-                                                <a href="<?= base_url() ?>surat-dispen/create?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <a href="<?= base_url() ?>surat-dispen/create?id=<?= $myData['id']; ?>" id="edit_surat" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                         <?php }
                                         } ?>
 
@@ -168,11 +233,11 @@
                                         <?php
                                         if ($_SESSION['pangkat_user'] == 'operator') {
                                         ?>
-                                            <a href="../../../process/surat-dispen/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="../../../process/surat-dispen/hapus.php?id=<?= $myData['id']; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                         <?php } ?>
                                     </td>
-                                </tr>
-                        <?php }
+                                    </tr>
+                            <?php }
                         } ?>
                     </tbody>
                 </table>
@@ -297,7 +362,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                        <button type="button" id="close-modal" class="btn btn-default pull-right">Close</button>
                     </div>
                 </div>
             </div>
@@ -309,6 +374,13 @@
 <script>
     $(document).ready(function() {
         var base_url = window.location.origin;
+
+        $(document).on('click', '#close-modal', function() {
+            $('.modal').modal('toggle');
+            setInterval(function() {
+                location.reload()
+            }, 900);
+        })
 
         $(document).on('click', '#modal-otor', function() {
             var id_surat = $(this).attr("data-id");

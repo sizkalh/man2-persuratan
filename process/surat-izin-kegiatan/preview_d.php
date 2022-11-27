@@ -159,7 +159,7 @@ while ($data = mysqli_fetch_array($query_surat)) {
         </tr>
         <tr>
           <td></td>
-          <td style="width: 65%;"></td>
+          <td style="width: 55%;"></td>
           <td>
             Tulungagung, <?= tgl_indo(date('Y-m-d')) ?>
             <br />
